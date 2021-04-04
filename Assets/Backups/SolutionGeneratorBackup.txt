@@ -1,0 +1,232 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public static class SolutionGenerator
+{
+
+    public enum Variant {x3 = 3, x4 = 4};
+    private enum side {bottom, back, left, right, front, top}
+    private enum corner {ul, ur, dr, dl}
+    private const bool I = true, O = false;
+    private const int a = 0, b = 1;
+    public static int seedOfLast {get; set;}
+    private static Variant variant;
+    private static int variantInt;
+
+    private static bool[][,] solution = new bool[6][,];
+
+    private class Corner {
+        public side[] sidesSharing = new side[3];
+        public corner[] sideAppearance = new corner[3];
+        public bool[] canAppear = new bool[3];
+        public int sideAppearing;
+    }
+
+    private class Edge {
+        public side[] sidesSharing = new side[2];
+        public side[] sideAppearings = new side[2];
+    }
+
+    public static bool[][,] GetNewSolution(Variant variant_ = Variant.x4) {
+        return GetNewSolution(System.Environment.TickCount, variant_);
+    }
+    public static bool[][,] GetNewSolution(int seed_, Variant variant_ = Variant.x4) {
+        seedOfLast = seed_;
+        Random.InitState(seedOfLast);
+        GameObject.Find("Seed").GetComponent<Text>().text = "Seed: " + seedOfLast.ToString();
+        variant = variant_;
+        variantInt = (int)variant_;
+
+        FillCenters();
+        FillMiddleEdges();
+        FillCorners();
+
+        return solution;
+    }
+    private static void FillCenters() {
+        for (int o = 0; o < 6; o++) {
+            solution[o] = new bool[variantInt, variantInt];
+            for (int i = 0; i < variantInt; i++) {
+                for (int j = 0; j < variantInt; j++) {
+                    int l = variantInt - 1;
+                    if (i > 0 && i < l && j > 0 && j < l)
+                        solution[o][i, j] = I;
+                    else
+                        solution[o][i, j] = O;
+                }
+            }
+        }
+    }
+    private static void FillMiddleEdges() {
+        Edge[] edges = new Edge[12];
+        for (int i = 0; i < 4; i++) {
+            edges[i] = new Edge();
+            edges[i].sidesSharing[0] = side.bottom;
+            edges[i].sidesSharing[1] = (side)(i + 1);
+            edges[i + 4] = new Edge();
+            edges[i + 4].sidesSharing[0] = side.top;
+            edges[i + 4].sidesSharing[1] = (side)(i + 1);
+        }
+        for (int i = 8; i < 12; i++) edges[i] = new Edge();
+        edges[8].sidesSharing[0] = side.left;
+        edges[8].sidesSharing[1] = side.front;
+        edges[9].sidesSharing[0] = side.front;
+        edges[9].sidesSharing[1] = side.right;
+        edges[10].sidesSharing[0] = side.right;
+        edges[10].sidesSharing[1] = side.back;
+        edges[11].sidesSharing[0] = side.back;
+        edges[11].sidesSharing[1] = side.left;
+
+        for (int i = 0; i < 12; i++) {
+            edges[i].sideAppearings = new side[2];
+
+            // side[][] fourPossibilities = new side[4][];
+            // fourPossibilities[0] = new side[2] {edges[0].sidesSharing[0], edges[0].sidesSharing[0]};
+            // fourPossibilities[1] = new side[2] {edges[0].sidesSharing[0], edges[0].sidesSharing[1]};
+            // fourPossibilities[2] = new side[2] {edges[0].sidesSharing[1], edges[0].sidesSharing[0]};
+            // fourPossibilities[3] = new side[2] {edges[0].sidesSharing[1], edges[0].sidesSharing[1]};
+
+            edges[i].sideAppearings[0] = edges[i].sidesSharing[Random.Range(0, 2)];
+            edges[i].sideAppearings[1] = edges[i].sidesSharing[Random.Range(0, 2)];
+        }
+
+        // bottom
+        solution[0][0,1] = edges[0].sideAppearings[a] == side.bottom;
+        solution[0][0,2] = edges[0].sideAppearings[b] == side.bottom;
+        solution[0][2,0] = edges[1].sideAppearings[a] == side.bottom;
+        solution[0][1,0] = edges[1].sideAppearings[b] == side.bottom;
+        solution[0][1,3] = edges[2].sideAppearings[a] == side.bottom;
+        solution[0][2,3] = edges[2].sideAppearings[b] == side.bottom;
+        solution[0][3,2] = edges[3].sideAppearings[a] == side.bottom;
+        solution[0][3,1] = edges[3].sideAppearings[b] == side.bottom;
+        // back
+        solution[1][0,1] = edges[4].sideAppearings[b] == side.back;
+        solution[1][0,2] = edges[4].sideAppearings[a] == side.back;
+        solution[1][2,0] = edges[11].sideAppearings[a] == side.back;
+        solution[1][1,0] = edges[11].sideAppearings[b] == side.back;
+        solution[1][1,3] = edges[10].sideAppearings[b] == side.back;
+        solution[1][2,3] = edges[10].sideAppearings[a] == side.back;
+        solution[1][3,2] = edges[0].sideAppearings[b] == side.back;
+        solution[1][3,1] = edges[0].sideAppearings[a] == side.back;
+        // left
+        solution[2][0,1] = edges[11].sideAppearings[b] == side.left;
+        solution[2][0,2] = edges[11].sideAppearings[a] == side.left;
+        solution[2][2,0] = edges[5].sideAppearings[b] == side.left;
+        solution[2][1,0] = edges[5].sideAppearings[a] == side.left;
+        solution[2][1,3] = edges[1].sideAppearings[b] == side.left;
+        solution[2][2,3] = edges[1].sideAppearings[a] == side.left;
+        solution[2][3,2] = edges[8].sideAppearings[a] == side.left;
+        solution[2][3,1] = edges[8].sideAppearings[b] == side.left;
+        // right
+        solution[3][0,1] = edges[10].sideAppearings[a] == side.right;
+        solution[3][0,2] = edges[10].sideAppearings[b] == side.right;
+        solution[3][2,0] = edges[2].sideAppearings[b] == side.right;
+        solution[3][1,0] = edges[2].sideAppearings[a] == side.right;
+        solution[3][1,3] = edges[6].sideAppearings[b] == side.right;
+        solution[3][2,3] = edges[6].sideAppearings[a] == side.right;
+        solution[3][3,2] = edges[9].sideAppearings[b] == side.right;
+        solution[3][3,1] = edges[9].sideAppearings[a] == side.right;
+        // front
+        solution[4][0,1] = edges[3].sideAppearings[b] == side.front;
+        solution[4][0,2] = edges[3].sideAppearings[a] == side.front;
+        solution[4][2,0] = edges[8].sideAppearings[b] == side.front;
+        solution[4][1,0] = edges[8].sideAppearings[a] == side.front;
+        solution[4][1,3] = edges[9].sideAppearings[a] == side.front;
+        solution[4][2,3] = edges[9].sideAppearings[b] == side.front;
+        solution[4][3,2] = edges[7].sideAppearings[b] == side.front;
+        solution[4][3,1] = edges[7].sideAppearings[a] == side.front;
+        // top
+        solution[5][0,1] = edges[4].sideAppearings[a] == side.top;
+        solution[5][0,2] = edges[4].sideAppearings[b] == side.top;
+        solution[5][2,0] = edges[6].sideAppearings[a] == side.top;
+        solution[5][1,0] = edges[6].sideAppearings[b] == side.top;
+        solution[5][1,3] = edges[5].sideAppearings[a] == side.top;
+        solution[5][2,3] = edges[5].sideAppearings[b] == side.top;
+        solution[5][3,2] = edges[7].sideAppearings[a] == side.top;
+        solution[5][3,1] = edges[7].sideAppearings[b] == side.top;
+    }
+    
+    private static void FillCorners() {
+        Corner[] corners = new Corner[8];
+        for (int i = 0; i < 8; i++) corners[i] = new Corner();
+        corners[0].sidesSharing = new side[] {side.bottom, side.back, side.left};
+        corners[0].sideAppearance = new corner[] {corner.ul, corner.dl, corner.ur};
+
+        corners[1].sidesSharing = new side[] {side.bottom, side.back, side.right};
+        corners[1].sideAppearance = new corner[] {corner.ur, corner.dr, corner.ul};
+
+        corners[2].sidesSharing = new side[] {side.bottom, side.front, side.right};
+        corners[2].sideAppearance = new corner[] {corner.dr, corner.ur, corner.dl};
+
+        corners[3].sidesSharing = new side[] {side.bottom, side.front, side.left};
+        corners[3].sideAppearance = new corner[] {corner.dl, corner.ul, corner.dr};
+
+        corners[4].sidesSharing = new side[] {side.top, side.back, side.right};
+        corners[4].sideAppearance = new corner[] {corner.ul, corner.ur, corner.ur};
+
+        corners[5].sidesSharing = new side[] {side.top, side.back, side.left};
+        corners[5].sideAppearance = new corner[] {corner.ur, corner.ul, corner.ul};
+
+        corners[6].sidesSharing = new side[] {side.top, side.front, side.left};
+        corners[6].sideAppearance = new corner[] {corner.dr, corner.dl, corner.dl};
+
+        corners[7].sidesSharing = new side[] {side.top, side.front, side.right};
+        corners[7].sideAppearance = new corner[] {corner.dl, corner.dr, corner.dr};
+
+        for (int i = 0; i < 8; i++) {
+            for (int s = 0; s < 3; s++) {
+                if (corners[i].sideAppearance[s] == corner.ul) {
+                    if (solution[(int)corners[i].sidesSharing[s]][0,1] == I || 
+                        solution[(int)corners[i].sidesSharing[s]][1,0] == I) {
+                        corners[i].canAppear[s] = true;
+                    } else corners[i].canAppear[s] = false;
+                }
+                if (corners[i].sideAppearance[s] == corner.ur) {
+                    if (solution[(int)corners[i].sidesSharing[s]][0,2] == I || 
+                        solution[(int)corners[i].sidesSharing[s]][1,3] == I) {
+                        corners[i].canAppear[s] = true;
+                    } else corners[i].canAppear[s] = false;
+                }
+                if (corners[i].sideAppearance[s] == corner.dr) {
+                    if (solution[(int)corners[i].sidesSharing[s]][2,3] == I || 
+                        solution[(int)corners[i].sidesSharing[s]][3,2] == I) {
+                        corners[i].canAppear[s] = true;
+                    } else corners[i].canAppear[s] = false;
+                }
+                if (corners[i].sideAppearance[s] == corner.dl) {
+                    if (solution[(int)corners[i].sidesSharing[s]][3,1] == I || 
+                        solution[(int)corners[i].sidesSharing[s]][2,0] == I) {
+                        corners[i].canAppear[s] = true;
+                    } else corners[i].canAppear[s] = false;
+                }
+            }
+        }
+
+        for (int i = 0; i < 8; i++) {
+            int countAvailable = 0;
+            for (int c = 0; c < 3; c++) {
+                if (corners[i].canAppear[c]) {
+                    countAvailable++;
+                }
+            }
+
+            corners[i].sideAppearing = Random.Range(0, countAvailable);
+            // przy O I I i wylosowaniu liczby 1 wybierze inna sciane niz zamierzono
+            while (corners[i].canAppear[corners[i].sideAppearing] == false) corners[i].sideAppearing++;
+            switch (corners[i].sideAppearance[corners[i].sideAppearing]) {
+                case corner.ul:
+                    solution[(int)corners[i].sidesSharing[corners[i].sideAppearing]][0, 0] = I;
+                    break;
+                case corner.ur:
+                    solution[(int)corners[i].sidesSharing[corners[i].sideAppearing]][0, 3] = I;
+                    break;
+                case corner.dr:
+                    solution[(int)corners[i].sidesSharing[corners[i].sideAppearing]][3, 3] = I;
+                    break;
+                case corner.dl:
+                    solution[(int)corners[i].sidesSharing[corners[i].sideAppearing]][3, 0] = I;
+                    break;
+            }
+        }
+    }
+}

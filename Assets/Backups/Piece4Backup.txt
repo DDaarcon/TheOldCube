@@ -1,0 +1,236 @@
+using UnityEngine;
+
+public class Piece4 : MonoBehaviour
+{
+    // TODO 
+    /*
+        //1. Przejście z sześcianów na scianki
+        //2. Zmiana koloru niepasujących klocków
+        3. Wbudowana możliwość stopniowego zmieniania przeźroczystości
+
+    */
+
+    const bool I = true, O = false;
+
+    public int index {get; set;}
+    public Material materialTemplate;
+    private Material material;
+    private Material materialForMistakes;
+    public Color color {get; private set;}
+    private Color colorForMistakes;
+
+    // below for color change in time 
+    private Color destinedColor;
+    private Color previousColor;
+    private float timeForColorUpdate;
+    private float timerColor;
+
+    private float transparency = 1;
+
+    // below for transparency change in time
+    private float destinedTransparency;
+    private float timeForTransparencyUpdate;
+    private float previousTransparency;
+    private bool destroyOnFinishTransparencyUpdate;
+    private float timerTrans;
+    private bool[,] setting = new bool[4, 4]{
+        {I, I, I ,I}, 
+        {I, I, I, I},
+        {I, I, I, I},
+        {I, I, I, I}};
+
+    private GameObject[,] children = new GameObject[4, 4];
+
+    public void ChangeSetting(bool[,] setting_) {
+        setting = setting_;
+        ChangeSetting();
+    }
+    private void ChangeSetting() {
+        if (children[0, 0] == null)
+            FindChildren();
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (setting[i, j]){
+                    children[i, j].SetActive(true);
+                }else{
+                    children[i, j].SetActive(false);
+                }
+            }
+        }
+        PrepareSidesVisibility();
+    }
+
+    private void PrepareSidesVisibility() {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                // ustaw wszystko na false, wymagane w przypadku zmian w setting
+                children[i, j].transform.Find("Top").gameObject.SetActive(false);
+                children[i, j].transform.Find("Bottom").gameObject.SetActive(false);
+                children[i, j].transform.Find("Left").gameObject.SetActive(false);
+                children[i, j].transform.Find("Right").gameObject.SetActive(false);
+
+                if (children[i, j].activeSelf) {
+                    GameObject top = null, left = null, right = null, bottom = null;
+                    if (i > 0) bottom = children[i - 1, j];
+                    if (i < 3) top = children[i + 1, j];
+                    if (j > 0) left = children[i, j - 1];
+                    if (j < 3) right = children[i, j + 1];
+
+                    if (top == null || !top.activeSelf) {
+                        children[i, j].transform.Find("Top").gameObject.SetActive(true);
+                    }
+                    if (bottom == null || !bottom.activeSelf) {
+                        children[i, j].transform.Find("Bottom").gameObject.SetActive(true);
+                    }
+                    if (left == null || !left.activeSelf) {
+                        children[i, j].transform.Find("Left").gameObject.SetActive(true);
+                    }
+                    if (right == null || !right.activeSelf) {
+                        children[i, j].transform.Find("Right").gameObject.SetActive(true);
+                    }
+                }
+            }
+        }
+    }
+
+    public void RotateR(int times) {
+        times %= 4;
+        if (times % 2 == 1) {
+            for (int i = 0; i < 3; i++) {
+                bool temp = setting[0, i];
+                setting[0, i] = setting[i, 3];
+                setting[i, 3] = setting[3, 3 - i];
+                setting[3, 3 - i] = setting[3 - i, 0];
+                setting[3 - i, 0] = temp;
+            }
+            times--;
+        }
+        if (times == 2) {
+            for (int i = 0; i < 3; i++) {
+                bool temp = setting[0, i];
+                setting[0, i] = setting[3, 3 - i];
+                setting[3, 3 - i] = temp;
+                temp = setting[i, 3];
+                setting[i, 3] = setting[3 - i, 0];
+                setting[3 - i, 0] = temp;
+            }
+        }
+        ChangeSetting();
+    }
+
+    public bool[,] GetSetting() {
+        return setting;
+    }
+
+    private void FindChildren() {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                children[i, j] = transform.GetChild(i * 4 + j).gameObject;
+            }
+        }
+    }
+
+    private void ChangeMaterial() {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                for (int k = 0; k < 6; k++) {
+                    children[i, j].transform.GetChild(k).GetComponent<MeshRenderer>().material = material;
+                }
+            }
+        }
+    }
+    private void ChangeMaterialFor(bool[,] arrang) {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (arrang[i, j])
+                for (int k = 0; k < 6; k++) {
+                    children[i, j].transform.GetChild(k).GetComponent<MeshRenderer>().material = materialForMistakes;
+                }
+            }
+        }
+    }
+
+    public Material GetMaterial() {
+        return material;
+    }
+
+    public void ChangeColor(Color color_) {
+        color = new Color(color_.r, color_.g, color_.b, transparency);
+        material.SetColor("_Color", color);
+        ChangeMaterial();
+    }
+    public void RetrieveColor(){
+        ChangeMaterial();
+    }
+    public void ChangeColorFor(Color color_, float trans, bool[,] arrang) {
+        colorForMistakes = new Color(color_.r, color_.g, color_.b, trans);
+        materialForMistakes.SetColor("_Color", colorForMistakes);
+        ChangeMaterialFor(arrang);
+    }
+    public void ChangeColorFor(Color color_, bool[,] arrang) {
+        ChangeColorFor(color_, transparency, arrang);
+    }
+    public void ChangeTransparency(float trans) {
+        transparency = trans;
+        ChangeColor(new Color(color.r, color.g, color.b, trans));
+    }
+    private bool duringTransparencyUpdate = false;
+    public void ChangeTransparencyInTime(float destinedTransparency, float time, bool destroyOnFinish = false) {
+        duringTransparencyUpdate = true;
+        this.destinedTransparency = destinedTransparency;
+        previousTransparency = transparency;
+        timeForTransparencyUpdate = time;
+        timerTrans = 0f;
+        destroyOnFinishTransparencyUpdate = destroyOnFinish;
+    }
+    private bool duringColorUpdate = false;
+    public void ChangeColorInTime(Color destinedColor, float time) {
+        duringColorUpdate = true;
+        this.destinedColor = destinedColor;
+        previousColor = color;  // might not work
+        timeForColorUpdate = time;
+        timerColor = 0f;
+
+    }
+    public float GetTransparency() {
+        return transparency;
+    }
+
+    void Awake() {
+        material = new Material(materialTemplate);
+        material.name = "Standard Material";
+        materialForMistakes = new Material(materialTemplate);
+        materialForMistakes.name = "Material For Mistakes";
+        materialForMistakes.SetFloat("_Mode", 0); // set to opaque mode
+        color = material.GetColor("_Color");
+        FindChildren();
+        ChangeMaterial();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (duringTransparencyUpdate) {
+            float rate = Time.deltaTime / timeForTransparencyUpdate;
+            float entireChange = destinedTransparency - previousTransparency;
+            float changeForFrame = entireChange * rate;
+            ChangeTransparency(transparency + changeForFrame);
+            timerTrans += Time.deltaTime;
+            if (timerTrans >= timeForTransparencyUpdate) duringTransparencyUpdate = false;
+        }
+        if (!duringTransparencyUpdate && destroyOnFinishTransparencyUpdate) {
+            Destroy(this.gameObject);
+        }
+        if (duringColorUpdate) {
+            float rate = Time.deltaTime / timeForColorUpdate;
+            Color newColor = new Color();
+            newColor.r = color.r + (destinedColor.r - previousColor.r) * rate;
+            newColor.g = color.g + (destinedColor.g - previousColor.g) * rate;
+            newColor.b = color.b + (destinedColor.b - previousColor.b) * rate;
+            ChangeColor(newColor);
+            timerColor += Time.deltaTime;
+            if (timerColor >= timeForColorUpdate) duringColorUpdate = false;
+        }
+    }
+}

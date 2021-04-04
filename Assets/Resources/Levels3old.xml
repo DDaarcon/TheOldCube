@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SaveLevelSetting xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <levelList>
+    <LevelSettings seed="1334016831">
+      <Placed_Sides>OOOOIO</Placed_Sides>
+      <Diff>0</Diff>
+    </LevelSettings>
+    <LevelSettings seed="685913430">
+      <Placed_Sides>OOIOIO</Placed_Sides>
+      <Diff>0</Diff>
+    </LevelSettings>
+    <LevelSettings seed="829488405">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>0</Diff>
+    </LevelSettings>
+    <LevelSettings seed="1404534178">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>0</Diff>
+    </LevelSettings>
+    <LevelSettings seed="652967443">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>0</Diff>
+    </LevelSettings>
+    <LevelSettings seed="2051549478">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>0</Diff>
+    </LevelSettings>
+    <LevelSettings seed="1234567">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>0</Diff>
+    </LevelSettings>
+    <LevelSettings seed="1234567">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>0</Diff>
+    </LevelSettings>
+  </levelList>
+</SaveLevelSetting>

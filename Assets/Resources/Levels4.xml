@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SaveLevelSetting xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <levelList>
+    <!-- One/Two missing -->
+    <LevelSettings seed="7065842"> <!-- ok -->
+      <Placed_Sides>IOIIII</Placed_Sides>
+      <Diff>0</Diff>
+    </LevelSettings>
+    <LevelSettings seed="238757961"> <!-- ok -->
+      <Placed_Sides>IOOIII</Placed_Sides>
+      <Diff>0</Diff>
+    </LevelSettings>
+    <LevelSettings seed="362316"> <!-- ok -->
+      <Placed_Sides>IOIIOI</Placed_Sides>
+      <Diff>0</Diff>
+    </LevelSettings>
+    <LevelSettings seed="110758617"> <!-- ok -->
+      <Placed_Sides>OIOIII</Placed_Sides>
+      <Diff>0</Diff>
+    </LevelSettings>
+    <LevelSettings seed="110264056"> <!-- ok -->
+      <Placed_Sides>IIOIIO</Placed_Sides>
+      <Diff>0</Diff>
+    </LevelSettings>
+
+
+
+    <!--Three missing-->
+    <LevelSettings seed="295620011">
+      <Placed_Sides>IIOOIO</Placed_Sides> <!-- ok -->
+      <Diff>1</Diff>
+    </LevelSettings>
+    <LevelSettings seed="97912"> <!-- ok -->
+      <Placed_Sides>IIOIOO</Placed_Sides>
+      <Diff>1</Diff>
+    </LevelSettings>
+    <LevelSettings seed="33666"> <!-- ok -->
+      <Placed_Sides>OOIOII</Placed_Sides>
+      <Diff>1</Diff>
+    </LevelSettings>
+    <LevelSettings seed="282173621"> <!-- ok -->
+      <Placed_Sides>IIOOIO</Placed_Sides>
+      <Diff>1</Diff>
+    </LevelSettings>
+    <LevelSettings seed="282173625"> <!-- ok -->
+      <Placed_Sides>IOIOIO</Placed_Sides>
+      <Diff>1</Diff>
+    </LevelSettings>
+    <LevelSettings seed="979563"> <!-- ok -->
+      <Placed_Sides>IIOOOI</Placed_Sides>
+      <Diff>1</Diff>
+    </LevelSettings>
+    <LevelSettings seed="441284566"> <!-- ok, lvl nr 12 (third row complete)-->
+      <Placed_Sides>IIOOOI</Placed_Sides>
+      <Diff>1</Diff>
+    </LevelSettings>
+    <LevelSettings seed="441806946"> <!-- OK -->
+      <Placed_Sides>IOIOIO</Placed_Sides>
+      <Diff>1</Diff>
+    </LevelSettings>
+    <LevelSettings seed="442007232"> <!-- OK -->
+      <Placed_Sides>IIIOOO</Placed_Sides>
+      <Diff>1</Diff>
+    </LevelSettings>
+    <LevelSettings seed="154876"> <!-- ok -->
+      <Placed_Sides>OIIOIO</Placed_Sides>
+      <Diff>1</Diff>
+    </LevelSettings>
+    <LevelSettings seed="442333363"> <!-- ok, lvl nr 16 (fourth row complete) -->
+      <Placed_Sides>IOIOIO</Placed_Sides>
+      <Diff>1</Diff>
+    </LevelSettings>
+
+
+    <!-- From one missing to four missing -->
+    <LevelSettings seed="441448825"> <!-- ok -->
+      <Placed_Sides>IIIIIO</Placed_Sides>
+      <Diff>0</Diff>
+    </LevelSettings>
+    <LevelSettings seed="441448825"> <!-- ok -->
+      <Placed_Sides>IIOIIO</Placed_Sides>
+      <Diff>0</Diff>
+    </LevelSettings>
+    <LevelSettings seed="441448825"> <!-- ok -->
+      <Placed_Sides>IIOOIO</Placed_Sides>
+      <Diff>0</Diff>
+    </LevelSettings>
+    <LevelSettings seed="441448825"> <!-- ok, lvl nr 20 (fifth row complete) -->
+      <Placed_Sides>IOOOIO</Placed_Sides>
+      <Diff>0</Diff>
+    </LevelSettings>
+
+
+
+    <!--Four missing-->
+    <LevelSettings seed="444782119">
+      <Placed_Sides>IOOOIO</Placed_Sides> <!-- easy -->
+      <Diff>2</Diff>
+    </LevelSettings>
+    <LevelSettings seed="444052892">
+      <Placed_Sides>OOOOII</Placed_Sides> <!-- easy -->
+      <Diff>2</Diff>
+    </LevelSettings>
+    <LevelSettings seed="443495167">
+      <Placed_Sides>OIOIOO</Placed_Sides> <!-- somewhat easy -->
+      <Diff>2</Diff>
+    </LevelSettings>
+    <LevelSettings seed="443726961">
+      <Placed_Sides>OOIOIO</Placed_Sides> <!-- somewhat easy, lvl nr 24 (6th row compl) -->
+      <Diff>2</Diff>
+    </LevelSettings>
+    <LevelSettings seed="444145977">
+      <Placed_Sides>OOIOIO</Placed_Sides> <!-- somewhat easy -->
+      <Diff>2</Diff>
+    </LevelSettings>
+    <LevelSettings seed="443281741">
+      <Placed_Sides>OOIOOI</Placed_Sides> <!-- somewhat hard -->
+      <Diff>2</Diff>
+    </LevelSettings>
+    <LevelSettings seed="442889213">
+      <Placed_Sides>IOIOOO</Placed_Sides> <!-- somewhat hard -->
+      <Diff>2</Diff>
+    </LevelSettings>
+    <LevelSettings seed="444345213">
+      <Placed_Sides>OIOOIO</Placed_Sides> <!-- somewhat hard, lvl nr 28 (7th row compl) -->
+      <Diff>2</Diff>
+    </LevelSettings>
+    <LevelSettings seed="443415891">
+      <Placed_Sides>OOOIOI</Placed_Sides> <!-- somewhat hard -->
+      <Diff>2</Diff>
+    </LevelSettings>
+    <LevelSettings seed="443569047">
+      <Placed_Sides>IIOOOO</Placed_Sides> <!-- somewhat hard -->
+      <Diff>2</Diff>
+    </LevelSettings>
+    <LevelSettings seed="443951778">
+      <Placed_Sides>OOIOOI</Placed_Sides> <!-- somewhat hard -->
+      <Diff>2</Diff>
+    </LevelSettings>
+    <LevelSettings seed="442770340">
+      <Placed_Sides>IOOOIO</Placed_Sides> <!-- somewhat hard, lvl nr 32 (8th row compl) -->
+      <Diff>2</Diff>
+    </LevelSettings>
+    <LevelSettings seed="443004352">
+      <Placed_Sides>OIOIOO</Placed_Sides> <!-- really hard -->
+      <Diff>3</Diff>
+    </LevelSettings>
+    <LevelSettings seed="444581806">
+      <Placed_Sides>OIOOIO</Placed_Sides> <!-- really hard -->
+      <Diff>3</Diff>
+    </LevelSettings>
+    <LevelSettings seed="443588727">
+      <Placed_Sides>OOIIOO</Placed_Sides> <!-- really hard -->
+      <Diff>3</Diff>
+    </LevelSettings>
+    <LevelSettings seed="444471388">
+      <Placed_Sides>OOIOIO</Placed_Sides> <!-- really hard, lvl nr 36 (9th row compl) -->
+      <Diff>3</Diff>
+    </LevelSettings>
+    <LevelSettings seed="445209755">
+      <Placed_Sides>IOOOOI</Placed_Sides> <!-- really hard -->
+      <Diff>3</Diff>
+    </LevelSettings>
+    <LevelSettings seed="445349424">
+      <Placed_Sides>OIOOIO</Placed_Sides> <!-- really hard -->
+      <Diff>3</Diff>
+    </LevelSettings>
+    <LevelSettings seed="445081233">
+      <Placed_Sides>OOIIOO</Placed_Sides> <!-- really hard -->
+      <Diff>3</Diff>
+    </LevelSettings>
+    <LevelSettings seed="445475349">
+      <Placed_Sides>OIOOIO</Placed_Sides> <!-- really hard, lvl nr 40 (10th row compl) -->
+      <Diff>3</Diff>
+    </LevelSettings>
+
+
+
+    <!-- From two missing to whole missing-->
+    <LevelSettings seed="445565338">
+      <Placed_Sides>OIOIII</Placed_Sides>
+      <Diff>1</Diff>
+    </LevelSettings>
+    <LevelSettings seed="445565338">
+      <Placed_Sides>OOOIII</Placed_Sides>
+      <Diff>1</Diff>
+    </LevelSettings>
+    <LevelSettings seed="445565338">
+      <Placed_Sides>OOOIOI</Placed_Sides>
+      <Diff>1</Diff>
+    </LevelSettings>
+    <LevelSettings seed="445565338">
+      <Placed_Sides>OOOOOO</Placed_Sides> <!-- ok, lvl nr 44 (11th row compl) -->
+      <Diff>1</Diff>
+    </LevelSettings>
+
+
+
+    <!-- Six missing-->
+    <LevelSettings seed="685913430"> <!-- easier -->
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="829488405">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="1334016831">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="77987020"> <!-- lvl nr 48 (12th row compl) -->
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="652967443"> <!-- easy/medium -->
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="1404534178">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="2051549478">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="633389047"> <!-- lv nr 52 (13th row compl) -->
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="193465309">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="264858391">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="148225650">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="37995739"> <!-- lvl nr 56 (14th row compl) -->
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="516628921"> <!-- medium -->
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="1062936130">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="867314767">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="185278561"> <!-- lvl nr 60 (15th row compl) -->
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="1805332339">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="96615219">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="1771068024">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="977420651"> <!-- lvl nr 64 (16th row compl) -->
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="1986841231"> <!-- medium/hard -->
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="1089943918">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="1343132052">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="386958918"> <!-- lvl nr 68 (17th row compl) -->
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="37995739">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="1736088332"> <!-- hard -->
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="1420813889">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="405607113"> <!-- lvl nr 72 (18th row compl) -->
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="2134253650">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="1974056727">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="389593852">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="31162113"> <!-- lvl nr 76 (19th row compl) -->
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="1351234876">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="478626144">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="2137">
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+    <LevelSettings seed="536991100"> <!-- lvl nr 80 (20th row compl) -->
+      <Placed_Sides>OOOOOO</Placed_Sides>
+      <Diff>4</Diff>
+    </LevelSettings>
+  </levelList>
+</SaveLevelSetting>
