@@ -178,6 +178,12 @@ public class GameScript : MonoBehaviour
             what: "shadow" of pieces buttons instead of level menu
         2.  reproduce: finish level, open themes menu, press next level button
             what: opening pieces menu is delayed
+        3.  reproduce: open level menu, before animation finished open themes menu
+            what: bugs while displaying menus
+        4.  reproduce: rotate device to landscape or just start app in this position
+            what: right panel displays dispite
+        5.  reproduce: while system's autorotation is of and device stays in landscape mode, lock device, rotate device to portrait and unlock
+            waht: screen orientation goes crazy
     */
 
     

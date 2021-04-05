@@ -25,7 +25,7 @@ public class StartingPanel : MonoBehaviour
         UICamera.interpolation = startBlur;
 
     #if !UNITY_EDITOR
-        if (new AndroidJavaClass("android.os.Build$VERSION").GetStatic<int>("SDK_INT") >= 27) {
+        if (new AndroidJavaClass("android.os.Build$VERSION").GetStatic<int>("SDK_INT") >= 28) {
             UICamera.kernelSize = SuperBlur.BlurKernelSize.Medium;
             // Shader.EnableKeyword("HIGHER_RESOLUTION_SHADOW_ON_THEMES");
         } else {

@@ -148,6 +148,7 @@ public class ScreenOrientationScript : MonoBehaviour
     public DeviceOrientation deviceOrientation {get; private set;}
     public ScreenOrientation screenOrientation {get; private set;}
     public bool screenOrientationHasChanged {get; private set;} = false;
+    private bool autoRotateOnAndroid = true;
 
     private void RectTransformsToData(ScreenOrientation orientation) {
         if (orientation == ScreenOrientation.Portrait) {
@@ -354,7 +355,6 @@ public class ScreenOrientationScript : MonoBehaviour
             nextLevelButton_P.DebugPrintData();
         }
         #else
-        bool autoRotateOnAndroid = true;
 
         #if UNITY_ANDROID && !UNITY_EDITOR
         using (var actClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer")) {
@@ -364,10 +364,10 @@ public class ScreenOrientationScript : MonoBehaviour
         }
         #endif
 
-        Screen.autorotateToLandscapeLeft = autoRotateOnAndroid;
-        Screen.autorotateToLandscapeRight = autoRotateOnAndroid;
-        Screen.autorotateToPortrait = true;
-        Screen.orientation = autoRotateOnAndroid ? ScreenOrientation.AutoRotation : ScreenOrientation.Portrait;
+        Screen.autorotateToLandscapeLeft = autoRotateOnAndroid || Screen.orientation == ScreenOrientation.LandscapeLeft;
+        Screen.autorotateToLandscapeRight = autoRotateOnAndroid || Screen.orientation == ScreenOrientation.LandscapeRight;
+        Screen.autorotateToPortrait = autoRotateOnAndroid || Screen.orientation == ScreenOrientation.Portrait;
+        Screen.orientation = autoRotateOnAndroid ? ScreenOrientation.AutoRotation : Screen.orientation;
 
         if (autoRotateOnAndroid && (screenHeight != Screen.height || screenWidth != Screen.width || screenOrientation != Screen.orientation))
         {
