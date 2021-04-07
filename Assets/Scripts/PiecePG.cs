@@ -49,7 +49,7 @@ public class PiecePG : Piece
     **/
     public float shiftTime = 0.1f;
     public float shiftDistance = 20f;
-    private float screenshotDelay = 0.4f;
+//     private float screenshotDelay = 0.4f;
 
 
     private readonly float[,] darkElementHeights = {
