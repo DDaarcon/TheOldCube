@@ -3,6 +3,14 @@ Game I've published (currently in verification procees) on Google Play. Based on
 
 ![Icon](https://github.com/DDaarcon/TheOldCube/blob/main/TheOldCube_ReleaseData/miniaturka_official_cropped_512.png)
 
+Worth seeing:
+
+[PiecePG](https://github.com/DDaarcon/TheOldCube/blob/main/Assets/Scripts/PiecePG.cs) and [PiecePartMeshGenerate](https://github.com/DDaarcon/TheOldCube/blob/main/Assets/Scripts/PiecePartMeshGenerate.cs) - 
+Precedurally generated mesh for pieces
+
+[SolutionGenerator](https://github.com/DDaarcon/TheOldCube/blob/main/Assets/Scripts/SolutionGenerator.cs) - 
+Generation of solution depending on seed
+
 PL:
 
 Układaj kostkę w wielu różnorodnych motywach.
