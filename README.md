@@ -5,6 +5,9 @@ Game I've published (currently in verification procees) on Google Play. Based on
 
 Worth seeing:
 
+[GameScript](https://github.com/DDaarcon/TheOldCube/blob/main/Assets/Scripts/GameScript.cs) - 
+The "core" of application. Important: I wrote code by myself and it wasn't intended to be shown in public so there are comments in both english and polish.
+
 [PiecePG](https://github.com/DDaarcon/TheOldCube/blob/main/Assets/Scripts/PiecePG.cs) and [PiecePartMeshGenerate](https://github.com/DDaarcon/TheOldCube/blob/main/Assets/Scripts/PiecePartMeshGenerate.cs) - 
 Precedurally generated mesh for pieces
 
@@ -31,4 +34,4 @@ Try yourself in solving cube at several difficulty levels. Starting from easy on
 ![pick_piece](https://github.com/DDaarcon/TheOldCube/blob/main/TheOldCube_ReleaseData/pick_piece_instruction.png)
 ![explosion](https://github.com/DDaarcon/TheOldCube/blob/main/TheOldCube_ReleaseData/explosion.png)
 
-More screenshots in directory "TheOldCube_ReleaseData"
+More screenshots in directory [TheOldCube_ReleaseData](https://github.com/DDaarcon/TheOldCube/blob/main/TheOldCube_ReleaseData/)
