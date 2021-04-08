@@ -313,17 +313,7 @@ public class PiecePartMeshGenerate : MonoBehaviour
         private void RotateClockwiseBySide(Side side_, int times) {
             Vector3[] vertices = GetBySide(side_);
             times %= 4;
-            // Debug.Log(side_);
             
-            // string debLog = "";
-            // for (int i = 0; i < meshPointsInRow; i ++) {
-            //     for (int j = 0; j < meshPointsInRow; j++) {
-            //         debLog += vertices[i2dto1d(i, j)].ToString();
-            //         debLog += " ";
-            //     }
-            //     debLog += '\n';
-            // }
-            // Debug.Log(debLog);
             
             if (times % 2 == 1) {
                 for (int a = 0; a < meshPointsInRow / 2; a++) { // loop for each perimeter (square of vertices discarding the fill)
@@ -357,15 +347,6 @@ public class PiecePartMeshGenerate : MonoBehaviour
                     }
                 }
             }
-            // debLog = "";
-            // for (int i = 0; i < meshPointsInRow; i ++) {
-            //     for (int j = 0; j < meshPointsInRow; j++) {
-            //         debLog += vertices[i2dto1d(i, j)].ToString();
-            //         debLog += " ";
-            //     }
-            //     debLog += '\n';
-            // }
-            // Debug.Log(debLog);
         }
         private int i2dto1d(int i, int j) {
             return i * meshPointsInRow + j;
@@ -533,80 +514,6 @@ public class PiecePartMeshGenerate : MonoBehaviour
         }
     }
 
-    // public Vector3[] verticesBottom {get; private set;}
-    // public Vector3[] verticesBack {get; private set;}
-    // public Vector3[] verticesLeft {get; private set;}
-    // public Vector3[] verticesRight {get; private set;}
-    // public Vector3[] verticesFront {get; private set;}
-    // public Vector3[] verticesTop {get; private set;}
-    // public Vector3[] GetVerticesBySide(Side side_) {
-    //     switch (side_) {
-    //         case Side.bottom:
-    //             return verticesBottom;
-    //         case Side.back:
-    //             return verticesBack;
-    //         case Side.left:
-    //             return verticesLeft;
-    //         case Side.right:
-    //             return verticesRight;
-    //         case Side.front:
-    //             return verticesFront;
-    //         case Side.top:
-    //             return verticesTop;
-    //         default:
-    //             return null;
-    //     }
-    // }
-    // public void SetVerticesBySide(Side side_, Vector3[] vertices) {
-    //     switch (side_) {
-    //         case Side.bottom:
-    //             verticesBottom = vertices;
-    //             break;
-    //         case Side.back:
-    //             verticesBack = vertices;
-    //             break;
-    //         case Side.left:
-    //             verticesLeft = vertices;
-    //             break;
-    //         case Side.right:
-    //             verticesRight = vertices;
-    //             break;
-    //         case Side.front:
-    //             verticesFront = vertices;
-    //             break;
-    //         case Side.top:
-    //             verticesTop = vertices;
-    //             break;
-    //         default:
-    //             break;
-    //     }
-    // }
-    // public void RotateVerticesArrayClockwiseBySide(Side side_, int times) {
-    //     Vector3[] vertices = GetVerticesBySide(side_);
-    //     times %= 4;
-    //     int l = vertices.Length - 1;
-    //     if (times % 2 == 1) {
-    //         for (int i = 0; i < l; i++) {
-    //             Vector3 temp = vertices[(0) * l + i];
-    //             vertices[(0) * l + i] = vertices[(i) * l + l];
-    //             vertices[(i) * l + l] = vertices[(l) * l + l - i];
-    //             vertices[(l) * l + l - i] = vertices[(l - i) * l + 0];
-    //             vertices[(l - i) * l + 0] = temp;
-    //         }
-    //         times--;
-    //     }
-    //     if (times == 2) {
-    //         for (int i = 0; i < l; i++) {
-    //             Vector3 temp = vertices[0 * l + i];
-    //             vertices[0 * l + i] = vertices[l * l + l - i];
-    //             vertices[l * l + l - i] = temp;
-    //             temp = vertices[i * l + l];
-    //             vertices[i * l + l] = vertices[(l - i) * l + 0];
-    //             vertices[(l - i) * l + 0] = temp;
-    //         }
-    //     }
-    //     SetVerticesBySide(side_, vertices);
-    // }
     public Vertices vertices {get; private set;}
 
     public Vector3[] GetVerticesBySide(Side side_) {
