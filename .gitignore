@@ -2,7 +2,8 @@
 # Unity generated #
 # =============== #
 Temp/
-Obj/
+obj/
+obj/Debug/
 UnityGenerated/
 Library/
 Builds/
@@ -12,6 +13,7 @@ Builds/
 # ===================================== #
 ExportedObj/
 .vscode/
+.vs/
 *.svd
 *.userprefs
 *.csproj
