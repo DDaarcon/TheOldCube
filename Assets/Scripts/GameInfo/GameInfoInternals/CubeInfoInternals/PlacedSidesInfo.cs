@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameBase.GameInfoInternals.CubeInfoInternals
+namespace GameInfo.GameInfoInternals.CubeInfoInternals
 {
     public class PlacedSidesInfo
     {

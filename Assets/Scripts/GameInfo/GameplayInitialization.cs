@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 using static Enums;
 
-namespace GameBase
+namespace GameInfo
 {
 	public class GameplayInitialization
 	{
@@ -34,7 +34,7 @@ namespace GameBase
         **/
         private Quaternion randomRotationForWorkspace;
 
-        private void StartGamePrefix()
+        private void CommonGameStartBeginning()
         {
             placedSides = 0;
             for (int i = 0; i < 6; i++)
@@ -82,7 +82,7 @@ namespace GameBase
         }
         public void StartNewRandomGame(bool autoHideMenu = true)
         {
-            StartGamePrefix();
+            CommonGameStartBeginning();
 
             genrSolution = SolutionGenerator.GetNewSolution(variant);
             levelNotRandom = false;
@@ -95,7 +95,7 @@ namespace GameBase
         }
         public void StartNewRandomGame(int seed, bool autoHideMenu = true)
         {
-            StartGamePrefix();
+            CommonGameStartBeginning();
 
             genrSolution = SolutionGenerator.GetNewSolution(seed, variant);
             levelNotRandom = false;
@@ -108,7 +108,7 @@ namespace GameBase
         }
         public void StartNewGame(int level, int seed, bool[] placedSides_, bool finished_)
         {
-            StartGamePrefix();
+            CommonGameStartBeginning();
 
             genrSolution = SolutionGenerator.GetNewSolution(seed, variant);
             openedLevel = level;
@@ -146,7 +146,7 @@ namespace GameBase
 
         public void DebugLevel(int seed, bool[] placedSides_)
         {
-            StartGamePrefix();
+            CommonGameStartBeginning();
 
             genrSolution = SolutionGenerator.GetNewSolution(seed, variant);
             placedSidesFromSolution = placedSides_.Clone() as bool[];
@@ -173,7 +173,7 @@ namespace GameBase
 #if UNITY_EDITOR
         public void DebugNewGame(bool[][,] solution)
         {
-            StartGamePrefix();
+            CommonGameStartBeginning();
 
             levelNotRandom = true;
             finishedGame = true;
@@ -205,7 +205,7 @@ namespace GameBase
                 timeOfStart = Time.time - timeOfGame;
                 finishedAndRestarted = true;
             }
-            StartGamePrefix();
+            CommonGameStartBeginning();
             gameFinishedAndRestarted = finishedAndRestarted;
 
             for (int i = 0; i < 6; i++)

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 using static Enums;
 
 namespace Assets.Scripts.GameBase
@@ -51,45 +53,47 @@ namespace Assets.Scripts.GameBase
         **/
         public bool[][,] genrSolution { get; private set; }
 
+
+        [Header("Buttons:")]
         /**
         <value>GameObject which contain buttons with pieces</value>
         **/
-        public GameObject containerOfButtons;
+        //public GameObject containerOfButtons;
         /**
         <value>Array of buttons with pieces</value>
         **/
-        private Button[] buttons;
+        //private Button[] buttons;
         /**
         <value>Information about which button corresponds to which already placed piece (necessary for removing).
         It is somehow reversed to what buttonOrder array do</value>
         **/
-        private int[] piecesButtonsIndexes = new int[6];
+        //private int[] piecesButtonsIndexes = new int[6];
         /**
         <value>Info to which button correnspods currently placed piece</value>
         **/
-        public int placingPieceButtonIndex { get; private set; }
+        //public int placingPieceButtonIndex { get; private set; }
         /**
         <value>Color in which button pieces should appear</value>
         **/
-        public Color colorForButtonPieces = new Color();
+        //public Color colorForButtonPieces = new Color();
         /**
         <value>GameObject of two buttons - accept and cancel</value>
         **/
         // public GameObject canvasOf2Btns;
-        public CanvasGroup yesNoButtonsPanel;
-        private LTDescr yesNoPanelAnimation;
+        //public CanvasGroup yesNoButtonsPanel;
+        //private LTDescr yesNoPanelAnimation;
         /**
         <value>Order in which buttons should be organised in container (index for array is button, int stored at this index - side from solution)</value>
         **/
-        public int[] buttonOrder { get; private set; }
+        //public int[] buttonOrder { get; private set; }
 
 
 
         private Quaternion defaultRotation;
 
-        public Themes gameTheme { get; private set; } = Themes.BasicStone;
-        public int placedSides { get; private set; } = 0;
-        public bool[] placedSidesArray { get; private set; } = { O, O, O, O, O, O };
+        //public Themes gameTheme { get; private set; } = Themes.BasicStone;
+        //public int placedSides { get; private set; } = 0;
+        //public bool[] placedSidesArray { get; private set; } = { O, O, O, O, O, O };
         private GameObject[] finalPieces;
         private GameObject placedPiece;
         private Side placedSide;

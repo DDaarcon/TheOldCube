@@ -8,13 +8,13 @@ using UnityEngine;
 
 using static Enums;
 
-namespace GameBase.GameInfoInternals.EditorEnvironmentInfoInternals
+namespace GameInfo.GameInfoInternals.EditorEnvironmentInfoInternals
 {
     public class PlacedPieceInfo
     {
         public GameObject Object { get; set; }
         public Side? CurrentPositionRelativeToCube { get; set; }
 
-        public bool DuringRotation { get; set; }
+        public bool DuringRotationAnimation { get; set; }
     }
 }

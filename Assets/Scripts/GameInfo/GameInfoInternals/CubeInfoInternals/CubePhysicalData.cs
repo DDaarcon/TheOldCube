@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using UnityEngine;
 
-namespace GameBase.GameInfoInternals.CubeInfoInternals
+namespace GameInfo.GameInfoInternals.CubeInfoInternals
 {
     public class CubePhysicalData
     {

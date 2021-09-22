@@ -4,16 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using GameBase.GameInfoInternals.CubeInfoInternals;
+using GameInfo.GameInfoInternals.CubeInfoInternals;
 
-namespace GameBase.GameInfoInternals
+namespace GameInfo.GameInfoInternals
 {
     public class CubeInfo
     {
         public PlacedSidesInfo PlacedSides { get; set; }
-        public CubePhysicalData CubePhysicalData { get; set; }
-
-        public 
-
+        public CubePhysicalData PhysicalData { get; set; }
     }
 }

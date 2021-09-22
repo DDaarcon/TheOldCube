@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using GameBase.GameInfoInternals.CubeInfoInternals;
+using GameInfo.GameInfoInternals.CubeInfoInternals;
 
-namespace GameBase.GameInfoInternals.GameplayInfoInternals
+namespace GameInfo.GameInfoInternals.GameplayInfoInternals
 {
     public class LevelInfo
     {

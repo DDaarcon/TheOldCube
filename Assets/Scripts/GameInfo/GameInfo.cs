@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using GameBase.GameInfoInternals;
+using GameInfo.GameInfoInternals;
 
-namespace GameBase
+namespace GameInfo
 {
     public class GameInfo
     {
         public CubeInfo Cube { get; set; }
         public EditorEnvironmentInfo EditorEnvironment { get; set; }
+        public InterfaceInfo Interface { get; set; }
+        public ThemeInfo Theme { get; set; }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 using UnityEngine;
 
-using GameBase.GameInfoInternals.EditorEnvironmentInfoInternals;
+using GameInfo.GameInfoInternals.EditorEnvironmentInfoInternals;
 
-namespace GameBase.GameInfoInternals
+namespace GameInfo.GameInfoInternals
 {
     public class EditorEnvironmentInfo
     {
