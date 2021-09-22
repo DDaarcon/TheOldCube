@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using GameDebug;
 // using System;
 using static Enums;
 
@@ -193,37 +194,7 @@ public class GameScript : MonoBehaviour
     **/
     public bool[][,] gameSolution {get; private set;}
 
-    #if TRUE
 
-    /**
-    <summary>Debug method: Print in console settings of all pieces of present puzzle</summary>
-    **/
-    public void VisualizeDataFromSolution(bool[][,] solution, string precedingMsg = "") {
-        string et = precedingMsg;
-        et += " (solution): \n";
-        for (int s = 0; s < 6; s++) {
-            et += "Side: " + ((Side)s).ToString() + '\n';
-            for (int i = 0; i < variantInt; i++) {
-                for (int j = 0; j < variantInt; j++) {
-                    et += (solution[s][i, j] ? "I" : "O") + "\t";
-                }
-                et += '\n';
-            }
-        }
-        Debug.Log(et);
-    }
-    public void VisualizeDataFromSetting(bool[,] setting, string precedingMsg = "") {
-        string et = precedingMsg;
-        et += " (setting): \n";
-        for (int i = 0; i < variantInt; i++) {
-            for (int j = 0; j < variantInt; j++) {
-                et += (setting[i, j] ? "I" : "O") + "\t";
-            }
-            et += '\n';
-        }
-        Debug.Log(et);
-    }
-    #endif
     private void SetEmptyGameSolution() {
         for (int o = 0; o < 6; o++){
             SetEmptySideOnGameSolution((Side)o);
@@ -788,7 +759,7 @@ public class GameScript : MonoBehaviour
         placedSides--;
         placedSidesArray[(int)side_] = O;
 
-        VisualizeDataFromSetting(finalPieces[(int)side_].GetComponent<Piece>().GetSetting(), "Piece being deleted");
+        CustomDebug.VisualizeDataFromSetting(finalPieces[(int)side_].GetComponent<Piece>().GetSetting(), "Piece being deleted");
 
         finalPieces[(int)side_].GetComponent<Piece>().ChangeTransparencyInTime(0f, 0.3f, true);
         LeanTween.scale(finalPieces[(int)side_], Vector3.zero, 0.3f);
@@ -1343,7 +1314,7 @@ public class GameScript : MonoBehaviour
         finishedGame = true;
 
         OverrideGeneratedSolution(solution);
-        VisualizeDataFromSolution(genrSolution, "GenrSolution before applying (DebugNewGame)");
+        CustomDebug.VisualizeDataFromSolution(genrSolution, "GenrSolution before applying (DebugNewGame)");
 
         RenewButtons();
 
@@ -1355,7 +1326,7 @@ public class GameScript : MonoBehaviour
                 EnabledButton(b, false);
             }
         }
-        VisualizeDataFromSolution(gameSolution, "GameSolution after applying genrSolution (DNG)");
+        CustomDebug.VisualizeDataFromSolution(gameSolution, "GameSolution after applying genrSolution (DNG)");
     }
     #endif
     public void RestartGame() {
@@ -1797,7 +1768,7 @@ public class GameScript : MonoBehaviour
 
         #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.O)) {
-            VisualizeDataFromSolution(gameSolution, "GameSolution on demand");
+            CustomDebug.VisualizeDataFromSolution(gameSolution, "GameSolution on demand");
         }
         if (Input.GetKeyDown(KeyCode.F)) {
             FinishedLevel();
