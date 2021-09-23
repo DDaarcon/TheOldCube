@@ -8,6 +8,8 @@ using UnityEngine;
 
 using static Enums;
 
+using GameInfo.GameInfoInternals.InterfaceInfoInternals.PiecesButtonsInfoInternals;
+
 namespace GameInfo.GameInfoInternals.InterfaceInfoInternals
 {
     public class PiecesButtonsInfo

@@ -2,15 +2,19 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+using GameInfo;
+using GameServices.Editor;
+using GameServices.PlacedPieces;
+
 using static Enums;
 
-namespace GameInfo
+namespace GameServices.Gameplay
 {
 	public class GameplayInitialization
 	{
 		public GameplayInitialization() { }
 
-        protected GameInfo Information;
+        private GameInformation Information = GameInfoHolder.Information;
 
         [Header("Game and levels:")]
         public LevelMenu levelMenu;
@@ -34,25 +38,18 @@ namespace GameInfo
         **/
         private Quaternion randomRotationForWorkspace;
 
+        private readonly PlacedPiecesService placedPieces = new();
+        private readonly EditorEvents editorEvents = new();
+
         private void CommonGameStartBeginning()
         {
-            placedSides = 0;
-            for (int i = 0; i < 6; i++)
-            {
-                placedSidesArray[i] = O;
-                if (finalPieces[i] != null) Destroy(finalPieces[i]);
-            }
+            placedPieces.RemoveAll();
+            
             if (Information.EditorEnvironment.DuringPlacing)
             {
-                // canvasOf2Btns.SetActive(false);
-                EnabledYesNoButtons(false);
-
-                currentPositionFromAvailable = 0;
-                if (GetComponent<ScreenOrientationScript>().screenOrientation == ScreenOrientation.Portrait) levelMenu.ToggleRightPanelHideFeatureOn(true);
-                duringPlacing = false;
-                duringRotationWorkspace = false;
-                Destroy(placedPiece);
+                editorEvents.AbortPlacing();
             }
+
             SetEmptyGameSolution();
             ResetClock();
             hintScript.RenewHint();

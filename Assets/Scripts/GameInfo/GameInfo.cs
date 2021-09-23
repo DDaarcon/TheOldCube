@@ -8,7 +8,7 @@ using GameInfo.GameInfoInternals;
 
 namespace GameInfo
 {
-    public class GameInfo
+    public class GameInformation
     {
         public CubeInfo Cube { get; set; }
         public EditorEnvironmentInfo EditorEnvironment { get; set; }

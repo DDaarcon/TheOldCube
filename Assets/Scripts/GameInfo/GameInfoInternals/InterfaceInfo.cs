@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using UnityEngine;
 
 using GameInfo.GameInfoInternals.InterfaceInfoInternals;
 
@@ -12,5 +8,7 @@ namespace GameInfo.GameInfoInternals
     {
         public PiecesButtonsInfo PiecesButtons { get; set; }
         public DecisionButtonsInfo DecisionButtons { get; set; }
+
+        public ScreenOrientation ScreenOrientation { get; set; }
     }
 }
