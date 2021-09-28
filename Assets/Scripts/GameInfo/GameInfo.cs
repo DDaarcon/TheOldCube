@@ -10,9 +10,9 @@ namespace GameInfo
 {
     public class GameInformation
     {
-        public CubeInfo Cube { get; set; }
-        public EditorEnvironmentInfo EditorEnvironment { get; set; }
-        public InterfaceInfo Interface { get; set; }
-        public ThemeInfo Theme { get; set; }
+        public CubeInfo Cube { get; set; } = new();
+        public EditorEnvironmentInfo EditorEnvironment { get; set; } = new();
+        public InterfaceInfo Interface { get; set; } = new();
+        public ThemeInfo Theme { get; set; } = new();
     }
 }
