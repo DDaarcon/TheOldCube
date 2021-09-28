@@ -2,18 +2,17 @@
 # Unity generated #
 # =============== #
 Temp/
-obj/
-obj/Debug/
+Obj/
 UnityGenerated/
 Library/
 Builds/
+*.meta
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
 ExportedObj/
 .vscode/
-.vs/
 *.svd
 *.userprefs
 *.csproj
@@ -36,3 +35,8 @@ ExportedObj/
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# ==== #
+# Mine #
+# ==== #
+
