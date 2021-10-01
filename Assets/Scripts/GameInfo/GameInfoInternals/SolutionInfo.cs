@@ -28,7 +28,7 @@ namespace GameInfo.GameInfoInternals
         public SideData<TData> TopSide { get; set; }
         public SideData<TData> BottomSide { get; set; }
 
-        public SideData<TData>[] Full
+        public SideData<TData>[] FullArray
         {
             get => new SideData<TData>[]
             {
@@ -41,6 +41,17 @@ namespace GameInfo.GameInfoInternals
             };
         }
 
-
+        public IList<SideData<TData>> FullList
+        {
+            get => new List<SideData<TData>>
+            {
+                BottomSide,
+                BackSide,
+                LeftSide,
+                RightSide,
+                FrontSide,
+                TopSide
+            };
+        }
     }
 }

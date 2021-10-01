@@ -5,24 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 
 using UnityEngine;
+
 using static Enums;
 using GameInfo.GameInfoInternals.EditorEnvironmentInfoInternals;
+using GameExtensions.Solution;
 
 namespace GameInfo.GameInfoInternals
 {
-    public class EditorEnvironmentInfo
+    [Serializable]
+    public class EditorEnvironmentInfo : UnityEngine.Object
     {
         public EditorEnvironmentInfo()
         {
-            Solution = new(this.Variant);
+            CurrentSolution = new SolutionInfo<bool>(this.Variant);
+            CurrentSolution.SetDefaultValueForSideData(false);
         }
 
-        public PlacedPieceInfo PlacedPiece { get; set; } = new();
-        public WorkspaceInfo Workspace { get; set; } = new();
-        public SolutionInfo<bool> Solution { get; set; }
+        public PlacedPieceInfo PlacedPiece { get; set; } = new PlacedPieceInfo();
+        public WorkspaceInfo Workspace { get; set; } = new WorkspaceInfo();
+        public SolutionInfo<bool> CurrentSolution { get; set; }
 
         public Variant Variant { get; set; } = Variant.x4;
-        public bool DuringPlacing { get; set; }
+        public bool DuringPlacing { get; set; } = false;
 
     }
 }

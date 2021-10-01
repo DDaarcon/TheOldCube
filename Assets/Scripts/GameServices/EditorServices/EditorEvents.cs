@@ -19,10 +19,10 @@ namespace GameServices.Editor
         public void AbortPlacing()
         {
             // canvasOf2Btns.SetActive(false);
-            EnabledYesNoButtons(false);
+            /*EnabledYesNoButtons(false);
 
             currentPositionFromAvailable = 0;
-            if (GetComponent<ScreenOrientationScript>().screenOrientation == ScreenOrientation.Portrait) levelMenu.ToggleRightPanelHideFeatureOn(true);
+            if (GetComponent<ScreenOrientationScript>().screenOrientation == ScreenOrientation.Portrait) levelMenu.ToggleRightPanelHideFeatureOn(true);*/
             EditorInfo.Workspace.IsRotating = false;
             EditorInfo.AbortPlacing();
         }

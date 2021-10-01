@@ -187,7 +187,11 @@ public class GameScript : MonoBehaviour
             waht: screen orientation goes crazy
     */
 
-    
+    [Header("Test variables")]
+    public GameInfo.GameInformation Information;
+    public bool cos;
+
+
     // gameSolution SETTING AND OPERATIONS
     /**
     <value>Representation of whole puzzle present on screen</value>

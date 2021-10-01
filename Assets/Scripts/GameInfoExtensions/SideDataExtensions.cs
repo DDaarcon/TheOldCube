@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using GameInfo.GameInfoInternals.SolutionInfoInternals;
 
-namespace GameInfoExtensions.SideData
+namespace GameExtensions.SideData
 {
     public static class SideDataExtensions
     {

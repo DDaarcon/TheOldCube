@@ -8,7 +8,7 @@ using GameInfo.GameInfoInternals.CubeInfoInternals;
 
 namespace GameInfo.GameInfoInternals
 {
-    public class CubeInfo
+    public class CubeInfo : UnityEngine.Object
     {
         public PlacedSidesInfo PlacedSides { get; set; }
         public CubePhysicalData PhysicalData { get; set; }

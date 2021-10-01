@@ -14,7 +14,7 @@ namespace GameInfo
             get
             {
                 if (gameInformation == null)
-                    gameInformation = new();
+                    gameInformation = new GameInformation();
                 return gameInformation;
             }
         }

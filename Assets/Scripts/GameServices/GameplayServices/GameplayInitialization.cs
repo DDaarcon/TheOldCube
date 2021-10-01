@@ -3,8 +3,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using GameInfo;
+
 using GameServices.Editor;
 using GameServices.PlacedPieces;
+
+using GameExtensions.Solution;
 
 using static Enums;
 
@@ -16,30 +19,8 @@ namespace GameServices.Gameplay
 
         private GameInformation Information = GameInfoHolder.Information;
 
-        [Header("Game and levels:")]
-        public LevelMenu levelMenu;
-        public HintScript hintScript;
-        public AlertSpawner alertSpawner;
-        public SeedInputField seedInputField;
-        public Button nextLevelBtn;
-        private byte nextLvlBtnAlpha = 0;
-        private Variant nextLvlBtnVariant;
-        private int openedLevel = 0;
-        private bool levelNotRandom = false;
-        private bool[] placedSidesFromSolution;
-        private SaveScript saveScript;
-        private bool randomGameBeforeStart = false;
-        public bool finishedGame { get; private set; } = false; // might be useful for displaying time of game
-        private bool gameFinishedAndRestarted = false;
-        private bool tryingTheme = false;
-        // private int sideToRotateTowardsIndex = 0;
-        /**
-        <value>Random rotation used for animating solved puzzle</value>
-        **/
-        private Quaternion randomRotationForWorkspace;
-
-        private readonly PlacedPiecesService placedPieces = new();
-        private readonly EditorEvents editorEvents = new();
+        private readonly PlacedPiecesService placedPieces = new PlacedPiecesService();
+        private readonly EditorEvents editorEvents = new EditorEvents();
 
         private void CommonGameStartBeginning()
         {
@@ -50,7 +31,8 @@ namespace GameServices.Gameplay
                 editorEvents.AbortPlacing();
             }
 
-            SetEmptyGameSolution();
+            Information.EditorEnvironment.CurrentSolution.Clear();
+/*
             ResetClock();
             hintScript.RenewHint();
             HideNextLevelButton(true);
@@ -69,13 +51,13 @@ namespace GameServices.Gameplay
             seedInputField.RenewData();
 
             LeanTween.cancel(workspace.gameObject);
-            workspace.LeanScale(Vector3.one, 0f);
+            workspace.LeanScale(Vector3.one, 0f);*/
         }
-        private void StartGameSuffix(bool autoHideMenu)
+        /*private void StartGameSuffix(bool autoHideMenu)
         {
             seedInputField.RenewData();
             workspace.rotation = defaultRotation;
-            if (autoHideMenu) levelMenu.ToggleMenus(0, true)
+            if (autoHideMenu) levelMenu.ToggleMenus(0, true);
         }
         public void StartNewRandomGame(bool autoHideMenu = true)
         {
@@ -319,6 +301,6 @@ namespace GameServices.Gameplay
             }
 
             finishedGame = true;
-        }
+        }*/
     }
 }

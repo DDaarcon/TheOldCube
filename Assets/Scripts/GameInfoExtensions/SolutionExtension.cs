@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using GameInfo.GameInfoInternals;
 using GameInfo.GameInfoInternals.SolutionInfoInternals;
+using GameExtensions.SideData;
 
 namespace GameExtensions.Solution
 {
@@ -32,9 +33,22 @@ namespace GameExtensions.Solution
             solution.Set(data[0], data[1], data[2], data[3], data[4], data[5]);
         }
 
+        public static void SetDefaultValueForSideData<TData>(this SolutionInfo<TData> solution, TData defaultValue)
+        {
+            foreach (var side in solution.FullList)
+                side.DefaultValue = defaultValue;
+        }
+
         public static void Clear<TData>(this SolutionInfo<TData> solution)
         {
+            foreach (var side in solution.FullList)
+                side.Clear();
+        }
 
+        public static void Clear<TData>(this SolutionInfo<TData> solution, TData clearValue)
+        {
+            foreach (var side in solution.FullList)
+                side.Clear(clearValue);
         }
     }
 }
