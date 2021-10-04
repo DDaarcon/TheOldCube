@@ -8,9 +8,8 @@ using static Enums;
 
 namespace GameInfo.GameInfoInternals
 {
-    public class ThemeInfo : UnityEngine.Object
+    public class ThemeInfo
     {
-        public Themes CurrentTheme { get; set; }
-
+        public Themes CurrentTheme = Themes.BasicStone;
     }
 }

@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace GameInfo.GameInfoInternals.InterfaceInfoInternals
 {
+    [Serializable]
     public class ClockInfo
     {
         public Color clockRecordShineColor;

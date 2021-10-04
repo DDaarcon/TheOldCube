@@ -1,13 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace GameInfo.GameInfoInternals.InterfaceInfoInternals.PiecesButtonsInfoInternals
 {
+    [Serializable]
     public class PiecesButtonsPhysicalData
     {
-        public GameObject Container { get; set; }
-
-        public GameObject[] Buttons { get; set; }
+        public GameObject Container;
+        [HideInInspector]
+        public GameObject[] Buttons;
     }
 }

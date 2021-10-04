@@ -12,14 +12,17 @@ using GameInfo.GameInfoInternals.InterfaceInfoInternals.PiecesButtonsInfoInterna
 
 namespace GameInfo.GameInfoInternals.InterfaceInfoInternals
 {
+    [Serializable]
     public class PiecesButtonsInfo
     {
         public PiecesButtonsPhysicalData PhysicalData { get; set; }
 
         public Dictionary<Side, int> GeneratedSolutionPieceSideToButtonIndex {get; set; }
         public Dictionary<Side, int> PlacedPieceToButtonIndex { get; set; }
-        public int ButtonIndexForCurrentlyPlacedPiece { get; set; }
 
-        public Color Color { get; set; }
+        [HideInInspector]
+        public int ButtonIndexForCurrentlyPlacedPiece;
+
+        public Color Color;
     }
 }

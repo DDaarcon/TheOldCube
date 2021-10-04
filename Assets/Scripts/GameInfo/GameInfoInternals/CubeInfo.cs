@@ -8,7 +8,8 @@ using GameInfo.GameInfoInternals.CubeInfoInternals;
 
 namespace GameInfo.GameInfoInternals
 {
-    public class CubeInfo : UnityEngine.Object
+    [Serializable]
+    public class CubeInfo
     {
         public PlacedSidesInfo PlacedSides { get; set; }
         public CubePhysicalData PhysicalData { get; set; }

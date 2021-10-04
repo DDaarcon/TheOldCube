@@ -188,8 +188,7 @@ public class GameScript : MonoBehaviour
     */
 
     [Header("Test variables")]
-    public GameInfo.GameInformation Information;
-    public bool cos;
+    public GameInfo.GameInfoInternals.EditorEnvironmentInfo EnvironmentInformation;
 
 
     // gameSolution SETTING AND OPERATIONS

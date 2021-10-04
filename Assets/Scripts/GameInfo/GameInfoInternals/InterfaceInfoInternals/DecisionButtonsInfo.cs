@@ -9,9 +9,12 @@ using UnityEngine.UI;
 
 namespace GameInfo.GameInfoInternals.InterfaceInfoInternals
 {
+    [Serializable]
     public class DecisionButtonsInfo
     {
-        public CanvasGroup Panel { get; set; }
-        public LTDescr PanelAnimation { get; set; }
+
+        public CanvasGroup Panel;
+        [HideInInspector]
+        public LTDescr PanelAnimation;
     }
 }

@@ -8,8 +8,10 @@ using UnityEngine;
 
 namespace GameInfo.GameInfoInternals.CubeInfoInternals
 {
+    [SerializeField]
     public class CubePhysicalData
     {
-        public GameObject[] Pieces { get; set; }
+        [HideInInspector]
+        public GameObject[] Pieces;
     }
 }

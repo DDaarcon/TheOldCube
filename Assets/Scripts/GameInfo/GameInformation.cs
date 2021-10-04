@@ -10,9 +10,8 @@ using GameInfo.GameInfoInternals;
 
 namespace GameInfo
 {
-    
     [Serializable]
-    public class GameInformation : UnityEngine.Object
+    public class GameInformation
     {
         public GameInformation() { }
 
@@ -20,6 +19,5 @@ namespace GameInfo
         public EditorEnvironmentInfo EditorEnvironment { get; set; } = new EditorEnvironmentInfo();
         public InterfaceInfo Interface { get; set; } = new InterfaceInfo();
         public ThemeInfo Theme { get; set; } = new ThemeInfo();
-        public bool testField;
     }
 }

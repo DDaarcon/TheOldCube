@@ -8,10 +8,13 @@ using UnityEngine;
 
 namespace GameInfo.GameInfoInternals.EditorEnvironmentInfoInternals
 {
+    [Serializable]
     public class WorkspaceInfo
     {
-        public Transform PhysicalPosition { get; set; }
-        public Quaternion RandomRotationForAnimation { get; set; }
-        public bool IsRotating { get; set; }
+        public Transform PhysicalPosition;
+        [HideInInspector]
+        public Quaternion RandomRotationForAnimation;
+        [HideInInspector]
+        public bool IsRotating;
     }
 }

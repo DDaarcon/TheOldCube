@@ -13,7 +13,7 @@ using GameExtensions.Solution;
 namespace GameInfo.GameInfoInternals
 {
     [Serializable]
-    public class EditorEnvironmentInfo : UnityEngine.Object
+    public class EditorEnvironmentInfo
     {
         public EditorEnvironmentInfo()
         {
@@ -25,8 +25,10 @@ namespace GameInfo.GameInfoInternals
         public WorkspaceInfo Workspace { get; set; } = new WorkspaceInfo();
         public SolutionInfo<bool> CurrentSolution { get; set; }
 
-        public Variant Variant { get; set; } = Variant.x4;
-        public bool DuringPlacing { get; set; } = false;
+        public Variant Variant = Variant.x4;
+
+        [HideInInspector]
+        public bool DuringPlacing = false;
 
     }
 }

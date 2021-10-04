@@ -10,11 +10,14 @@ using static Enums;
 
 namespace GameInfo.GameInfoInternals.EditorEnvironmentInfoInternals
 {
+    [Serializable]
     public class PlacedPieceInfo
     {
-        public GameObject Object { get; set; }
-        public Side? CurrentPositionRelativeToCube { get; set; }
-
-        public bool DuringRotationAnimation { get; set; }
+        [HideInInspector]
+        public GameObject Object;
+        [HideInInspector]
+        public Side? CurrentPositionRelativeToCube;
+        [HideInInspector]
+        public bool DuringRotationAnimation;
     }
 }
