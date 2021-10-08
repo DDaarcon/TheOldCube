@@ -6,6 +6,7 @@ using GameInfo;
 
 using GameServices.Editor;
 using GameServices.PlacedPieces;
+using GameServices.Clock;
 
 using GameExtensions.Solution;
 
@@ -17,12 +18,13 @@ namespace GameServices.Gameplay
 	{
 		public GameplayInitialization() { }
 
-        private GameInformation Information = GameInfoHolder.Information;
+        private GameInformation Information => GameInfoHolder.Information;
 
         private readonly PlacedPiecesService placedPieces = new PlacedPiecesService();
         private readonly EditorEvents editorEvents = new EditorEvents();
+        private readonly ClockTimeService clock = new ClockTimeService();
 
-        private void CommonGameStartBeginning()
+        public void CommonGameStartBeginning()
         {
             placedPieces.RemoveAll();
             
@@ -32,13 +34,13 @@ namespace GameServices.Gameplay
             }
 
             Information.EditorEnvironment.CurrentSolution.Clear();
+
+            clock.Reset();
 /*
-            ResetClock();
             hintScript.RenewHint();
             HideNextLevelButton(true);
 
             finishedGame = false;
-            timeOfGame = 0f;
             gameFinishedAndRestarted = false;
             duringRotationWorkspace = false;
 

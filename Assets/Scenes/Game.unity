@@ -3624,8 +3624,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67178c4ce3f150eeb802182c409a9307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Information: {fileID: 0}
-  cos: 0
+  EnvironmentInformation:
+    Variant: 4
+    DuringPlacing: 0
   containerOfButtons: {fileID: 37651889}
   colorForButtonPieces: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
   yesNoButtonsPanel: {fileID: 1993665356}
@@ -8400,7 +8401,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 500, y: 0}
   m_SizeDelta: {x: 890.12, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &975725141
