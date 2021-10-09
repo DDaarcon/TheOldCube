@@ -8,10 +8,12 @@ using GameInfo.GameInfoInternals.CubeInfoInternals;
 
 namespace GameInfo.GameInfoInternals.GameplayInfoInternals
 {
+    [Serializable]
     public class LevelInfo
     {
         public PlacedSidesInfo PicesPlacedOnStart { get; set; }
-        public int? IndexOfCurrentlyOpened { get; set; }
+
+        public int? IndexOfCurrentlyOpened;
         
     }
 }

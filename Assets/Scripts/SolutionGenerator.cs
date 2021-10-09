@@ -8,7 +8,7 @@ public static class SolutionGenerator
     /**
     <value>Seed of previously generated solution</value>
     **/
-    public static int seedOfLast {get; set;}
+    public static int SeedOfLast {get; set;}
     public static Variant variant {get; private set;}
     private static int variantInt;
 
@@ -40,9 +40,9 @@ public static class SolutionGenerator
     public static bool[][,] GetNewSolution(Variant variant_ = Variant.x4) {
         return GetNewSolution(System.Environment.TickCount, variant_);
     }
-    public static bool[][,] GetNewSolution(int seed_, Variant variant_ = Variant.x4) {
-        seedOfLast = seed_;
-        Random.InitState(seedOfLast);
+    public static bool[][,] GetNewSolution(int seed, Variant variant_ = Variant.x4) {
+        SeedOfLast = seed;
+        Random.InitState(SeedOfLast);
         
         variant = variant_;
         variantInt = (int)variant_;

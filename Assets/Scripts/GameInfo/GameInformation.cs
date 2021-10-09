@@ -15,6 +15,7 @@ namespace GameInfo
     {
         public GameInformation() { }
 
+        public GameplayInfo Gameplay { get; set; } = new GameplayInfo();
         public CubeInfo Cube { get; set; } = new CubeInfo();
         public EditorEnvironmentInfo EditorEnvironment { get; set; } = new EditorEnvironmentInfo();
         public InterfaceInfo Interface { get; set; } = new InterfaceInfo();

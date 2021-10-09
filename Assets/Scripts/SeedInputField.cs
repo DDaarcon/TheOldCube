@@ -42,7 +42,7 @@ public class SeedInputField : MonoBehaviour
         }
     }
     public void RenewData() {
-        debugLevelPanel.GetComponentInChildren<InputField>().text = SolutionGenerator.seedOfLast.ToString();
+        debugLevelPanel.GetComponentInChildren<InputField>().text = SolutionGenerator.SeedOfLast.ToString();
         sides = new bool[6];
         ToggleSides();
     }

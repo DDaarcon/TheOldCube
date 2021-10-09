@@ -7,6 +7,7 @@ using GameInfo;
 using GameServices.Editor;
 using GameServices.PlacedPieces;
 using GameServices.Clock;
+using GameServices.Themes;
 
 using GameExtensions.Solution;
 
@@ -14,48 +15,44 @@ using static Enums;
 
 namespace GameServices.Gameplay
 {
-	public class GameplayInitialization
+	public class GameplayInitialization : BaseService
 	{
 		public GameplayInitialization() { }
 
-        private GameInformation Information => GameInfoHolder.Information;
-
         private readonly PlacedPiecesService placedPieces = new PlacedPiecesService();
         private readonly EditorEvents editorEvents = new EditorEvents();
-        private readonly ClockTimeService clock = new ClockTimeService();
+        private readonly ClockTimeService time = new ClockTimeService();
+        private readonly ClockVisibilityService clockVisibility = new ClockVisibilityService();
+        private readonly ThemesService themes = new ThemesService();
 
-        public void CommonGameStartBeginning()
+        private void CommonBeginning()
         {
             placedPieces.RemoveAll();
             
-            if (Information.EditorEnvironment.DuringPlacing)
+            if (generalInfo.EditorEnvironment.DuringPlacing)
             {
                 editorEvents.AbortPlacing();
             }
 
-            Information.EditorEnvironment.CurrentSolution.Clear();
+            generalInfo.EditorEnvironment.CurrentSolution.Clear();
 
-            clock.Reset();
-/*
-            hintScript.RenewHint();
+            time.Reset();
+
+            //hintScript.RenewHint();
             HideNextLevelButton(true);
 
             finishedGame = false;
             gameFinishedAndRestarted = false;
             duringRotationWorkspace = false;
 
-            if (tryingTheme)
-            {
-                tryingTheme = false;
-                gameTheme = Themes.BasicStone;
-            }
+            themes.SetDefaultIfIsTrying();
 
             seedInputField.RenewData();
 
             LeanTween.cancel(workspace.gameObject);
-            workspace.LeanScale(Vector3.one, 0f);*/
+            workspace.LeanScale(Vector3.one, 0f);
         }
-        /*private void StartGameSuffix(bool autoHideMenu)
+        private void StartGameSuffix(bool autoHideMenu)
         {
             seedInputField.RenewData();
             workspace.rotation = defaultRotation;
@@ -63,12 +60,12 @@ namespace GameServices.Gameplay
         }
         public void StartNewRandomGame(bool autoHideMenu = true)
         {
-            CommonGameStartBeginning();
+            CommonBeginning();
 
             genrSolution = SolutionGenerator.GetNewSolution(variant);
             levelNotRandom = false;
             randomGameBeforeStart = true;
-            clockText.CrossFadeAlpha(1f, 1f, false);
+            clockVisibility.MakeWellVisible();
 
             RenewButtons();
 
@@ -76,12 +73,12 @@ namespace GameServices.Gameplay
         }
         public void StartNewRandomGame(int seed, bool autoHideMenu = true)
         {
-            CommonGameStartBeginning();
+            CommonBeginning();
 
             genrSolution = SolutionGenerator.GetNewSolution(seed, variant);
             levelNotRandom = false;
             randomGameBeforeStart = true;
-            clockText.CrossFadeAlpha(1f, 1f, false);
+            clockVisibility.MakeWellVisible();
 
             RenewButtons();
 
@@ -89,13 +86,13 @@ namespace GameServices.Gameplay
         }
         public void StartNewGame(int level, int seed, bool[] placedSides_, bool finished_)
         {
-            CommonGameStartBeginning();
+            CommonBeginning();
 
             genrSolution = SolutionGenerator.GetNewSolution(seed, variant);
             openedLevel = level;
             placedSidesFromSolution = placedSides_.Clone() as bool[];
             levelNotRandom = true;
-            clockText.CrossFadeAlpha(0.25f, 1f, false);
+            clockVisibility.MakeBarelyVisible();
 
             RenewButtons();
 
@@ -127,7 +124,7 @@ namespace GameServices.Gameplay
 
         public void DebugLevel(int seed, bool[] placedSides_)
         {
-            CommonGameStartBeginning();
+            CommonBeginning();
 
             genrSolution = SolutionGenerator.GetNewSolution(seed, variant);
             placedSidesFromSolution = placedSides_.Clone() as bool[];
@@ -154,7 +151,7 @@ namespace GameServices.Gameplay
 #if UNITY_EDITOR
         public void DebugNewGame(bool[][,] solution)
         {
-            CommonGameStartBeginning();
+            CommonBeginning();
 
             levelNotRandom = true;
             finishedGame = true;
@@ -186,7 +183,7 @@ namespace GameServices.Gameplay
                 timeOfStart = Time.time - timeOfGame;
                 finishedAndRestarted = true;
             }
-            CommonGameStartBeginning();
+            CommonBeginning();
             gameFinishedAndRestarted = finishedAndRestarted;
 
             for (int i = 0; i < 6; i++)
@@ -303,6 +300,6 @@ namespace GameServices.Gameplay
             }
 
             finishedGame = true;
-        }*/
+        }
     }
 }

@@ -8,8 +8,11 @@ using static Enums;
 
 namespace GameInfo.GameInfoInternals
 {
+    [Serializable]
     public class ThemeInfo
     {
-        public Themes CurrentTheme = Themes.BasicStone;
+        public static readonly Themes DefaultTheme = Themes.BasicStone;
+        public Themes CurrentTheme = DefaultTheme;
+        public bool IsTrying;
     }
 }

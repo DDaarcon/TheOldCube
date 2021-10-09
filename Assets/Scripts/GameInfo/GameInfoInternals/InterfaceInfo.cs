@@ -11,6 +11,7 @@ namespace GameInfo.GameInfoInternals
         public PiecesButtonsInfo PiecesButtons { get; set; } = new PiecesButtonsInfo();
         public DecisionButtonsInfo DecisionButtons { get; set; } = new DecisionButtonsInfo();
         public ClockInfo ClockInfo { get; set; } = new ClockInfo();
+        public NextLevelButtonInfo NextLevelButton { get; set; } = new NextLevelButtonInfo();
 
         [HideInInspector]
         public ScreenOrientation ScreenOrientation;

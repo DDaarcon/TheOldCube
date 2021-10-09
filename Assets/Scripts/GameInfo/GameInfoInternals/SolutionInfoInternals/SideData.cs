@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 using static Enums;
 
+using GameExtensions;
+
 namespace GameInfo.GameInfoInternals.SolutionInfoInternals
 {
     public class SideData<TData>
     {
         public SideData(Variant variant)
         {
-            int sideLength = (int)variant;
+            int sideLength = variant.Int();
             Data = new TData[sideLength, sideLength];
         }
 

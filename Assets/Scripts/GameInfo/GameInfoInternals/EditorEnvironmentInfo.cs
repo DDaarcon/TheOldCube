@@ -23,12 +23,16 @@ namespace GameInfo.GameInfoInternals
 
         public PlacedPieceInfo PlacedPiece { get; set; } = new PlacedPieceInfo();
         public WorkspaceInfo Workspace { get; set; } = new WorkspaceInfo();
+        public PiecesPrefabsInfo PiecesPrefabs { get; set; } = new PiecesPrefabsInfo():
         public SolutionInfo<bool> CurrentSolution { get; set; }
+        public SolutionInfo<bool> ShiftedSolution { get; set; }
 
         public Variant Variant = Variant.x4;
-
+        public bool IsUsedProceduralGeneratedMesh;
+        public float OneSliceOfPieceLength;
         [HideInInspector]
         public bool DuringPlacing = false;
-
+        [HideInInspector]
+        public GameObject SelectedPiecePrefab;
     }
 }
