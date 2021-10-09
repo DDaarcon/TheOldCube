@@ -11,10 +11,9 @@ using GameExtensions.Editor;
 
 namespace GameServices.Editor
 {
-    public class EditorEvents
+    public class EditorEvents : BaseService
     {
-        private EditorEnvironmentInfo EditorInfo => GameInfoHolder.Information.EditorEnvironment;
-        private PlacedPieceInfo PlacedPieceInfo => EditorInfo.PlacedPiece;
+        private PlacedPieceInfo PlacedPieceInfo => editorInfo.PlacedPiece;
 
         public void AbortPlacing()
         {
@@ -23,8 +22,8 @@ namespace GameServices.Editor
 
             currentPositionFromAvailable = 0;
             if (GetComponent<ScreenOrientationScript>().screenOrientation == ScreenOrientation.Portrait) levelMenu.ToggleRightPanelHideFeatureOn(true);*/
-            EditorInfo.Workspace.IsRotating = false;
-            EditorInfo.AbortPlacing();
+            editorInfo.Workspace.IsRotating = false;
+            editorInfo.AbortPlacing();
         }
     }
 }

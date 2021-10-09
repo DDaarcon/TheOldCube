@@ -19,12 +19,21 @@ namespace GameServices.Gameplay
         private float sideLengthMultipler;
 
         // TODO: refactor
-        public void ChooseVariantAndStartNewGame(Variant variant, bool autoStartRandomGame = false)
+        public void ChooseVariantAndStartNewGame(Variant variant)
         {
             if (editorInfo.Variant != variant)
             {
                 editorInfo.Variant = variant;
-                InitVariant(autoStartRandomGame);
+                InitVariant(autoStartRandomGame: true);
+            }
+        }
+        
+        public void ChooseVariant(Variant variant)
+        {
+            if (editorInfo.Variant != variant)
+            {
+                editorInfo.Variant = variant;
+                InitVariant(autoStartRandomGame: false);
             }
         }
 
@@ -33,7 +42,7 @@ namespace GameServices.Gameplay
             Variant variant_ = Variant.x4;
             if (var == 0) variant_ = Variant.x3;
             if (var == 1) variant_ = Variant.x4;
-            ChooseVariantAndStartNewGame(variant_, true);
+            ChooseVariantAndStartNewGame(variant_);
         }
 
         private void InitVariant(bool autoStartRandomGame = false)
@@ -44,9 +53,9 @@ namespace GameServices.Gameplay
             editorInfo.ShiftedSolution = new SolutionInfo<bool>(editorInfo.Variant);
 
             editorInfo.Workspace.RelativePiecesPlacingPositions.Calculate(sideLengthMultipler);
-
+            
             for (int i = 0; i < 6; i++)
-                buttons[i].GetComponent<ApplySettingToBtn>().ChangeVariant(variant);
+                interfaceInfo.PiecesButtons.PhysicalData.Buttons[i].GetComponent<ApplySettingToBtn>().ChangeVariant(editorInfo.Variant);
 
             infoPanel.UpdateInfo();
 

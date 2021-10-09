@@ -8,6 +8,7 @@ using GameServices.Editor;
 using GameServices.PlacedPieces;
 using GameServices.Clock;
 using GameServices.Themes;
+using GameServices.Interface;
 
 using GameExtensions.Solution;
 
@@ -19,15 +20,16 @@ namespace GameServices.Gameplay
 	{
 		public GameplayInitialization() { }
 
-        private readonly PlacedPiecesService placedPieces = new PlacedPiecesService();
+        private readonly PlacedPiecesService placedPiecesService = new PlacedPiecesService();
         private readonly EditorEvents editorEvents = new EditorEvents();
-        private readonly ClockTimeService time = new ClockTimeService();
-        private readonly ClockVisibilityService clockVisibility = new ClockVisibilityService();
-        private readonly ThemesService themes = new ThemesService();
+        private readonly ClockTimeService timeService = new ClockTimeService();
+        private readonly ClockVisibilityService clockVisibilityService = new ClockVisibilityService();
+        private readonly ThemesService themesService = new ThemesService();
+        private readonly NextLevelButtonService nextLevelButtonService = new NextLevelButtonService();
 
         private void CommonBeginning()
         {
-            placedPieces.RemoveAll();
+            placedPiecesService.RemoveAll();
             
             if (generalInfo.EditorEnvironment.DuringPlacing)
             {
@@ -36,16 +38,16 @@ namespace GameServices.Gameplay
 
             generalInfo.EditorEnvironment.CurrentSolution.Clear();
 
-            time.Reset();
+            timeService.Reset();
 
             //hintScript.RenewHint();
-            HideNextLevelButton(true);
+            nextLevelButtonService.Hide();
 
             finishedGame = false;
             gameFinishedAndRestarted = false;
             duringRotationWorkspace = false;
 
-            themes.SetDefaultIfIsTrying();
+            themesService.SetDefaultIfIsTrying();
 
             seedInputField.RenewData();
 
@@ -65,7 +67,7 @@ namespace GameServices.Gameplay
             genrSolution = SolutionGenerator.GetNewSolution(variant);
             levelNotRandom = false;
             randomGameBeforeStart = true;
-            clockVisibility.MakeWellVisible();
+            clockVisibilityService.MakeWellVisible();
 
             RenewButtons();
 
@@ -78,7 +80,7 @@ namespace GameServices.Gameplay
             genrSolution = SolutionGenerator.GetNewSolution(seed, variant);
             levelNotRandom = false;
             randomGameBeforeStart = true;
-            clockVisibility.MakeWellVisible();
+            clockVisibilityService.MakeWellVisible();
 
             RenewButtons();
 
@@ -92,7 +94,7 @@ namespace GameServices.Gameplay
             openedLevel = level;
             placedSidesFromSolution = placedSides_.Clone() as bool[];
             levelNotRandom = true;
-            clockVisibility.MakeBarelyVisible();
+            clockVisibilityService.MakeBarelyVisible();
 
             RenewButtons();
 

@@ -6,17 +6,16 @@ using GameExtensions.Cube.PlacedSides;
 
 namespace GameServices.PlacedPieces
 {
-    public class PlacedPiecesService
+    public class PlacedPiecesService : BaseService
     {
-        private GameInformation Information => GameInfoHolder.Information;
-        private PlacedSidesInfo PlacedSides => Information.Cube.PlacedSides;
-        private CubePhysicalData CubePhysicalData => Information.Cube.PhysicalData;
+        private PlacedSidesInfo placedSidesInfo => cubeInfo.PlacedSides;
+        private CubePhysicalData cubePhysicalInfo => cubeInfo.PhysicalData;
 
         public void RemoveAll()
         {
-            PlacedSides.Clear();
+            placedSidesInfo.Clear();
 
-            foreach (var piece in CubePhysicalData.Pieces)
+            foreach (var piece in cubePhysicalInfo.Pieces)
             {
                 if (piece != null) Object.Destroy(piece);
             }

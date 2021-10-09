@@ -10,19 +10,18 @@ using GameInfo.GameInfoInternals.InterfaceInfoInternals.ClockInfoInternals;
 
 namespace GameServices.Clock
 {
-    public class ClockTimeService
+    public class ClockTimeService : BaseService
     {
-        private GameInformation Information => GameInfoHolder.Information;
-        private ClockInfo General => Information.Interface.ClockInfo;
-        private TimeInfo Time => General.TimeInfo;
+        private ClockInfo info => interfaceInfo.ClockInfo;
+        private TimeInfo timeInfo => info.TimeInfo;
 
         private readonly ClockVisibilityService ClockVisually = new ClockVisibilityService();
 
         public void Reset()
         {
-            Time.Passed = 0f;
-            Time.StartedAt = 0f;
-            Time.IsPaused = true;
+            timeInfo.Passed = 0f;
+            timeInfo.StartedAt = 0f;
+            timeInfo.IsPaused = true;
 
             ClockVisually.SetTimeOnClockDisplay();
         }

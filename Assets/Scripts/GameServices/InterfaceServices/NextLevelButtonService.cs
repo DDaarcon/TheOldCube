@@ -15,29 +15,35 @@ namespace GameServices.Interface
     public class NextLevelButtonService : BaseService
     {
         private NextLevelButtonInfo info => generalInfo.Interface.NextLevelButton;
-        private GameplayInitialization gameplay = new GameplayInitialization();
+        private readonly GameplayInitialization gameplayService = new GameplayInitialization();
+        private readonly GameVariantService variantService = new GameVariantService();
 
         // TODO: refactor
-        private void HideNextLevelButton(bool justHide)
+        public void Hide()
+        {
+            CanvasGroup canvasGroup = info.Object.GetComponent<CanvasGroup>();
+            info.AlphaValue = 0;
+            canvasGroup.interactable = false;
+            canvasGroup.blocksRaycasts = false;
+        }
+
+        public void HideAndStartNewGame()
         {
             CanvasGroup canvasGroup = info.Object.GetComponent<CanvasGroup>();
             info.AlphaValue = 0;
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false;
 
-            if (!justHide)
+            if (info.Variant != editorInfo.Variant)
             {
-                if (info.Variant != generalInfo.EditorEnvironment.Variant)
-                {
-                    ChooseVariant(info.Variant, false);
-                }
-
-                if (!generalInfo.Gameplay.Level.IndexOfCurrentlyOpened.HasValue)
-                    throw new LevelIsRandomException();
-
-                LevelSettings lS = levelMenu.GetLevelSettings(openedLevel + 1, generalInfo.EditorEnvironment.Variant);
-                gameplay.StartNewGame(generalInfo.Gameplay.Level.IndexOfCurrentlyOpened.Value + 1, lS.seed, lS.placedSides, lS.finished);
+                variantService.ChooseVariant(info.Variant);
             }
+
+            if (!gameplayInfo.Level.IndexOfCurrentlyOpened.HasValue)
+                throw new LevelIsRandomException();
+
+            LevelSettings lS = levelMenu.GetLevelSettings(gameplayInfo.Level.IndexOfCurrentlyOpened.Value + 1, editorInfo.Variant);
+            gameplayService.StartNewGame(gameplayInfo.Level.IndexOfCurrentlyOpened.Value + 1, lS.seed, lS.placedSides, lS.finished);
         }
 
         public class LevelIsRandomException : Exception
