@@ -14,6 +14,7 @@ public class SeedInputField : MonoBehaviour
     public float lengthOfPress = 2f;
     public bool[] sides;
     public Toggle[] sidesToggles;
+
     public void PointerDown() {
         pointerIsDown = true;
     }
@@ -42,7 +43,7 @@ public class SeedInputField : MonoBehaviour
         }
     }
     public void RenewData() {
-        debugLevelPanel.GetComponentInChildren<InputField>().text = SolutionGenerator.SeedOfLast.ToString();
+        debugLevelPanel.GetComponentInChildren<InputField>().text = SolutionGenerationAlgorithm.SeedOfLast.ToString();
         sides = new bool[6];
         ToggleSides();
     }

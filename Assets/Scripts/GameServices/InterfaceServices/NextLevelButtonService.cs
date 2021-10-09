@@ -29,10 +29,7 @@ namespace GameServices.Interface
 
         public void HideAndStartNewGame()
         {
-            CanvasGroup canvasGroup = info.Object.GetComponent<CanvasGroup>();
-            info.AlphaValue = 0;
-            canvasGroup.interactable = false;
-            canvasGroup.blocksRaycasts = false;
+            Hide();
 
             if (info.Variant != editorInfo.Variant)
             {

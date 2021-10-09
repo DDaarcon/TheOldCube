@@ -16,6 +16,8 @@ namespace GameInfo.GameInfoInternals
 
         public bool IsLevelRandom;
         [HideInInspector]
+        public bool HasStarted;
+        [HideInInspector]
         public bool IsFinished;
         [HideInInspector]
         public bool IsRestartedAfterFinish;

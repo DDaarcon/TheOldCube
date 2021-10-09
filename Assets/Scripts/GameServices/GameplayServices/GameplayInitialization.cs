@@ -2,17 +2,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-using GameInfo;
-
+using GameInfo.GameInfoInternals.EditorEnvironmentInfoInternals;
 using GameServices.Editor;
 using GameServices.PlacedPieces;
 using GameServices.Clock;
 using GameServices.Themes;
 using GameServices.Interface;
-
 using GameExtensions.Solution;
 
 using static Enums;
+using GameInfo.GameInfoInternals;
 
 namespace GameServices.Gameplay
 {
@@ -27,6 +26,9 @@ namespace GameServices.Gameplay
         private readonly ThemesService themesService = new ThemesService();
         private readonly NextLevelButtonService nextLevelButtonService = new NextLevelButtonService();
 
+        private WorkspaceInfo workspaceInfo => editorInfo.Workspace;
+
+        // TODO: refactor
         private void CommonBeginning()
         {
             placedPiecesService.RemoveAll();
@@ -43,30 +45,32 @@ namespace GameServices.Gameplay
             //hintScript.RenewHint();
             nextLevelButtonService.Hide();
 
-            finishedGame = false;
-            gameFinishedAndRestarted = false;
-            duringRotationWorkspace = false;
+            gameplayInfo.IsFinished = false;
+            gameplayInfo.IsRestartedAfterFinish = false;
+            workspaceInfo.IsRotating = false;
 
             themesService.SetDefaultIfIsTrying();
 
-            seedInputField.RenewData();
+            debugInfo.SeedInputFieldScript.RenewData();
 
-            LeanTween.cancel(workspace.gameObject);
-            workspace.LeanScale(Vector3.one, 0f);
+            LeanTween.cancel(workspaceInfo.PhysicalPosition.gameObject);
+            workspaceInfo.PhysicalPosition.LeanScale(Vector3.one, 0f);
         }
         private void StartGameSuffix(bool autoHideMenu)
         {
-            seedInputField.RenewData();
-            workspace.rotation = defaultRotation;
+            if (workspaceInfo.DefaultRotation.HasValue)
+                throw new MissingDefaultWorkspaceRotationException();
+            workspaceInfo.PhysicalPosition.rotation = workspaceInfo.DefaultRotation.Value;
+
             if (autoHideMenu) levelMenu.ToggleMenus(0, true);
         }
         public void StartNewRandomGame(bool autoHideMenu = true)
         {
             CommonBeginning();
 
-            genrSolution = SolutionGenerator.GetNewSolution(variant);
-            levelNotRandom = false;
-            randomGameBeforeStart = true;
+            editorInfo.GeneratedSolution.SetUsingGenerationAlgorithm();
+            gameplayInfo.IsLevelRandom = true;
+            gameplayInfo.HasStarted = false;
             clockVisibilityService.MakeWellVisible();
 
             RenewButtons();
@@ -77,28 +81,29 @@ namespace GameServices.Gameplay
         {
             CommonBeginning();
 
-            genrSolution = SolutionGenerator.GetNewSolution(seed, variant);
-            levelNotRandom = false;
-            randomGameBeforeStart = true;
+            editorInfo.GeneratedSolution.SetUsingGenerationAlgorithm(seed);
+            gameplayInfo.IsLevelRandom = true;
+            gameplayInfo.HasStarted = false;
             clockVisibilityService.MakeWellVisible();
 
             RenewButtons();
 
             StartGameSuffix(autoHideMenu);
         }
+        // TODO: change placedSides_ type to PlacedSidesInfo
         public void StartNewGame(int level, int seed, bool[] placedSides_, bool finished_)
         {
             CommonBeginning();
 
-            genrSolution = SolutionGenerator.GetNewSolution(seed, variant);
-            openedLevel = level;
-            placedSidesFromSolution = placedSides_.Clone() as bool[];
-            levelNotRandom = true;
+            editorInfo.GeneratedSolution.SetUsingGenerationAlgorithm(seed);
+            gameplayInfo.Level.IndexOfCurrentlyOpened = level;
+            gameplayInfo.Level.PicesPlacedOnStart = new GameInfo.GameInfoInternals.CubeInfoInternals.PlacedSidesInfo(placedSides_);
+            gameplayInfo.IsLevelRandom = false;
             clockVisibilityService.MakeBarelyVisible();
 
             RenewButtons();
 
-            finishedGame = finished_;
+            gameplayInfo.IsFinished = finished_;
 
             for (int i = 0; i < 6; i++)
             {
@@ -128,7 +133,7 @@ namespace GameServices.Gameplay
         {
             CommonBeginning();
 
-            genrSolution = SolutionGenerator.GetNewSolution(seed, variant);
+            genrSolution = SolutionGenerationAlgorithm.GetNewSolution(seed, variant);
             placedSidesFromSolution = placedSides_.Clone() as bool[];
             levelNotRandom = false;
             clockText.CrossFadeAlpha(0.25f, 1f, true);
@@ -302,6 +307,11 @@ namespace GameServices.Gameplay
             }
 
             finishedGame = true;
+        }
+
+        public class MissingDefaultWorkspaceRotationException : Exception
+        {
+            public override string Message => "Default workspace rotation hasn't been assigned, but is trying to be accessed";
         }
     }
 }

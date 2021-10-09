@@ -9,6 +9,7 @@ using GameInfo.GameInfoInternals.SolutionInfoInternals;
 
 namespace GameInfo.GameInfoInternals
 {
+    [Serializable]
     public class SolutionInfo<TData>
     {
         public SolutionInfo(Variant variant)
@@ -19,6 +20,8 @@ namespace GameInfo.GameInfoInternals
             BackSide = new SideData<TData>(variant);
             TopSide = new SideData<TData>(variant);
             BottomSide = new SideData<TData>(variant);
+
+            Variant = variant;
         }
 
         public SideData<TData> LeftSide { get; set; }
@@ -27,6 +30,8 @@ namespace GameInfo.GameInfoInternals
         public SideData<TData> BackSide { get; set; }
         public SideData<TData> TopSide { get; set; }
         public SideData<TData> BottomSide { get; set; }
+
+        public Variant Variant { get; }
 
         public SideData<TData>[] FullArray
         {

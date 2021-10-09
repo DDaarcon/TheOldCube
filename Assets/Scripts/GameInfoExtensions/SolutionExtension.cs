@@ -30,6 +30,8 @@ namespace GameExtensions.Solution
 
         public static void Set<TData>(this SolutionInfo<TData> solution, SideData<TData>[] data)
         {
+            if (data.Length != 6)
+                throw new InvalidSolutionDataException();
             solution.Set(data[0], data[1], data[2], data[3], data[4], data[5]);
         }
 
@@ -37,6 +39,19 @@ namespace GameExtensions.Solution
         {
             foreach (var side in solution.FullList)
                 side.DefaultValue = defaultValue;
+        }
+
+        public static void SetUsingGenerationAlgorithm(this SolutionInfo<bool> solutionWithBools, int? seed = null)
+        {
+            var generatedFromAlgorithm = seed.HasValue
+                ? SolutionGenerationAlgorithm.GetNewSolution(seed.Value, solutionWithBools.Variant)
+                : SolutionGenerationAlgorithm.GetNewSolution(solutionWithBools.Variant);
+
+            SideData<bool>[] sideDatas = new SideData<bool>[generatedFromAlgorithm.Length];
+            for (int i = 0; i < generatedFromAlgorithm.Length; i++)
+                sideDatas[i] = SideData<bool>.CreateFromArray(generatedFromAlgorithm[i], solutionWithBools.Variant);
+
+            solutionWithBools.Set(sideDatas);
         }
 
         public static void Clear<TData>(this SolutionInfo<TData> solution)
@@ -49,6 +64,11 @@ namespace GameExtensions.Solution
         {
             foreach (var side in solution.FullList)
                 side.Clear(clearValue);
+        }
+
+        public class InvalidSolutionDataException : Exception
+        {
+            public override string Message => "Data passed to fill solution is invalid. Array size isn't exactly 6.";
         }
     }
 }

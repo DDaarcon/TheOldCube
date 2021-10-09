@@ -15,6 +15,9 @@ namespace GameInfo.GameInfoInternals.EditorEnvironmentInfoInternals
     {
         public Transform PhysicalPosition;
         public RelativePiecesPlacingPositionsInfo RelativePiecesPlacingPositions { get; set; } = new RelativePiecesPlacingPositionsInfo();
+
+        [HideInInspector]
+        public Quaternion? DefaultRotation;
         [HideInInspector]
         public Quaternion RandomRotationForAnimation;
         [HideInInspector]

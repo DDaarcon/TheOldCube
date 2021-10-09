@@ -26,6 +26,7 @@ namespace GameInfo.GameInfoInternals
         public PiecesPrefabsInfo PiecesPrefabs { get; set; } = new PiecesPrefabsInfo();
         public SolutionInfo<bool> CurrentSolution { get; set; }
         public SolutionInfo<bool> ShiftedSolution { get; set; }
+        public SolutionInfo<bool> GeneratedSolution { get; set; }
 
         public Variant Variant = Variant.x4;
         public bool IsUsedProceduralGeneratedMesh;

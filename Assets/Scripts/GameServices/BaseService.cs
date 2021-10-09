@@ -20,6 +20,7 @@ namespace GameServices
         protected GameplayInfo gameplayInfo => generalInfo.Gameplay;
         protected ThemeInfo themeInfo => generalInfo.Theme;
         protected InterfaceInfo interfaceInfo => generalInfo.Interface;
+        protected DebugInfo debugInfo => generalInfo.Debug;
 
         #endregion
     }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using static Enums;
 
-public static class SolutionGenerator
+public static class SolutionGenerationAlgorithm
 {
 
     private const int a = 0, b = 1;
@@ -9,7 +9,7 @@ public static class SolutionGenerator
     <value>Seed of previously generated solution</value>
     **/
     public static int SeedOfLast {get; set;}
-    public static Variant variant {get; private set;}
+    public static Variant Variant {get; private set;}
     private static int variantInt;
 
     private static bool[][,] solution = new bool[6][,];
@@ -31,8 +31,8 @@ public static class SolutionGenerator
 
         public Edge() {
             int size = 2;
-            if (SolutionGenerator.variant == Variant.x3) size = 1;
-            if (SolutionGenerator.variant == Variant.x4) size = 2;
+            if (SolutionGenerationAlgorithm.Variant == Variant.x3) size = 1;
+            if (SolutionGenerationAlgorithm.Variant == Variant.x4) size = 2;
             sideAppearings = new Side[size];
         }
     }
@@ -44,7 +44,7 @@ public static class SolutionGenerator
         SeedOfLast = seed;
         Random.InitState(SeedOfLast);
         
-        variant = variant_;
+        Variant = variant_;
         variantInt = (int)variant_;
 
         FillCenters();
@@ -92,7 +92,7 @@ public static class SolutionGenerator
                 edges[i].sideAppearings[j] = edges[i].sidesSharing[Random.Range(0, 2)];
         }
 
-        switch (variant) {
+        switch (Variant) {
             case Variant.x4:
                 // bottom
                 solution[0][0,1] = edges[0].sideAppearings[a] == Side.bottom;
@@ -216,7 +216,7 @@ public static class SolutionGenerator
 
         for (int i = 0; i < 8; i++) {
             for (int s = 0; s < l; s++) {
-                switch (variant) {
+                switch (Variant) {
                     case Variant.x4:
                         if (corners[i].sideAppearance[s] == Enums.Corner.Ul) {
                             if (solution[(int)corners[i].sidesSharing[s]][0,1] == I ||

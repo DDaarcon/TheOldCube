@@ -4,6 +4,17 @@ namespace GameInfo.GameInfoInternals.CubeInfoInternals
 {
     public class PlacedSidesInfo
     {
+
+        public PlacedSidesInfo() { }
+        public PlacedSidesInfo(bool[] data)
+        {
+            BottomSideIsPlaced = data[0];
+            BackSideIsPlaced = data[1];
+            LeftSideIsPlaced = data[2];
+            RightSideIsPlaced = data[3];
+            TopSideIsPlaced = data[4];
+            FrontSideIsPlaced = data[5];
+        }
         public bool LeftSideIsPlaced { get; set; }
         public bool RightSideIsPlaced { get; set; }
         public bool FrontSideIsPlaced { get; set; }

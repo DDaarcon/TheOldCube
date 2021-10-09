@@ -1232,7 +1232,7 @@ public class GameScript : MonoBehaviour
     public void StartNewRandomGame(bool autoHideMenu = true) {
         StartGamePrefix();
 
-        genrSolution = SolutionGenerator.GetNewSolution(variant);
+        genrSolution = SolutionGenerationAlgorithm.GetNewSolution(variant);
         levelNotRandom = false;
         randomGameBeforeStart = true;
         clockText.CrossFadeAlpha(1f, 1f, false);
@@ -1244,7 +1244,7 @@ public class GameScript : MonoBehaviour
     public void StartNewRandomGame(int seed, bool autoHideMenu = true) {
         StartGamePrefix();
 
-        genrSolution = SolutionGenerator.GetNewSolution(seed, variant);
+        genrSolution = SolutionGenerationAlgorithm.GetNewSolution(seed, variant);
         levelNotRandom = false;
         randomGameBeforeStart = true;
         clockText.CrossFadeAlpha(1f, 1f, false);
@@ -1256,7 +1256,7 @@ public class GameScript : MonoBehaviour
     public void StartNewGame(int level, int seed, bool[] placedSides_, bool finished_) {
         StartGamePrefix();
 
-        genrSolution = SolutionGenerator.GetNewSolution(seed, variant);
+        genrSolution = SolutionGenerationAlgorithm.GetNewSolution(seed, variant);
         openedLevel = level;
         placedSidesFromSolution = placedSides_.Clone() as bool[];
         levelNotRandom = true;
@@ -1289,7 +1289,7 @@ public class GameScript : MonoBehaviour
     public void DebugLevel(int seed, bool[] placedSides_) {
         StartGamePrefix();
 
-        genrSolution = SolutionGenerator.GetNewSolution(seed, variant);
+        genrSolution = SolutionGenerationAlgorithm.GetNewSolution(seed, variant);
         placedSidesFromSolution = placedSides_.Clone() as bool[];
         levelNotRandom = false;
         clockText.CrossFadeAlpha(0.25f, 1f, true);
