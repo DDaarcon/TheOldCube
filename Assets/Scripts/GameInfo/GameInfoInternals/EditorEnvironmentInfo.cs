@@ -23,7 +23,7 @@ namespace GameInfo.GameInfoInternals
 
         public PlacedPieceInfo PlacedPiece { get; set; } = new PlacedPieceInfo();
         public WorkspaceInfo Workspace { get; set; } = new WorkspaceInfo();
-        public PiecesPrefabsInfo PiecesPrefabs { get; set; } = new PiecesPrefabsInfo():
+        public PiecesPrefabsInfo PiecesPrefabs { get; set; } = new PiecesPrefabsInfo();
         public SolutionInfo<bool> CurrentSolution { get; set; }
         public SolutionInfo<bool> ShiftedSolution { get; set; }
 
