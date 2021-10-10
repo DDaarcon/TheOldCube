@@ -12,6 +12,9 @@ using GameExtensions.Solution;
 
 using static Enums;
 using GameInfo.GameInfoInternals;
+using GameInfo.GameInfoInternals.CubeInfoInternals;
+using GameExtensions.Cube.PlacedSides;
+using GameExtensions.Interface;
 
 namespace GameServices.Gameplay
 {
@@ -25,6 +28,7 @@ namespace GameServices.Gameplay
         private readonly ClockVisibilityService clockVisibilityService = new ClockVisibilityService();
         private readonly ThemesService themesService = new ThemesService();
         private readonly NextLevelButtonService nextLevelButtonService = new NextLevelButtonService();
+        private readonly PiecesButtonsService piecesButtonsService = new PiecesButtonsService();
 
         private WorkspaceInfo workspaceInfo => editorInfo.Workspace;
 
@@ -42,7 +46,7 @@ namespace GameServices.Gameplay
 
             timeService.Reset();
 
-            //hintScript.RenewHint();
+            hintScript.RenewHint();
             nextLevelButtonService.Hide();
 
             gameplayInfo.IsFinished = false;
@@ -73,7 +77,7 @@ namespace GameServices.Gameplay
             gameplayInfo.HasStarted = false;
             clockVisibilityService.MakeWellVisible();
 
-            RenewButtons();
+            piecesButtonsService.RenewButtons();
 
             StartGameSuffix(autoHideMenu);
         }
@@ -86,42 +90,43 @@ namespace GameServices.Gameplay
             gameplayInfo.HasStarted = false;
             clockVisibilityService.MakeWellVisible();
 
-            RenewButtons();
+            piecesButtonsService.RenewButtons();
 
             StartGameSuffix(autoHideMenu);
         }
         // TODO: change placedSides_ type to PlacedSidesInfo
-        public void StartNewGame(int level, int seed, bool[] placedSides_, bool finished_)
+        public void StartNewGame(int level, int seed, PlacedSidesInfo placedSides, bool finished)
         {
             CommonBeginning();
 
             editorInfo.GeneratedSolution.SetUsingGenerationAlgorithm(seed);
             gameplayInfo.Level.IndexOfCurrentlyOpened = level;
-            gameplayInfo.Level.PicesPlacedOnStart = new GameInfo.GameInfoInternals.CubeInfoInternals.PlacedSidesInfo(placedSides_);
+            gameplayInfo.Level.PicesPlacedOnStart = placedSides;
             gameplayInfo.IsLevelRandom = false;
             clockVisibilityService.MakeBarelyVisible();
 
-            RenewButtons();
+            piecesButtonsService.RenewButtons();
 
-            gameplayInfo.IsFinished = finished_;
+            gameplayInfo.IsFinished = finished;
 
-            for (int i = 0; i < 6; i++)
+            var sides = SideArray;
+            foreach (var side in sides)
             {
-                if (placedSides_[i] || finished_)
+                if (placedSides.GetBySide(side) || finished)
                 {
-                    PlacePieceAt(genrSolution[i], (Side)i, true);
-                    int b = 0;
-                    while (buttonOrder[b] != i) b++;
-                    piecesButtonsIndexes[i] = b;
-                    EnabledButton(b, false);
+                    // do zaimplementowania - powinno dodatkowo przypisywać wartość SideForCurrentSolution odpowiedzniemu buttonowi
+                    // ewentualnie - powinno pobierać od razu buttona, ale raczej nie, bo to wyjątkowa sytuacja, gdzie sciana jest od razu wstawina i pomija etap PlacedPiece
+                    PlacePieceAt();
+                    var button = piecesButtonsService.GetButtonBySideOnGeneratedSolution(side);
+                    button.SetEnableState(false);
                 }
             }
 
-            if (openedLevel == 0)
+            if (gameplayInfo.Level.IndexOfCurrentlyOpened == 0)
             {
                 TutorialScript.TurnOnNote(TutorialScript.Notes.ChooseFirstPieceNote);
             }
-            if (openedLevel == 1)
+            if (gameplayInfo.Level.IndexOfCurrentlyOpened == 1)
             {
                 TutorialScript.TurnOnNote(TutorialScript.Notes.RotateWorkspaceNote);
             }
@@ -129,11 +134,11 @@ namespace GameServices.Gameplay
             StartGameSuffix(true);
         }
 
-        public void DebugLevel(int seed, bool[] placedSides_)
+        /*public void DebugLevel(int seed, bool[] placedSides_)
         {
             CommonBeginning();
 
-            genrSolution = SolutionGenerationAlgorithm.GetNewSolution(seed, variant);
+            editorInfo.GeneratedSolution.SetUsingGenerationAlgorithm(seed);
             placedSidesFromSolution = placedSides_.Clone() as bool[];
             levelNotRandom = false;
             clockText.CrossFadeAlpha(0.25f, 1f, true);
@@ -153,7 +158,7 @@ namespace GameServices.Gameplay
             }
 
             StartGameSuffix(true);
-        }
+        }*/
 
 #if UNITY_EDITOR
         public void DebugNewGame(bool[][,] solution)

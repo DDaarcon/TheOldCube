@@ -20,17 +20,17 @@ public class HintScript : MonoBehaviour, IUnityAdsListener
         public bool[,] top;
         public bool[,] GetBySide(Side side_) {
             switch (side_) {
-                case Side.bottom:
+                case Side.Bottom:
                     return bottom;
-                case Side.back:
+                case Side.Back:
                     return back;
-                case Side.left:
+                case Side.Left:
                     return left;
-                case Side.right:
+                case Side.Right:
                     return right;
-                case Side.front:
+                case Side.Front:
                     return front;
-                case Side.top:
+                case Side.Top:
                     return top;
                 default:
                     return null;
@@ -38,22 +38,22 @@ public class HintScript : MonoBehaviour, IUnityAdsListener
         }
         public void SetBySide(Side side_, bool[,] settingPerSide) {
             switch (side_) {
-                case Side.bottom:
+                case Side.Bottom:
                     bottom = (bool[,])settingPerSide.Clone();
                     break;
-                case Side.back:
+                case Side.Back:
                     back = (bool[,])settingPerSide.Clone();
                     break;
-                case Side.left:
+                case Side.Left:
                     left = (bool[,])settingPerSide.Clone();
                     break;
-                case Side.right:
+                case Side.Right:
                     right = (bool[,])settingPerSide.Clone();
                     break;
-                case Side.front:
+                case Side.Front:
                     front = (bool[,])settingPerSide.Clone();
                     break;
-                case Side.top:
+                case Side.Top:
                     top = (bool[,])settingPerSide.Clone();
                     break;
                 default:
@@ -63,21 +63,21 @@ public class HintScript : MonoBehaviour, IUnityAdsListener
         public void Set(AdvSolution solution) {
             variantInt = solution.variantInt;
             placingTarget = solution.placingTarget;
-            SetBySide(Side.bottom, solution.bottom);
-            SetBySide(Side.back, solution.back);
-            SetBySide(Side.left, solution.left);
-            SetBySide(Side.right, solution.right);
-            SetBySide(Side.front, solution.front);
-            SetBySide(Side.top, solution.top);
+            SetBySide(Side.Bottom, solution.bottom);
+            SetBySide(Side.Back, solution.back);
+            SetBySide(Side.Left, solution.left);
+            SetBySide(Side.Right, solution.right);
+            SetBySide(Side.Front, solution.front);
+            SetBySide(Side.Top, solution.top);
         }
         public void Set(bool[][,] solution) {
             variantInt = (short)solution[0].GetLength(0);
-            SetBySide(Side.bottom, solution[0]);
-            SetBySide(Side.back, solution[1]);
-            SetBySide(Side.left, solution[2]);
-            SetBySide(Side.right, solution[3]);
-            SetBySide(Side.front, solution[4]);
-            SetBySide(Side.top, solution[5]);
+            SetBySide(Side.Bottom, solution[0]);
+            SetBySide(Side.Back, solution[1]);
+            SetBySide(Side.Left, solution[2]);
+            SetBySide(Side.Right, solution[3]);
+            SetBySide(Side.Front, solution[4]);
+            SetBySide(Side.Top, solution[5]);
 
         }
         private void RotateClockwiseBySide(Side side_, int times) {
@@ -146,7 +146,7 @@ public class HintScript : MonoBehaviour, IUnityAdsListener
             timesX %= 4; timesY %= 4; timesZ %= 4;
 
             if (timesZ % 2 == 1) {
-                RotateClockwiseBySide(Side.front, 3);
+                RotateClockwiseBySide(Side.Front, 3);
                 // RotateClockwiseBySide(Side.right, 1);
                 bool[,] rightBackup = right;
                 // RotateClockwiseBySide(Side.top, 1);
@@ -156,16 +156,16 @@ public class HintScript : MonoBehaviour, IUnityAdsListener
                 // RotateClockwiseBySide(Side.bottom, 1);
                 left = bottom;
                 bottom = rightBackup;
-                RotateClockwiseBySide(Side.back, 1);
-                if (placingTarget == Side.right) placingTarget = Side.bottom;
-                else if (placingTarget == Side.bottom) placingTarget = Side.left;
-                else if (placingTarget == Side.left) placingTarget = Side.top;
-                else if (placingTarget == Side.top) placingTarget = Side.right;
+                RotateClockwiseBySide(Side.Back, 1);
+                if (placingTarget == Side.Right) placingTarget = Side.Bottom;
+                else if (placingTarget == Side.Bottom) placingTarget = Side.Left;
+                else if (placingTarget == Side.Left) placingTarget = Side.Top;
+                else if (placingTarget == Side.Top) placingTarget = Side.Right;
                 timesZ--;
             }
             if (timesZ == 2) {
-                RotateClockwiseBySide(Side.front, 2);
-                RotateClockwiseBySide(Side.back, 2);
+                RotateClockwiseBySide(Side.Front, 2);
+                RotateClockwiseBySide(Side.Back, 2);
                 // RotateClockwiseBySide(Side.right, 2);
                 bool[,] temp = right;
                 // RotateClockwiseBySide(Side.left, 2);
@@ -176,84 +176,84 @@ public class HintScript : MonoBehaviour, IUnityAdsListener
                 // RotateClockwiseBySide(Side.bottom, 2);
                 top = bottom;
                 bottom = temp;
-                if (placingTarget == Side.right) placingTarget = Side.left;
-                else if (placingTarget == Side.left) placingTarget = Side.right;
-                else if (placingTarget == Side.top) placingTarget = Side.bottom;
-                else if (placingTarget == Side.bottom) placingTarget = Side.top;
+                if (placingTarget == Side.Right) placingTarget = Side.Left;
+                else if (placingTarget == Side.Left) placingTarget = Side.Right;
+                else if (placingTarget == Side.Top) placingTarget = Side.Bottom;
+                else if (placingTarget == Side.Bottom) placingTarget = Side.Top;
             }
 
             if (timesY % 2 == 1) {
-                RotateClockwiseBySide(Side.top, 3);
-                RotateClockwiseBySide(Side.right, 1);
+                RotateClockwiseBySide(Side.Top, 3);
+                RotateClockwiseBySide(Side.Right, 1);
                 bool[,] rightBackup = right;
-                RotateClockwiseBySide(Side.back, 1);
+                RotateClockwiseBySide(Side.Back, 1);
                 right = back;
-                RotateClockwiseBySide(Side.left, 1);
+                RotateClockwiseBySide(Side.Left, 1);
                 back = left;
-                RotateClockwiseBySide(Side.front, 1);
+                RotateClockwiseBySide(Side.Front, 1);
                 left = front;
                 front = rightBackup;
-                RotateClockwiseBySide(Side.bottom, 1);
-                if (placingTarget == Side.right) placingTarget = Side.front;
-                else if (placingTarget == Side.front) placingTarget = Side.left;
-                else if (placingTarget == Side.left) placingTarget = Side.back;
-                else if (placingTarget == Side.back) placingTarget = Side.right;
+                RotateClockwiseBySide(Side.Bottom, 1);
+                if (placingTarget == Side.Right) placingTarget = Side.Front;
+                else if (placingTarget == Side.Front) placingTarget = Side.Left;
+                else if (placingTarget == Side.Left) placingTarget = Side.Back;
+                else if (placingTarget == Side.Back) placingTarget = Side.Right;
                 timesY--;
             }
             if (timesY == 2) {
-                RotateClockwiseBySide(Side.top, 2);
-                RotateClockwiseBySide(Side.bottom, 2);
-                RotateClockwiseBySide(Side.right, 2);
+                RotateClockwiseBySide(Side.Top, 2);
+                RotateClockwiseBySide(Side.Bottom, 2);
+                RotateClockwiseBySide(Side.Right, 2);
                 bool[,] temp = right;
-                RotateClockwiseBySide(Side.left, 2);
+                RotateClockwiseBySide(Side.Left, 2);
                 right = left;
                 left = temp;
-                RotateClockwiseBySide(Side.front, 2);
+                RotateClockwiseBySide(Side.Front, 2);
                 temp = front;
-                RotateClockwiseBySide(Side.back, 2);
+                RotateClockwiseBySide(Side.Back, 2);
                 front = back;
                 back = temp;
-                if (placingTarget == Side.right) placingTarget = Side.left;
-                else if (placingTarget == Side.left) placingTarget = Side.right;
-                else if (placingTarget == Side.front) placingTarget = Side.back;
-                else if (placingTarget == Side.back) placingTarget = Side.front;
+                if (placingTarget == Side.Right) placingTarget = Side.Left;
+                else if (placingTarget == Side.Left) placingTarget = Side.Right;
+                else if (placingTarget == Side.Front) placingTarget = Side.Back;
+                else if (placingTarget == Side.Back) placingTarget = Side.Front;
             }
 
             if (timesX % 2 == 1) {
-                RotateClockwiseBySide(Side.right, 3);
-                RotateClockwiseBySide(Side.top, 2);
+                RotateClockwiseBySide(Side.Right, 3);
+                RotateClockwiseBySide(Side.Top, 2);
                 bool[,] topBackup = top;
-                RotateClockwiseBySide(Side.front, 2);
+                RotateClockwiseBySide(Side.Front, 2);
                 top = front;
-                RotateClockwiseBySide(Side.bottom, 0);
+                RotateClockwiseBySide(Side.Bottom, 0);
                 front = bottom;
-                RotateClockwiseBySide(Side.back, 0);
+                RotateClockwiseBySide(Side.Back, 0);
                 bottom = back;
                 back = topBackup;
-                RotateClockwiseBySide(Side.left, 1);
-                if (placingTarget == Side.front) placingTarget = Side.top;
-                else if (placingTarget == Side.bottom) placingTarget = Side.front;
-                else if (placingTarget == Side.back) placingTarget = Side.bottom;
-                else if (placingTarget == Side.top) placingTarget = Side.back;
+                RotateClockwiseBySide(Side.Left, 1);
+                if (placingTarget == Side.Front) placingTarget = Side.Top;
+                else if (placingTarget == Side.Bottom) placingTarget = Side.Front;
+                else if (placingTarget == Side.Back) placingTarget = Side.Bottom;
+                else if (placingTarget == Side.Top) placingTarget = Side.Back;
                 timesX--;
             }
             if (timesX == 2) {
-                RotateClockwiseBySide(Side.right, 2);
-                RotateClockwiseBySide(Side.left, 2);
-                RotateClockwiseBySide(Side.front, 0);
+                RotateClockwiseBySide(Side.Right, 2);
+                RotateClockwiseBySide(Side.Left, 2);
+                RotateClockwiseBySide(Side.Front, 0);
                 bool[,] temp = front;
-                RotateClockwiseBySide(Side.back, 0);
+                RotateClockwiseBySide(Side.Back, 0);
                 front = back;
                 back = temp;
-                RotateClockwiseBySide(Side.top, 2);
+                RotateClockwiseBySide(Side.Top, 2);
                 temp = top;
-                RotateClockwiseBySide(Side.bottom, 2);
+                RotateClockwiseBySide(Side.Bottom, 2);
                 top = bottom;
                 bottom = temp;
-                if (placingTarget == Side.top) placingTarget = Side.bottom;
-                else if (placingTarget == Side.bottom) placingTarget = Side.top;
-                else if (placingTarget == Side.front) placingTarget = Side.back;
-                else if (placingTarget == Side.back) placingTarget = Side.front;
+                if (placingTarget == Side.Top) placingTarget = Side.Bottom;
+                else if (placingTarget == Side.Bottom) placingTarget = Side.Top;
+                else if (placingTarget == Side.Front) placingTarget = Side.Back;
+                else if (placingTarget == Side.Back) placingTarget = Side.Front;
             }
             return this;
         }

@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 public static class Enums
 {
     public const bool I = true, O = false;
     public enum Variant {x3 = 3, x4 = 4};
-    public enum Side {bottom = 0, back = 1, left = 2, right = 3, front = 4, top = 5};
+    public enum Side {Bottom = 0, Back = 1, Left = 2, Right = 3, Front = 4, Top = 5};
     public enum Dir {U, L, D, R, Un, Ln, Dn, Rn};
     public enum IndexStateChange {increase, stay, decrease};
     public enum Corner {Ul, Ur, Dr, Dl};
@@ -63,5 +66,10 @@ public static class Enums
     }
     public static int BoolToInt(bool b) {
         return b ? 1 : 0;
+    }
+
+    public static IEnumerable<Side> SideArray
+    {
+        get => Enum.GetValues(typeof(Side)).Cast<Side>();
     }
 }

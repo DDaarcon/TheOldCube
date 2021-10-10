@@ -78,39 +78,39 @@ public class PiecePartMeshGenerate : MonoBehaviour
         public int Amount(Side side_) {
             switch (side_) {
                 default:
-                case Side.bottom:
+                case Side.Bottom:
                     return amountForBottom;
-                case Side.back:
+                case Side.Back:
                     return amountForBack;
-                case Side.left:
+                case Side.Left:
                     return amountForLeft;
-                case Side.right:
+                case Side.Right:
                     return amountForRight;
-                case Side.front:
+                case Side.Front:
                     return amountForFront;
-                case Side.top:
+                case Side.Top:
                     return amountForTop;
             }
         }
         public void Amount(Side side_, int value) {
             switch (side_) {
                 default:
-                case Side.bottom:
+                case Side.Bottom:
                     amountForBottom = value;
                     break;
-                case Side.back:
+                case Side.Back:
                     amountForBack = value;
                     break;
-                case Side.left:
+                case Side.Left:
                     amountForLeft = value;
                     break;
-                case Side.right:
+                case Side.Right:
                     amountForRight = value;
                     break;
-                case Side.front:
+                case Side.Front:
                     amountForFront = value;
                     break;
-                case Side.top:
+                case Side.Top:
                     amountForTop = value;
                     break;
             }
@@ -119,22 +119,22 @@ public class PiecePartMeshGenerate : MonoBehaviour
         public int StartForSide(Side side_) {
             int start = startingIndex;
             switch (side_) {
-                case Side.top:
+                case Side.Top:
                     start += amountForFront;
-                    goto case Side.front;
-                case Side.front:
+                    goto case Side.Front;
+                case Side.Front:
                     start += amountForRight;
-                    goto case Side.right;
-                case Side.right:
+                    goto case Side.Right;
+                case Side.Right:
                     start += amountForLeft;
-                    goto case Side.left;
-                case Side.left:
+                    goto case Side.Left;
+                case Side.Left:
                     start += amountForBack;
-                    goto case Side.back;
-                case Side.back:
+                    goto case Side.Back;
+                case Side.Back:
                     start += amountForBottom;
-                    goto case Side.bottom;
-                case Side.bottom:
+                    goto case Side.Bottom;
+                case Side.Bottom:
                 default:
                     break;
             }
@@ -260,17 +260,17 @@ public class PiecePartMeshGenerate : MonoBehaviour
         public Vector3[] top;
         public Vector3[] GetBySide(Side side_) {
             switch (side_) {
-                case Side.bottom:
+                case Side.Bottom:
                     return bottom;
-                case Side.back:
+                case Side.Back:
                     return back;
-                case Side.left:
+                case Side.Left:
                     return left;
-                case Side.right:
+                case Side.Right:
                     return right;
-                case Side.front:
+                case Side.Front:
                     return front;
-                case Side.top:
+                case Side.Top:
                     return top;
                 default:
                     return null;
@@ -278,22 +278,22 @@ public class PiecePartMeshGenerate : MonoBehaviour
         }
         public void SetBySide(Side side_, Vector3[] verticesPerSide) {
             switch (side_) {
-                case Side.bottom:
+                case Side.Bottom:
                     bottom = (Vector3[])verticesPerSide.Clone();
                     break;
-                case Side.back:
+                case Side.Back:
                     back = (Vector3[])verticesPerSide.Clone();
                     break;
-                case Side.left:
+                case Side.Left:
                     left = (Vector3[])verticesPerSide.Clone();
                     break;
-                case Side.right:
+                case Side.Right:
                     right = (Vector3[])verticesPerSide.Clone();
                     break;
-                case Side.front:
+                case Side.Front:
                     front = (Vector3[])verticesPerSide.Clone();
                     break;
-                case Side.top:
+                case Side.Top:
                     top = (Vector3[])verticesPerSide.Clone();
                     break;
                 default:
@@ -303,12 +303,12 @@ public class PiecePartMeshGenerate : MonoBehaviour
         public void Set(Vertices vertices) {
             name = vertices.name;
             meshPointsInRow = vertices.meshPointsInRow;
-            SetBySide(Side.bottom, vertices.bottom);
-            SetBySide(Side.back, vertices.back);
-            SetBySide(Side.left, vertices.left);
-            SetBySide(Side.right, vertices.right);
-            SetBySide(Side.front, vertices.front);
-            SetBySide(Side.top, vertices.top);
+            SetBySide(Side.Bottom, vertices.bottom);
+            SetBySide(Side.Back, vertices.back);
+            SetBySide(Side.Left, vertices.left);
+            SetBySide(Side.Right, vertices.right);
+            SetBySide(Side.Front, vertices.front);
+            SetBySide(Side.Top, vertices.top);
         }
         private void RotateClockwiseBySide(Side side_, int times) {
             Vector3[] vertices = GetBySide(side_);
@@ -359,30 +359,30 @@ public class PiecePartMeshGenerate : MonoBehaviour
         public Vertices RotateClockwiseByCube(int times) {
             times %= 4;
             if (times % 2 == 1) {
-                RotateClockwiseBySide(Side.front, 1);
-                RotateClockwiseBySide(Side.right, 1);
+                RotateClockwiseBySide(Side.Front, 1);
+                RotateClockwiseBySide(Side.Right, 1);
                 Vector3[] rightBackup = (Vector3[])right.Clone();
-                RotateClockwiseBySide(Side.bottom, 1);
+                RotateClockwiseBySide(Side.Bottom, 1);
                 right = bottom;
-                RotateClockwiseBySide(Side.left, 1);
+                RotateClockwiseBySide(Side.Left, 1);
                 bottom = left;
-                RotateClockwiseBySide(Side.top, 1);
+                RotateClockwiseBySide(Side.Top, 1);
                 left = top;
                 top = rightBackup;
-                RotateClockwiseBySide(Side.back, 3);
+                RotateClockwiseBySide(Side.Back, 3);
                 times--;
             }
             if (times == 2) {
-                RotateClockwiseBySide(Side.front, 2);
-                RotateClockwiseBySide(Side.back, 2);
-                RotateClockwiseBySide(Side.right, 2);
+                RotateClockwiseBySide(Side.Front, 2);
+                RotateClockwiseBySide(Side.Back, 2);
+                RotateClockwiseBySide(Side.Right, 2);
                 Vector3[] temp = (Vector3[])right.Clone();
-                RotateClockwiseBySide(Side.left, 2);
+                RotateClockwiseBySide(Side.Left, 2);
                 right = left;
                 left = temp;
-                RotateClockwiseBySide(Side.top, 2);
+                RotateClockwiseBySide(Side.Top, 2);
                 temp = (Vector3[])top.Clone();
-                RotateClockwiseBySide(Side.bottom, 2);
+                RotateClockwiseBySide(Side.Bottom, 2);
                 top = bottom;
                 bottom = temp;
             }
@@ -425,17 +425,17 @@ public class PiecePartMeshGenerate : MonoBehaviour
     public Connections connectionsTop {get; private set;}
     public Connections GetConnectionsBySide(Side side_) {
         switch (side_) {
-            case Side.bottom:
+            case Side.Bottom:
                 return connectionsBottom;
-            case Side.back:
+            case Side.Back:
                 return connectionsBack;
-            case Side.left:
+            case Side.Left:
                 return connectionsLeft;
-            case Side.right:
+            case Side.Right:
                 return connectionsRight;
-            case Side.front:
+            case Side.Front:
                 return connectionsFront;
-            case Side.top:
+            case Side.Top:
                 return connectionsTop;
             default:
                 return null;
@@ -452,17 +452,17 @@ public class PiecePartMeshGenerate : MonoBehaviour
     public CornerPresance cornerPresanceTop {get; private set;}
     public CornerPresance GetCornerPresanceBySide(Side side_) {
         switch (side_) {
-            case Side.bottom:
+            case Side.Bottom:
                 return cornerPresanceBottom;
-            case Side.back:
+            case Side.Back:
                 return cornerPresanceBack;
-            case Side.left:
+            case Side.Left:
                 return cornerPresanceLeft;
-            case Side.right:
+            case Side.Right:
                 return cornerPresanceRight;
-            case Side.front:
+            case Side.Front:
                 return cornerPresanceFront;
-            case Side.top:
+            case Side.Top:
                 return cornerPresanceTop;
             default:
                 return null;
@@ -479,17 +479,17 @@ public class PiecePartMeshGenerate : MonoBehaviour
     private Transform ChildBottom = null, ChildBack, ChildLeft = null, ChildRight = null, ChildFront, ChildTop = null;
     public Transform GetChildBySide(Side side_) {
         switch (side_) {
-            case Side.bottom:
+            case Side.Bottom:
                 return ChildBottom.transform;
-            case Side.back:
+            case Side.Back:
                 return ChildBack.transform;
-            case Side.left:
+            case Side.Left:
                 return ChildLeft.transform;
-            case Side.right:
+            case Side.Right:
                 return ChildRight.transform;
-            case Side.front:
+            case Side.Front:
                 return ChildFront.transform;
-            case Side.top:
+            case Side.Top:
                 return ChildTop.transform;
             default:
                 return null;
@@ -497,17 +497,17 @@ public class PiecePartMeshGenerate : MonoBehaviour
     }
     public bool GetChildPresanceBySide(Side side_) {
         switch (side_) {
-            case Side.bottom:
+            case Side.Bottom:
                 return ChildBottom != null;
-            case Side.back:
+            case Side.Back:
                 return ChildBack != null;
-            case Side.left:
+            case Side.Left:
                 return ChildLeft != null;
-            case Side.right:
+            case Side.Right:
                 return ChildRight != null;
-            case Side.front:
+            case Side.Front:
                 return ChildFront != null;
-            case Side.top:
+            case Side.Top:
                 return ChildTop != null;
             default:
                 return false;

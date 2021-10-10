@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using GameInfo.GameInfoInternals;
 using GameInfo.GameInfoInternals.SolutionInfoInternals;
 using GameExtensions.SideData;
+using static Enums;
 
 namespace GameExtensions.Solution
 {
@@ -64,6 +65,20 @@ namespace GameExtensions.Solution
         {
             foreach (var side in solution.FullList)
                 side.Clear(clearValue);
+        }
+
+        public static SideData<TData> GetBySide<TData>(this SolutionInfo<TData> solution, Side side)
+        {
+            return side switch
+            {
+                Side.Bottom => solution.BottomSide,
+                Side.Back => solution.BackSide,
+                Side.Left => solution.LeftSide,
+                Side.Right => solution.RightSide,
+                Side.Front => solution.FrontSide,
+                Side.Top => solution.TopSide,
+                _ => throw new NotImplementedException(),
+            };
         }
 
         public class InvalidSolutionDataException : Exception

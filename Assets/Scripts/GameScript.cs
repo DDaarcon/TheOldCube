@@ -226,12 +226,12 @@ public class GameScript : MonoBehaviour
     For certain [side, direction] get side it touches in this direction</value>
     **/
     private dNs[,] properEdge = new dNs[6, 4] {
-        {new dNs(Side.back, Dir.D), new dNs(Side.left, Dir.R), new dNs(Side.front, Dir.U), new dNs(Side.right, Dir.L)},     //bottom
-        {new dNs(Side.top, Dir.Un), new dNs(Side.left, Dir.U), new dNs(Side.bottom, Dir.U), new dNs(Side.right, Dir.Un)},   //back
-        {new dNs(Side.back, Dir.L), new dNs(Side.top, Dir.R), new dNs(Side.front, Dir.Ln), new dNs(Side.bottom, Dir.L)},    //left
-        {new dNs(Side.back, Dir.Rn), new dNs(Side.bottom, Dir.R), new dNs(Side.front, Dir.R), new dNs(Side.top, Dir.L)},    //right
-        {new dNs(Side.bottom, Dir.D), new dNs(Side.left, Dir.Dn), new dNs(Side.top, Dir.Dn), new dNs(Side.right, Dir.D)},   //front
-        {new dNs(Side.back, Dir.Un), new dNs(Side.right, Dir.R), new dNs(Side.front, Dir.Dn), new dNs(Side.left, Dir.L)}    //top
+        {new dNs(Side.Back, Dir.D), new dNs(Side.Left, Dir.R), new dNs(Side.Front, Dir.U), new dNs(Side.Right, Dir.L)},     //bottom
+        {new dNs(Side.Top, Dir.Un), new dNs(Side.Left, Dir.U), new dNs(Side.Bottom, Dir.U), new dNs(Side.Right, Dir.Un)},   //back
+        {new dNs(Side.Back, Dir.L), new dNs(Side.Top, Dir.R), new dNs(Side.Front, Dir.Ln), new dNs(Side.Bottom, Dir.L)},    //left
+        {new dNs(Side.Back, Dir.Rn), new dNs(Side.Bottom, Dir.R), new dNs(Side.Front, Dir.R), new dNs(Side.Top, Dir.L)},    //right
+        {new dNs(Side.Bottom, Dir.D), new dNs(Side.Left, Dir.Dn), new dNs(Side.Top, Dir.Dn), new dNs(Side.Right, Dir.D)},   //front
+        {new dNs(Side.Back, Dir.Un), new dNs(Side.Right, Dir.R), new dNs(Side.Front, Dir.Dn), new dNs(Side.Left, Dir.L)}    //top
         // up direction             left direction              down direction              right direction
     };
 
@@ -540,22 +540,22 @@ public class GameScript : MonoBehaviour
 
                     switch (piece.transform.name) {
                         case "bottom":
-                            RemovePieceAt(Side.bottom);
+                            RemovePieceAt(Side.Bottom);
                             break;
                         case "back":
-                            RemovePieceAt(Side.back);
+                            RemovePieceAt(Side.Back);
                             break;
                         case "left":
-                            RemovePieceAt(Side.left);
+                            RemovePieceAt(Side.Left);
                             break;
                         case "right":
-                            RemovePieceAt(Side.right);
+                            RemovePieceAt(Side.Right);
                             break;
                         case "front":
-                            RemovePieceAt(Side.front);
+                            RemovePieceAt(Side.Front);
                             break;
                         case "top":
-                            RemovePieceAt(Side.top);
+                            RemovePieceAt(Side.Top);
                             break;
                         default:
                             Debug.Log("Error while trying to detect piece to delete ;(");
@@ -705,7 +705,7 @@ public class GameScript : MonoBehaviour
 
             TutorialScript.TurnOffNote(TutorialScript.Notes.ChooseFirstPieceNote);
             if (placedSides == 0) {
-                PlacePieceAt(setting_, Side.bottom);
+                PlacePieceAt(setting_, Side.Bottom);
                 if (randomGameBeforeStart) StartTimer();
                 return;
             }
@@ -936,8 +936,8 @@ public class GameScript : MonoBehaviour
     }
 
     private Side[] SetAvailableSides() {
-        if (placedSides == 1 && placedSidesArray[(int)Side.bottom])
-            return new Side[4] {Side.left, Side.back, Side.right, Side.front};
+        if (placedSides == 1 && placedSidesArray[(int)Side.Bottom])
+            return new Side[4] {Side.Left, Side.Back, Side.Right, Side.Front};
         
         Side[] rtn = new Side[6 - placedSides];
         int ind = 0;
@@ -953,14 +953,14 @@ public class GameScript : MonoBehaviour
     // two methods below are responsible for fixing placedPiece when changing its place
     private void NormalizePlacedSideApperance(Side side_) {
         switch (side_) {
-            case Side.bottom:
-            case Side.back:
+            case Side.Bottom:
+            case Side.Back:
                 placedPiece.GetComponent<Piece>().RotateClockwise(2);
                 break;
-            case Side.left:
+            case Side.Left:
                 placedPiece.GetComponent<Piece>().RotateClockwise(3);
                 break;
-            case Side.right:
+            case Side.Right:
                 placedPiece.GetComponent<Piece>().RotateClockwise(1);
                 break;
             default:

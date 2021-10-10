@@ -684,425 +684,425 @@ public class PiecePG : Piece
 
         // set neighbour vertices for vertices arrays
         // ------------------ BOTTOM
-        if (side_ == Side.bottom) {
+        if (side_ == Side.Bottom) {
             // up
-            CalculateEdgeTriangles(childPP, side_, Dir.U, childPP, Dir.D, Side.front);
+            CalculateEdgeTriangles(childPP, side_, Dir.U, childPP, Dir.D, Side.Front);
             // right
             if (childPP.hasOnRight){
                 if (!childPP.cubeOnRight.hasBelow) {
-                    CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP.cubeOnRight, Dir.Ln, Side.bottom);
+                    CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP.cubeOnRight, Dir.Ln, Side.Bottom);
                     CalculateCornerTriangle(childPP, side_, Corner.Ur, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP, Side.front, Corner.Dr, 
-                        childPP.cubeOnRight, Side.bottom, Corner.Ul);
+                        childPP, Side.Front, Corner.Dr, 
+                        childPP.cubeOnRight, Side.Bottom, Corner.Ul);
                     CalculateCornerTriangle(childPP, side_, Corner.Dr, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP.cubeOnRight, Side.bottom, Corner.Dl, 
-                        childPP, Side.back, Corner.Ur);
+                        childPP.cubeOnRight, Side.Bottom, Corner.Dl, 
+                        childPP, Side.Back, Corner.Ur);
                 }
                 else {
-                    CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP.cubeOnRight.cubeBelow, Dir.U, Side.left);
+                    CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP.cubeOnRight.cubeBelow, Dir.U, Side.Left);
                 }
             }
             else {
-                CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP, Dir.D, Side.right);
+                CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP, Dir.D, Side.Right);
             }
             // down
-            CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP, Dir.Un, Side.back);
+            CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP, Dir.Un, Side.Back);
             // left
             if (childPP.hasOnLeft) {
                 if (!childPP.cubeOnLeft.hasBelow) {
-                    CalculateEdgeTriangles(childPP, side_, Dir.L, childPP.cubeOnLeft, Dir.R, Side.bottom);
+                    CalculateEdgeTriangles(childPP, side_, Dir.L, childPP.cubeOnLeft, Dir.R, Side.Bottom);
                     CalculateCornerTriangle(childPP, side_, Corner.Dl, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP, Side.back, Corner.Ul, 
-                        childPP.cubeOnLeft, Side.bottom, Corner.Dr);
+                        childPP, Side.Back, Corner.Ul, 
+                        childPP.cubeOnLeft, Side.Bottom, Corner.Dr);
                     CalculateCornerTriangle(childPP, side_, Corner.Ul, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP, Side.front, Corner.Dl, 
-                        childPP.cubeOnLeft, Side.bottom, Corner.Ur, true);
+                        childPP, Side.Front, Corner.Dl, 
+                        childPP.cubeOnLeft, Side.Bottom, Corner.Ur, true);
                 }
                 else {
-                    CalculateEdgeTriangles(childPP, side_, Dir.Ln, childPP.cubeOnLeft.cubeBelow, Dir.U, Side.right);
+                    CalculateEdgeTriangles(childPP, side_, Dir.Ln, childPP.cubeOnLeft.cubeBelow, Dir.U, Side.Right);
                 }
             }
             else {
-                CalculateEdgeTriangles(childPP, side_, Dir.L, childPP, Dir.D, Side.left);
+                CalculateEdgeTriangles(childPP, side_, Dir.L, childPP, Dir.D, Side.Left);
             }
         }
 
         // ------------------ BACK
-        if (side_ == Side.back) {
+        if (side_ == Side.Back) {
             // up
             if (!childPP.hasBelow) {
-                CalculateEdgeTriangles(childPP, side_, Dir.U, childPP, Dir.D, Side.bottom);
+                CalculateEdgeTriangles(childPP, side_, Dir.U, childPP, Dir.D, Side.Bottom);
             }
             else {
-                CalculateEdgeTriangles(childPP, side_, Dir.U, childPP.cubeBelow, Dir.D, Side.back);
+                CalculateEdgeTriangles(childPP, side_, Dir.U, childPP.cubeBelow, Dir.D, Side.Back);
             }
             // right
             if (!childPP.hasOnRight) {
-                CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP, Dir.R, Side.right);
+                CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP, Dir.R, Side.Right);
                 if (!childPP.hasBelow) {
                     CalculateCornerTriangle(childPP, side_, Corner.Ur, PiecePartMeshGenerate.CornerPresance.CornerType.OneTriangle, 
-                        childPP, Side.right, Corner.Dr, 
-                        childPP, Side.bottom, Corner.Dr, true);
+                        childPP, Side.Right, Corner.Dr, 
+                        childPP, Side.Bottom, Corner.Dr, true);
                 } else {
                     CalculateCornerTriangle(childPP, side_, Corner.Ur, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP, Side.right, Corner.Dr, 
-                        childPP.cubeBelow, Side.back, Corner.Dr, true);
+                        childPP, Side.Right, Corner.Dr, 
+                        childPP.cubeBelow, Side.Back, Corner.Dr, true);
                 } if (!childPP.hasAbove) {
                     CalculateCornerTriangle(childPP, side_, Corner.Dr, PiecePartMeshGenerate.CornerPresance.CornerType.OneTriangle, 
-                        childPP, Side.right, Corner.Ur, 
-                        childPP, Side.top, Corner.Ur);
+                        childPP, Side.Right, Corner.Ur, 
+                        childPP, Side.Top, Corner.Ur);
                 } else {
                     CalculateCornerTriangle(childPP, side_, Corner.Dr, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP, Side.right, Corner.Ur, 
-                        childPP.cubeAbove, Side.back, Corner.Ur);
+                        childPP, Side.Right, Corner.Ur, 
+                        childPP.cubeAbove, Side.Back, Corner.Ur);
                 }
             }
             else {
-                CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP.cubeOnRight, Dir.Ln, Side.back);
+                CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP.cubeOnRight, Dir.Ln, Side.Back);
                 if (!childPP.hasBelow) {
                     CalculateCornerTriangle(childPP, side_, Corner.Ur, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP.cubeOnRight, Side.back, Corner.Ul, 
-                        childPP, Side.bottom, Corner.Dr, true);
+                        childPP.cubeOnRight, Side.Back, Corner.Ul, 
+                        childPP, Side.Bottom, Corner.Dr, true);
                 } else {
                     if (!childPP.cubeBelow.hasOnRight) {
                         CalculateCornerTriangle(childPP, side_, Corner.Ur, PiecePartMeshGenerate.CornerPresance.CornerType.ThreeTriangle, 
-                            childPP.cubeOnRight, Side.bottom, Corner.Dl, 
-                            childPP.cubeBelow, Side.right, Corner.Ur, true);
+                            childPP.cubeOnRight, Side.Bottom, Corner.Dl, 
+                            childPP.cubeBelow, Side.Right, Corner.Ur, true);
                     } else {
                         CalculateCornerTriangle(childPP, side_, Corner.Ur, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                            childPP.cubeOnRight, Side.back, Corner.Ul, 
-                            childPP.cubeBelow, Side.back, Corner.Dr, true);
+                            childPP.cubeOnRight, Side.Back, Corner.Ul, 
+                            childPP.cubeBelow, Side.Back, Corner.Dr, true);
                     }
                 } if (!childPP.hasAbove) {
                     CalculateCornerTriangle(childPP, side_, Corner.Dr, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP.cubeOnRight, Side.back, Corner.Dl, 
-                        childPP, Side.top, Corner.Ur);
+                        childPP.cubeOnRight, Side.Back, Corner.Dl, 
+                        childPP, Side.Top, Corner.Ur);
                 } else {
                     if (!childPP.cubeAbove.hasOnRight) {
                         CalculateCornerTriangle(childPP, side_, Corner.Dr, PiecePartMeshGenerate.CornerPresance.CornerType.ThreeTriangle, 
-                            childPP.cubeOnRight, Side.top, Corner.Ul, 
-                            childPP.cubeAbove, Side.right, Corner.Dr);
+                            childPP.cubeOnRight, Side.Top, Corner.Ul, 
+                            childPP.cubeAbove, Side.Right, Corner.Dr);
                     } else {
                         CalculateCornerTriangle(childPP, side_, Corner.Dr, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                            childPP.cubeOnRight, Side.back, Corner.Dl, 
-                            childPP.cubeAbove, Side.back, Corner.Ur);
+                            childPP.cubeOnRight, Side.Back, Corner.Dl, 
+                            childPP.cubeAbove, Side.Back, Corner.Ur);
                     }
                 }
             }
             // down
             if (!childPP.hasAbove) {
-                CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP, Dir.Un, Side.top);
+                CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP, Dir.Un, Side.Top);
             }
             else {
-                CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP.cubeAbove, Dir.Un, Side.back);
+                CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP.cubeAbove, Dir.Un, Side.Back);
             }
             // left
             if (!childPP.hasOnLeft) {
-                CalculateEdgeTriangles(childPP, side_, Dir.L, childPP, Dir.Ln, Side.left);
+                CalculateEdgeTriangles(childPP, side_, Dir.L, childPP, Dir.Ln, Side.Left);
                 if (!childPP.hasBelow) {
                     CalculateCornerTriangle(childPP, side_, Corner.Ul, PiecePartMeshGenerate.CornerPresance.CornerType.OneTriangle, 
-                        childPP, Side.left, Corner.Dl, 
-                        childPP, Side.bottom, Corner.Dl);
+                        childPP, Side.Left, Corner.Dl, 
+                        childPP, Side.Bottom, Corner.Dl);
                 } else {
                     CalculateCornerTriangle(childPP, side_, Corner.Ul, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP, Side.left, Corner.Dl, 
-                        childPP.cubeBelow, Side.back, Corner.Dl);
+                        childPP, Side.Left, Corner.Dl, 
+                        childPP.cubeBelow, Side.Back, Corner.Dl);
                 } if (!childPP.hasAbove) {
                     CalculateCornerTriangle(childPP, side_, Corner.Dl, PiecePartMeshGenerate.CornerPresance.CornerType.OneTriangle, 
-                        childPP, Side.left, Corner.Ul, 
-                        childPP, Side.top, Corner.Ul, true);
+                        childPP, Side.Left, Corner.Ul, 
+                        childPP, Side.Top, Corner.Ul, true);
                 } else {
                     CalculateCornerTriangle(childPP, side_, Corner.Dl, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP, Side.left, Corner.Ul, 
-                        childPP.cubeAbove, Side.back, Corner.Ul, true);
+                        childPP, Side.Left, Corner.Ul, 
+                        childPP.cubeAbove, Side.Back, Corner.Ul, true);
                 }
             }
             else {
-                CalculateEdgeTriangles(childPP, side_, Dir.L, childPP.cubeOnLeft, Dir.R, Side.back);
+                CalculateEdgeTriangles(childPP, side_, Dir.L, childPP.cubeOnLeft, Dir.R, Side.Back);
                 if (!childPP.hasBelow) {
                     CalculateCornerTriangle(childPP, side_, Corner.Ul, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP.cubeOnLeft, Side.back, Corner.Ur, 
-                        childPP, Side.bottom, Corner.Dl);
+                        childPP.cubeOnLeft, Side.Back, Corner.Ur, 
+                        childPP, Side.Bottom, Corner.Dl);
                 } else {
                     if (!childPP.cubeBelow.hasOnLeft) {
                         CalculateCornerTriangle(childPP, side_, Corner.Ul, PiecePartMeshGenerate.CornerPresance.CornerType.ThreeTriangle, 
-                            childPP.cubeOnLeft, Side.bottom, Corner.Dr, 
-                            childPP.cubeBelow, Side.left, Corner.Ul);
+                            childPP.cubeOnLeft, Side.Bottom, Corner.Dr, 
+                            childPP.cubeBelow, Side.Left, Corner.Ul);
                     } else {
                         CalculateCornerTriangle(childPP, side_, Corner.Ul, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                            childPP.cubeOnLeft, Side.back, Corner.Ur, 
-                            childPP.cubeBelow, Side.back, Corner.Dl);
+                            childPP.cubeOnLeft, Side.Back, Corner.Ur, 
+                            childPP.cubeBelow, Side.Back, Corner.Dl);
                     }
                 } if (!childPP.hasAbove) {
                     CalculateCornerTriangle(childPP, side_, Corner.Dl, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP.cubeOnLeft, Side.back, Corner.Dr, 
-                        childPP, Side.top, Corner.Ul, true);
+                        childPP.cubeOnLeft, Side.Back, Corner.Dr, 
+                        childPP, Side.Top, Corner.Ul, true);
                 } else {
                     if (!childPP.cubeAbove.hasOnLeft) {
                         CalculateCornerTriangle(childPP, side_, Corner.Dl, PiecePartMeshGenerate.CornerPresance.CornerType.ThreeTriangle, 
-                            childPP.cubeOnLeft, Side.top, Corner.Ur, 
-                            childPP.cubeAbove, Side.left, Corner.Dl, true);
+                            childPP.cubeOnLeft, Side.Top, Corner.Ur, 
+                            childPP.cubeAbove, Side.Left, Corner.Dl, true);
                     } else {
                         CalculateCornerTriangle(childPP, side_, Corner.Dl, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                            childPP.cubeOnLeft, Side.back, Corner.Dr, 
-                            childPP.cubeAbove, Side.back, Corner.Ul, true);
+                            childPP.cubeOnLeft, Side.Back, Corner.Dr, 
+                            childPP.cubeAbove, Side.Back, Corner.Ul, true);
                     }
                 }
             }
         }
 
         // ------------------ LEFT
-        if (side_ == Side.left) {
+        if (side_ == Side.Left) {
             // up
             if (!childPP.hasAbove) {
-                CalculateEdgeTriangles(childPP, side_, Dir.U, childPP, Dir.Ln, Side.top);
+                CalculateEdgeTriangles(childPP, side_, Dir.U, childPP, Dir.Ln, Side.Top);
             }
             else {
                 if (!childPP.cubeAbove.hasOnLeft) {
-                    CalculateEdgeTriangles(childPP, side_, Dir.U, childPP.cubeAbove, Dir.D, Side.left);
+                    CalculateEdgeTriangles(childPP, side_, Dir.U, childPP.cubeAbove, Dir.D, Side.Left);
                     CalculateCornerTriangle(childPP, side_, Corner.Ur, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP.cubeAbove, Side.left, Corner.Dr, 
-                        childPP, Side.front, Corner.Ul);
+                        childPP.cubeAbove, Side.Left, Corner.Dr, 
+                        childPP, Side.Front, Corner.Ul);
                     CalculateCornerTriangle(childPP, side_, Corner.Ul, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP.cubeAbove, Side.left, Corner.Dl, 
-                        childPP, Side.back, Corner.Dl, true);
+                        childPP.cubeAbove, Side.Left, Corner.Dl, 
+                        childPP, Side.Back, Corner.Dl, true);
                 }
                 else {
-                    CalculateEdgeTriangles(childPP, side_, Dir.U, childPP.cubeAbove.cubeOnLeft, Dir.R, Side.bottom);
+                    CalculateEdgeTriangles(childPP, side_, Dir.U, childPP.cubeAbove.cubeOnLeft, Dir.R, Side.Bottom);
                 }
             }
             // right
-            CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP, Dir.Ln, Side.front);
+            CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP, Dir.Ln, Side.Front);
             // down
             if (!childPP.hasBelow) {
-                CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP, Dir.L, Side.bottom);
+                CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP, Dir.L, Side.Bottom);
             }
             else {
                 if (!childPP.cubeBelow.hasOnLeft) {
-                    CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP.cubeBelow, Dir.U, Side.left);
+                    CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP.cubeBelow, Dir.U, Side.Left);
                     CalculateCornerTriangle(childPP, side_, Corner.Dr, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP.cubeBelow, Side.left, Corner.Ur, 
-                        childPP, Side.front, Corner.Dl, true);
+                        childPP.cubeBelow, Side.Left, Corner.Ur, 
+                        childPP, Side.Front, Corner.Dl, true);
                     CalculateCornerTriangle(childPP, side_, Corner.Dl, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP.cubeBelow, Side.left, Corner.Ul, 
-                        childPP, Side.back, Corner.Ul);
+                        childPP.cubeBelow, Side.Left, Corner.Ul, 
+                        childPP, Side.Back, Corner.Ul);
                 }
                 else {
-                    CalculateEdgeTriangles(childPP, side_, Dir.D, childPP.cubeBelow.cubeOnLeft, Dir.R, Side.top);
+                    CalculateEdgeTriangles(childPP, side_, Dir.D, childPP.cubeBelow.cubeOnLeft, Dir.R, Side.Top);
                 }
             }
             // left
-            CalculateEdgeTriangles(childPP, side_, Dir.Ln, childPP, Dir.L, Side.back);
+            CalculateEdgeTriangles(childPP, side_, Dir.Ln, childPP, Dir.L, Side.Back);
         }
 
         // ------------------ RIGHT
-        if (side_ == Side.right) {
+        if (side_ == Side.Right) {
             // up
             if (!childPP.hasAbove) {
-                CalculateEdgeTriangles(childPP, side_, Dir.U, childPP, Dir.R, Side.top);
+                CalculateEdgeTriangles(childPP, side_, Dir.U, childPP, Dir.R, Side.Top);
             }
             else {
                 if (!childPP.cubeAbove.hasOnRight) {
-                    CalculateEdgeTriangles(childPP, side_, Dir.U, childPP.cubeAbove, Dir.D, Side.right);
+                    CalculateEdgeTriangles(childPP, side_, Dir.U, childPP.cubeAbove, Dir.D, Side.Right);
                     CalculateCornerTriangle(childPP, side_, Corner.Ur, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP.cubeAbove, Side.right, Corner.Dr, 
-                        childPP, Side.back, Corner.Dr);
+                        childPP.cubeAbove, Side.Right, Corner.Dr, 
+                        childPP, Side.Back, Corner.Dr);
                     CalculateCornerTriangle(childPP, side_, Corner.Ul, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP.cubeAbove, Side.right, Corner.Dl, 
-                        childPP, Side.front, Corner.Ur, true);
+                        childPP.cubeAbove, Side.Right, Corner.Dl, 
+                        childPP, Side.Front, Corner.Ur, true);
                 }
                 else {
-                    CalculateEdgeTriangles(childPP, side_, Dir.U, childPP.cubeAbove.cubeOnRight, Dir.Ln, Side.bottom);
+                    CalculateEdgeTriangles(childPP, side_, Dir.U, childPP.cubeAbove.cubeOnRight, Dir.Ln, Side.Bottom);
                 }
             }
             // right
-            CalculateEdgeTriangles(childPP, side_, Dir.R, childPP, Dir.Rn, Side.back);
+            CalculateEdgeTriangles(childPP, side_, Dir.R, childPP, Dir.Rn, Side.Back);
             // down
             if (!childPP.hasBelow) {
-                CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP, Dir.R, Side.bottom);
+                CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP, Dir.R, Side.Bottom);
             }
             else {
                 if (!childPP.cubeBelow.hasOnRight) {
-                    CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP.cubeBelow, Dir.U, Side.right);
+                    CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP.cubeBelow, Dir.U, Side.Right);
                     CalculateCornerTriangle(childPP, side_, Corner.Dr, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP.cubeBelow, Side.right, Corner.Ur, 
-                        childPP, Side.back, Corner.Ur, true);
+                        childPP.cubeBelow, Side.Right, Corner.Ur, 
+                        childPP, Side.Back, Corner.Ur, true);
                     CalculateCornerTriangle(childPP, side_, Corner.Dl, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP.cubeBelow, Side.right, Corner.Ul, 
-                        childPP, Side.front, Corner.Dr);
+                        childPP.cubeBelow, Side.Right, Corner.Ul, 
+                        childPP, Side.Front, Corner.Dr);
                 }
                 else {
-                    CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP.cubeBelow.cubeOnRight, Dir.L, Side.top);
+                    CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP.cubeBelow.cubeOnRight, Dir.L, Side.Top);
                 }
             }
             // left
-            CalculateEdgeTriangles(childPP, side_, Dir.L, childPP, Dir.R, Side.front);
+            CalculateEdgeTriangles(childPP, side_, Dir.L, childPP, Dir.R, Side.Front);
         }
 
         // ------------------ FRONT
-        if (side_ == Side.front) {
+        if (side_ == Side.Front) {
             // up
             if (!childPP.hasAbove) {
-                CalculateEdgeTriangles(childPP, side_, Dir.U, childPP, Dir.D, Side.top);
+                CalculateEdgeTriangles(childPP, side_, Dir.U, childPP, Dir.D, Side.Top);
             }
             else {
-                CalculateEdgeTriangles(childPP, side_, Dir.U, childPP.cubeAbove, Dir.D, Side.front);
+                CalculateEdgeTriangles(childPP, side_, Dir.U, childPP.cubeAbove, Dir.D, Side.Front);
             }
             // right
             if (!childPP.hasOnRight) {
-                CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP, Dir.L, Side.right);
+                CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP, Dir.L, Side.Right);
                 if (!childPP.hasBelow) {
                     CalculateCornerTriangle(childPP, side_, Corner.Dr, PiecePartMeshGenerate.CornerPresance.CornerType.OneTriangle, 
-                        childPP, Side.right, Corner.Dl, 
-                        childPP, Side.bottom, Corner.Ur);
+                        childPP, Side.Right, Corner.Dl, 
+                        childPP, Side.Bottom, Corner.Ur);
                 } else {
                     CalculateCornerTriangle(childPP, side_, Corner.Dr, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP, Side.right, Corner.Dl, 
-                        childPP.cubeBelow, Side.front, Corner.Ur);
+                        childPP, Side.Right, Corner.Dl, 
+                        childPP.cubeBelow, Side.Front, Corner.Ur);
                 } if (!childPP.hasAbove) {
                     CalculateCornerTriangle(childPP, side_, Corner.Ur, PiecePartMeshGenerate.CornerPresance.CornerType.OneTriangle, 
-                        childPP, Side.right, Corner.Ul, 
-                        childPP, Side.top, Corner.Dr, true);
+                        childPP, Side.Right, Corner.Ul, 
+                        childPP, Side.Top, Corner.Dr, true);
                 } else {
                     CalculateCornerTriangle(childPP, side_, Corner.Ur, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP, Side.right, Corner.Ul, 
-                        childPP.cubeAbove, Side.front, Corner.Dr, true);
+                        childPP, Side.Right, Corner.Ul, 
+                        childPP.cubeAbove, Side.Front, Corner.Dr, true);
                 }
             }
             else {
-                CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP.cubeOnRight, Dir.Ln, Side.front);
+                CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP.cubeOnRight, Dir.Ln, Side.Front);
                 if (!childPP.hasBelow) {
                     CalculateCornerTriangle(childPP, side_, Corner.Dr, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP.cubeOnRight, Side.front, Corner.Dl, 
-                        childPP, Side.bottom, Corner.Ur);
+                        childPP.cubeOnRight, Side.Front, Corner.Dl, 
+                        childPP, Side.Bottom, Corner.Ur);
                 } else {
                     if (!childPP.cubeBelow.hasOnRight) {
                         CalculateCornerTriangle(childPP, side_, Corner.Dr, PiecePartMeshGenerate.CornerPresance.CornerType.ThreeTriangle, 
-                            childPP.cubeOnRight, Side.bottom, Corner.Ul, 
-                            childPP.cubeBelow, Side.right, Corner.Ul);
+                            childPP.cubeOnRight, Side.Bottom, Corner.Ul, 
+                            childPP.cubeBelow, Side.Right, Corner.Ul);
                     } else {
                         CalculateCornerTriangle(childPP, side_, Corner.Dr, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                            childPP.cubeOnRight, Side.front, Corner.Dl, 
-                            childPP.cubeBelow, Side.front, Corner.Ur);
+                            childPP.cubeOnRight, Side.Front, Corner.Dl, 
+                            childPP.cubeBelow, Side.Front, Corner.Ur);
                     }
                 } if (!childPP.hasAbove) {
                     CalculateCornerTriangle(childPP, side_, Corner.Ur, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP.cubeOnRight, Side.front, Corner.Ul, 
-                        childPP, Side.top, Corner.Dr, true);
+                        childPP.cubeOnRight, Side.Front, Corner.Ul, 
+                        childPP, Side.Top, Corner.Dr, true);
                 } else {
                     if (!childPP.cubeAbove.hasOnRight) {
                         CalculateCornerTriangle(childPP, side_, Corner.Ur, PiecePartMeshGenerate.CornerPresance.CornerType.ThreeTriangle, 
-                            childPP.cubeOnRight, Side.top, Corner.Dl, 
-                            childPP.cubeAbove, Side.right, Corner.Dl, true);
+                            childPP.cubeOnRight, Side.Top, Corner.Dl, 
+                            childPP.cubeAbove, Side.Right, Corner.Dl, true);
                     } else {
                         CalculateCornerTriangle(childPP, side_, Corner.Ur, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                            childPP.cubeOnRight, Side.front, Corner.Ul, 
-                            childPP.cubeAbove, Side.front, Corner.Dr, true);
+                            childPP.cubeOnRight, Side.Front, Corner.Ul, 
+                            childPP.cubeAbove, Side.Front, Corner.Dr, true);
                     }
                 }
             }
             // down
             if (!childPP.hasBelow) {
-                CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP, Dir.U, Side.bottom);
+                CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP, Dir.U, Side.Bottom);
             }
             else {
-                CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP.cubeBelow, Dir.U, Side.front);
+                CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP.cubeBelow, Dir.U, Side.Front);
             }
             // left
             if (!childPP.hasOnLeft) {
-                CalculateEdgeTriangles(childPP, side_, Dir.L, childPP, Dir.R, Side.left);
+                CalculateEdgeTriangles(childPP, side_, Dir.L, childPP, Dir.R, Side.Left);
                 if (!childPP.hasBelow) {
                     CalculateCornerTriangle(childPP, side_, Corner.Dl, PiecePartMeshGenerate.CornerPresance.CornerType.OneTriangle, 
-                        childPP, Side.left, Corner.Dr, 
-                        childPP, Side.bottom, Corner.Ul, true);
+                        childPP, Side.Left, Corner.Dr, 
+                        childPP, Side.Bottom, Corner.Ul, true);
                 } else {
                     CalculateCornerTriangle(childPP, side_, Corner.Dl, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP, Side.left, Corner.Dr, 
-                        childPP.cubeBelow, Side.front, Corner.Ul, true);
+                        childPP, Side.Left, Corner.Dr, 
+                        childPP.cubeBelow, Side.Front, Corner.Ul, true);
                 } if (!childPP.hasAbove) {
                     CalculateCornerTriangle(childPP, side_, Corner.Ul, PiecePartMeshGenerate.CornerPresance.CornerType.OneTriangle, 
-                        childPP, Side.left, Corner.Ur, 
-                        childPP, Side.top, Corner.Dl);
+                        childPP, Side.Left, Corner.Ur, 
+                        childPP, Side.Top, Corner.Dl);
                 } else {
                     CalculateCornerTriangle(childPP, side_, Corner.Ul, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP, Side.left, Corner.Ur, 
-                        childPP.cubeAbove, Side.front, Corner.Dl);
+                        childPP, Side.Left, Corner.Ur, 
+                        childPP.cubeAbove, Side.Front, Corner.Dl);
                 }
             }
             else {
-                CalculateEdgeTriangles(childPP, side_, Dir.L, childPP.cubeOnLeft, Dir.R, Side.front);
+                CalculateEdgeTriangles(childPP, side_, Dir.L, childPP.cubeOnLeft, Dir.R, Side.Front);
                 if (!childPP.hasBelow) {
                     CalculateCornerTriangle(childPP, side_, Corner.Dl, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP.cubeOnLeft, Side.front, Corner.Dr, 
-                        childPP, Side.bottom, Corner.Ul, true);
+                        childPP.cubeOnLeft, Side.Front, Corner.Dr, 
+                        childPP, Side.Bottom, Corner.Ul, true);
                 } else {
                     if (!childPP.cubeBelow.hasOnLeft) {
                         CalculateCornerTriangle(childPP, side_, Corner.Dl, PiecePartMeshGenerate.CornerPresance.CornerType.ThreeTriangle, 
-                            childPP.cubeOnLeft, Side.bottom, Corner.Ur, 
-                            childPP.cubeBelow, Side.left, Corner.Ur, true);
+                            childPP.cubeOnLeft, Side.Bottom, Corner.Ur, 
+                            childPP.cubeBelow, Side.Left, Corner.Ur, true);
                     } else {
                         CalculateCornerTriangle(childPP, side_, Corner.Dl, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                            childPP.cubeOnLeft, Side.front, Corner.Dr, 
-                            childPP.cubeBelow, Side.front, Corner.Ul, true);
+                            childPP.cubeOnLeft, Side.Front, Corner.Dr, 
+                            childPP.cubeBelow, Side.Front, Corner.Ul, true);
                     }
                 } if (!childPP.hasAbove) {
                     CalculateCornerTriangle(childPP, side_, Corner.Ul, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP.cubeOnLeft, Side.front, Corner.Ur, 
-                        childPP, Side.top, Corner.Dl);
+                        childPP.cubeOnLeft, Side.Front, Corner.Ur, 
+                        childPP, Side.Top, Corner.Dl);
                 } else {
                     if (!childPP.cubeAbove.hasOnLeft) {
                         CalculateCornerTriangle(childPP, side_, Corner.Ul, PiecePartMeshGenerate.CornerPresance.CornerType.ThreeTriangle, 
-                            childPP.cubeOnLeft, Side.top, Corner.Dr, 
-                            childPP.cubeAbove, Side.left, Corner.Dr);
+                            childPP.cubeOnLeft, Side.Top, Corner.Dr, 
+                            childPP.cubeAbove, Side.Left, Corner.Dr);
                     } else {
                         CalculateCornerTriangle(childPP, side_, Corner.Ul, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                            childPP.cubeOnLeft, Side.front, Corner.Ur, 
-                            childPP.cubeAbove, Side.front, Corner.Dl);
+                            childPP.cubeOnLeft, Side.Front, Corner.Ur, 
+                            childPP.cubeAbove, Side.Front, Corner.Dl);
                     }
                 }
             }
         }
 
         // ------------------ TOP
-        if (side_ == Side.top) {
+        if (side_ == Side.Top) {
             // up
-            CalculateEdgeTriangles(childPP, side_, Dir.U, childPP, Dir.D, Side.back);
+            CalculateEdgeTriangles(childPP, side_, Dir.U, childPP, Dir.D, Side.Back);
             //right
             if (!childPP.hasOnRight) {
-                CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP, Dir.U, Side.right);
+                CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP, Dir.U, Side.Right);
             }
             else {
                 if (!childPP.cubeOnRight.hasAbove) {
-                    CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP.cubeOnRight, Dir.Ln, Side.top);
+                    CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP.cubeOnRight, Dir.Ln, Side.Top);
                     CalculateCornerTriangle(childPP, side_, Corner.Ur, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP, Side.back, Corner.Dr, 
-                        childPP.cubeOnRight, Side.top, Corner.Ul);
+                        childPP, Side.Back, Corner.Dr, 
+                        childPP.cubeOnRight, Side.Top, Corner.Ul);
                     CalculateCornerTriangle(childPP, side_, Corner.Dr, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP.cubeOnRight, Side.top, Corner.Dl, 
-                        childPP, Side.front, Corner.Ur);
+                        childPP.cubeOnRight, Side.Top, Corner.Dl, 
+                        childPP, Side.Front, Corner.Ur);
                 }
                 else {
-                    CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP.cubeOnRight.cubeAbove, Dir.D, Side.left);
+                    CalculateEdgeTriangles(childPP, side_, Dir.Rn, childPP.cubeOnRight.cubeAbove, Dir.D, Side.Left);
                 }
             }
             // down
-            CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP, Dir.U, Side.front);
+            CalculateEdgeTriangles(childPP, side_, Dir.Dn, childPP, Dir.U, Side.Front);
             // left
             if (!childPP.hasOnLeft) {
-                CalculateEdgeTriangles(childPP, side_, Dir.Ln, childPP, Dir.U, Side.left);
+                CalculateEdgeTriangles(childPP, side_, Dir.Ln, childPP, Dir.U, Side.Left);
             }
             else {
                 if (!childPP.cubeOnLeft.hasAbove) {
-                    CalculateEdgeTriangles(childPP, side_, Dir.L, childPP.cubeOnLeft, Dir.R, Side.top);
+                    CalculateEdgeTriangles(childPP, side_, Dir.L, childPP.cubeOnLeft, Dir.R, Side.Top);
                     CalculateCornerTriangle(childPP, side_, Corner.Dl, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP, Side.front, Corner.Ul, 
-                        childPP.cubeOnLeft, Side.top, Corner.Dr);
+                        childPP, Side.Front, Corner.Ul, 
+                        childPP.cubeOnLeft, Side.Top, Corner.Dr);
                     CalculateCornerTriangle(childPP, side_, Corner.Ul, PiecePartMeshGenerate.CornerPresance.CornerType.TwoTriangle, 
-                        childPP, Side.back, Corner.Dl, 
-                        childPP.cubeOnLeft, Side.top, Corner.Ur, true);
+                        childPP, Side.Back, Corner.Dl, 
+                        childPP.cubeOnLeft, Side.Top, Corner.Ur, true);
                 }
                 else {
-                    CalculateEdgeTriangles(childPP, side_, Dir.L, childPP.cubeOnLeft.cubeAbove, Dir.D, Side.right);
+                    CalculateEdgeTriangles(childPP, side_, Dir.L, childPP.cubeOnLeft.cubeAbove, Dir.D, Side.Right);
                 }
             }
         }

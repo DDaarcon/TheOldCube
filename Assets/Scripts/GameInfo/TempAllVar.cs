@@ -33,12 +33,12 @@ namespace Assets.Scripts.GameBase
         For certain [side, direction] get side it touches in this direction</value>
         **/
         private dNs[,] properEdge = new dNs[6, 4] {
-            {new dNs(Side.back, Dir.D), new dNs(Side.left, Dir.R), new dNs(Side.front, Dir.U), new dNs(Side.right, Dir.L)},     //bottom
-            {new dNs(Side.top, Dir.Un), new dNs(Side.left, Dir.U), new dNs(Side.bottom, Dir.U), new dNs(Side.right, Dir.Un)},   //back
-            {new dNs(Side.back, Dir.L), new dNs(Side.top, Dir.R), new dNs(Side.front, Dir.Ln), new dNs(Side.bottom, Dir.L)},    //left
-            {new dNs(Side.back, Dir.Rn), new dNs(Side.bottom, Dir.R), new dNs(Side.front, Dir.R), new dNs(Side.top, Dir.L)},    //right
-            {new dNs(Side.bottom, Dir.D), new dNs(Side.left, Dir.Dn), new dNs(Side.top, Dir.Dn), new dNs(Side.right, Dir.D)},   //front
-            {new dNs(Side.back, Dir.Un), new dNs(Side.right, Dir.R), new dNs(Side.front, Dir.Dn), new dNs(Side.left, Dir.L)}    //top
+            {new dNs(Side.Back, Dir.D), new dNs(Side.Left, Dir.R), new dNs(Side.Front, Dir.U), new dNs(Side.Right, Dir.L)},     //bottom
+            {new dNs(Side.Top, Dir.Un), new dNs(Side.Left, Dir.U), new dNs(Side.Bottom, Dir.U), new dNs(Side.Right, Dir.Un)},   //back
+            {new dNs(Side.Back, Dir.L), new dNs(Side.Top, Dir.R), new dNs(Side.Front, Dir.Ln), new dNs(Side.Bottom, Dir.L)},    //left
+            {new dNs(Side.Back, Dir.Rn), new dNs(Side.Bottom, Dir.R), new dNs(Side.Front, Dir.R), new dNs(Side.Top, Dir.L)},    //right
+            {new dNs(Side.Bottom, Dir.D), new dNs(Side.Left, Dir.Dn), new dNs(Side.Top, Dir.Dn), new dNs(Side.Right, Dir.D)},   //front
+            {new dNs(Side.Back, Dir.Un), new dNs(Side.Right, Dir.R), new dNs(Side.Front, Dir.Dn), new dNs(Side.Left, Dir.L)}    //top
             // up direction             left direction              down direction              right direction
         };
 

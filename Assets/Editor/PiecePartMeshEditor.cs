@@ -9,22 +9,22 @@ public class PiecePartMeshEditor : Editor
         
         PiecePartMeshGenerate piecePartMesh = (PiecePartMeshGenerate)target;
         if (GUILayout.Button("Print bottom")) {
-            piecePartMesh.vertices.DebugPrint(Enums.Side.bottom);
+            piecePartMesh.vertices.DebugPrint(Enums.Side.Bottom);
         }
         if (GUILayout.Button("Print back")) {
-            piecePartMesh.vertices.DebugPrint(Enums.Side.back);
+            piecePartMesh.vertices.DebugPrint(Enums.Side.Back);
         }
         if (GUILayout.Button("Print left")) {
-            piecePartMesh.vertices.DebugPrint(Enums.Side.left);
+            piecePartMesh.vertices.DebugPrint(Enums.Side.Left);
         }
         if (GUILayout.Button("Print right")) {
-            piecePartMesh.vertices.DebugPrint(Enums.Side.right);
+            piecePartMesh.vertices.DebugPrint(Enums.Side.Right);
         }
         if (GUILayout.Button("Print front")) {
-            piecePartMesh.vertices.DebugPrint(Enums.Side.front);
+            piecePartMesh.vertices.DebugPrint(Enums.Side.Front);
         }
         if (GUILayout.Button("Print top")) {
-            piecePartMesh.vertices.DebugPrint(Enums.Side.top);
+            piecePartMesh.vertices.DebugPrint(Enums.Side.Top);
         }
     }
 }

@@ -71,21 +71,21 @@ public static class SolutionGenerationAlgorithm
         Edge[] edges = new Edge[12];
         for (int i = 0; i < 4; i++) {
             edges[i] = new Edge();
-            edges[i].sidesSharing[0] = Side.bottom;
+            edges[i].sidesSharing[0] = Side.Bottom;
             edges[i].sidesSharing[1] = (Side)(i + 1);
             edges[i + 4] = new Edge();
-            edges[i + 4].sidesSharing[0] = Side.top;
+            edges[i + 4].sidesSharing[0] = Side.Top;
             edges[i + 4].sidesSharing[1] = (Side)(i + 1);
         }
         for (int i = 8; i < 12; i++) edges[i] = new Edge();
-        edges[8].sidesSharing[0] = Side.left;
-        edges[8].sidesSharing[1] = Side.front;
-        edges[9].sidesSharing[0] = Side.front;
-        edges[9].sidesSharing[1] = Side.right;
-        edges[10].sidesSharing[0] = Side.right;
-        edges[10].sidesSharing[1] = Side.back;
-        edges[11].sidesSharing[0] = Side.back;
-        edges[11].sidesSharing[1] = Side.left;
+        edges[8].sidesSharing[0] = Side.Left;
+        edges[8].sidesSharing[1] = Side.Front;
+        edges[9].sidesSharing[0] = Side.Front;
+        edges[9].sidesSharing[1] = Side.Right;
+        edges[10].sidesSharing[0] = Side.Right;
+        edges[10].sidesSharing[1] = Side.Back;
+        edges[11].sidesSharing[0] = Side.Back;
+        edges[11].sidesSharing[1] = Side.Left;
 
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < edges[i].sideAppearings.Length; j++)
@@ -95,91 +95,91 @@ public static class SolutionGenerationAlgorithm
         switch (Variant) {
             case Variant.x4:
                 // bottom
-                solution[0][0,1] = edges[0].sideAppearings[a] == Side.bottom;
-                solution[0][0,2] = edges[0].sideAppearings[b] == Side.bottom;
-                solution[0][2,0] = edges[1].sideAppearings[a] == Side.bottom;
-                solution[0][1,0] = edges[1].sideAppearings[b] == Side.bottom;
-                solution[0][1,3] = edges[2].sideAppearings[a] == Side.bottom;
-                solution[0][2,3] = edges[2].sideAppearings[b] == Side.bottom;
-                solution[0][3,2] = edges[3].sideAppearings[a] == Side.bottom;
-                solution[0][3,1] = edges[3].sideAppearings[b] == Side.bottom;
+                solution[0][0,1] = edges[0].sideAppearings[a] == Side.Bottom;
+                solution[0][0,2] = edges[0].sideAppearings[b] == Side.Bottom;
+                solution[0][2,0] = edges[1].sideAppearings[a] == Side.Bottom;
+                solution[0][1,0] = edges[1].sideAppearings[b] == Side.Bottom;
+                solution[0][1,3] = edges[2].sideAppearings[a] == Side.Bottom;
+                solution[0][2,3] = edges[2].sideAppearings[b] == Side.Bottom;
+                solution[0][3,2] = edges[3].sideAppearings[a] == Side.Bottom;
+                solution[0][3,1] = edges[3].sideAppearings[b] == Side.Bottom;
                 // back
-                solution[1][0,1] = edges[4].sideAppearings[b] == Side.back;
-                solution[1][0,2] = edges[4].sideAppearings[a] == Side.back;
-                solution[1][2,0] = edges[11].sideAppearings[a] == Side.back;
-                solution[1][1,0] = edges[11].sideAppearings[b] == Side.back;
-                solution[1][1,3] = edges[10].sideAppearings[b] == Side.back;
-                solution[1][2,3] = edges[10].sideAppearings[a] == Side.back;
-                solution[1][3,2] = edges[0].sideAppearings[b] == Side.back;
-                solution[1][3,1] = edges[0].sideAppearings[a] == Side.back;
+                solution[1][0,1] = edges[4].sideAppearings[b] == Side.Back;
+                solution[1][0,2] = edges[4].sideAppearings[a] == Side.Back;
+                solution[1][2,0] = edges[11].sideAppearings[a] == Side.Back;
+                solution[1][1,0] = edges[11].sideAppearings[b] == Side.Back;
+                solution[1][1,3] = edges[10].sideAppearings[b] == Side.Back;
+                solution[1][2,3] = edges[10].sideAppearings[a] == Side.Back;
+                solution[1][3,2] = edges[0].sideAppearings[b] == Side.Back;
+                solution[1][3,1] = edges[0].sideAppearings[a] == Side.Back;
                 // left
-                solution[2][0,1] = edges[11].sideAppearings[b] == Side.left;
-                solution[2][0,2] = edges[11].sideAppearings[a] == Side.left;
-                solution[2][2,0] = edges[5].sideAppearings[b] == Side.left;
-                solution[2][1,0] = edges[5].sideAppearings[a] == Side.left;
-                solution[2][1,3] = edges[1].sideAppearings[b] == Side.left;
-                solution[2][2,3] = edges[1].sideAppearings[a] == Side.left;
-                solution[2][3,2] = edges[8].sideAppearings[a] == Side.left;
-                solution[2][3,1] = edges[8].sideAppearings[b] == Side.left;
+                solution[2][0,1] = edges[11].sideAppearings[b] == Side.Left;
+                solution[2][0,2] = edges[11].sideAppearings[a] == Side.Left;
+                solution[2][2,0] = edges[5].sideAppearings[b] == Side.Left;
+                solution[2][1,0] = edges[5].sideAppearings[a] == Side.Left;
+                solution[2][1,3] = edges[1].sideAppearings[b] == Side.Left;
+                solution[2][2,3] = edges[1].sideAppearings[a] == Side.Left;
+                solution[2][3,2] = edges[8].sideAppearings[a] == Side.Left;
+                solution[2][3,1] = edges[8].sideAppearings[b] == Side.Left;
                 // right
-                solution[3][0,1] = edges[10].sideAppearings[a] == Side.right;
-                solution[3][0,2] = edges[10].sideAppearings[b] == Side.right;
-                solution[3][2,0] = edges[2].sideAppearings[b] == Side.right;
-                solution[3][1,0] = edges[2].sideAppearings[a] == Side.right;
-                solution[3][1,3] = edges[6].sideAppearings[b] == Side.right;
-                solution[3][2,3] = edges[6].sideAppearings[a] == Side.right;
-                solution[3][3,2] = edges[9].sideAppearings[b] == Side.right;
-                solution[3][3,1] = edges[9].sideAppearings[a] == Side.right;
+                solution[3][0,1] = edges[10].sideAppearings[a] == Side.Right;
+                solution[3][0,2] = edges[10].sideAppearings[b] == Side.Right;
+                solution[3][2,0] = edges[2].sideAppearings[b] == Side.Right;
+                solution[3][1,0] = edges[2].sideAppearings[a] == Side.Right;
+                solution[3][1,3] = edges[6].sideAppearings[b] == Side.Right;
+                solution[3][2,3] = edges[6].sideAppearings[a] == Side.Right;
+                solution[3][3,2] = edges[9].sideAppearings[b] == Side.Right;
+                solution[3][3,1] = edges[9].sideAppearings[a] == Side.Right;
                 // front
-                solution[4][0,1] = edges[3].sideAppearings[b] == Side.front;
-                solution[4][0,2] = edges[3].sideAppearings[a] == Side.front;
-                solution[4][2,0] = edges[8].sideAppearings[b] == Side.front;
-                solution[4][1,0] = edges[8].sideAppearings[a] == Side.front;
-                solution[4][1,3] = edges[9].sideAppearings[a] == Side.front;
-                solution[4][2,3] = edges[9].sideAppearings[b] == Side.front;
-                solution[4][3,2] = edges[7].sideAppearings[b] == Side.front;
-                solution[4][3,1] = edges[7].sideAppearings[a] == Side.front;
+                solution[4][0,1] = edges[3].sideAppearings[b] == Side.Front;
+                solution[4][0,2] = edges[3].sideAppearings[a] == Side.Front;
+                solution[4][2,0] = edges[8].sideAppearings[b] == Side.Front;
+                solution[4][1,0] = edges[8].sideAppearings[a] == Side.Front;
+                solution[4][1,3] = edges[9].sideAppearings[a] == Side.Front;
+                solution[4][2,3] = edges[9].sideAppearings[b] == Side.Front;
+                solution[4][3,2] = edges[7].sideAppearings[b] == Side.Front;
+                solution[4][3,1] = edges[7].sideAppearings[a] == Side.Front;
                 // top
-                solution[5][0,1] = edges[4].sideAppearings[a] == Side.top;
-                solution[5][0,2] = edges[4].sideAppearings[b] == Side.top;
-                solution[5][2,0] = edges[6].sideAppearings[a] == Side.top;
-                solution[5][1,0] = edges[6].sideAppearings[b] == Side.top;
-                solution[5][1,3] = edges[5].sideAppearings[a] == Side.top;
-                solution[5][2,3] = edges[5].sideAppearings[b] == Side.top;
-                solution[5][3,2] = edges[7].sideAppearings[a] == Side.top;
-                solution[5][3,1] = edges[7].sideAppearings[b] == Side.top;
+                solution[5][0,1] = edges[4].sideAppearings[a] == Side.Top;
+                solution[5][0,2] = edges[4].sideAppearings[b] == Side.Top;
+                solution[5][2,0] = edges[6].sideAppearings[a] == Side.Top;
+                solution[5][1,0] = edges[6].sideAppearings[b] == Side.Top;
+                solution[5][1,3] = edges[5].sideAppearings[a] == Side.Top;
+                solution[5][2,3] = edges[5].sideAppearings[b] == Side.Top;
+                solution[5][3,2] = edges[7].sideAppearings[a] == Side.Top;
+                solution[5][3,1] = edges[7].sideAppearings[b] == Side.Top;
                 break;
             case Variant.x3:
                 // bottom
-                solution[0][0,1] = edges[0].sideAppearings[a] == Side.bottom;
-                solution[0][1,0] = edges[1].sideAppearings[a] == Side.bottom;
-                solution[0][1,2] = edges[2].sideAppearings[a] == Side.bottom;
-                solution[0][2,1] = edges[3].sideAppearings[a] == Side.bottom;
+                solution[0][0,1] = edges[0].sideAppearings[a] == Side.Bottom;
+                solution[0][1,0] = edges[1].sideAppearings[a] == Side.Bottom;
+                solution[0][1,2] = edges[2].sideAppearings[a] == Side.Bottom;
+                solution[0][2,1] = edges[3].sideAppearings[a] == Side.Bottom;
                 // back
-                solution[1][0,1] = edges[4].sideAppearings[a] == Side.back;
-                solution[1][1,0] = edges[11].sideAppearings[a] == Side.back;
-                solution[1][1,2] = edges[10].sideAppearings[a] == Side.back;
-                solution[1][2,1] = edges[0].sideAppearings[a] == Side.back;
+                solution[1][0,1] = edges[4].sideAppearings[a] == Side.Back;
+                solution[1][1,0] = edges[11].sideAppearings[a] == Side.Back;
+                solution[1][1,2] = edges[10].sideAppearings[a] == Side.Back;
+                solution[1][2,1] = edges[0].sideAppearings[a] == Side.Back;
                 // left
-                solution[2][0,1] = edges[11].sideAppearings[a] == Side.left;
-                solution[2][1,0] = edges[5].sideAppearings[a] == Side.left;
-                solution[2][1,2] = edges[1].sideAppearings[a] == Side.left;
-                solution[2][2,1] = edges[8].sideAppearings[a] == Side.left;
+                solution[2][0,1] = edges[11].sideAppearings[a] == Side.Left;
+                solution[2][1,0] = edges[5].sideAppearings[a] == Side.Left;
+                solution[2][1,2] = edges[1].sideAppearings[a] == Side.Left;
+                solution[2][2,1] = edges[8].sideAppearings[a] == Side.Left;
                 // right
-                solution[3][0,1] = edges[10].sideAppearings[a] == Side.right;
-                solution[3][1,0] = edges[2].sideAppearings[a] == Side.right;
-                solution[3][1,2] = edges[6].sideAppearings[a] == Side.right;
-                solution[3][2,1] = edges[9].sideAppearings[a] == Side.right;
+                solution[3][0,1] = edges[10].sideAppearings[a] == Side.Right;
+                solution[3][1,0] = edges[2].sideAppearings[a] == Side.Right;
+                solution[3][1,2] = edges[6].sideAppearings[a] == Side.Right;
+                solution[3][2,1] = edges[9].sideAppearings[a] == Side.Right;
                 // front
-                solution[4][0,1] = edges[3].sideAppearings[a] == Side.front;
-                solution[4][1,0] = edges[8].sideAppearings[a] == Side.front;
-                solution[4][1,2] = edges[9].sideAppearings[a] == Side.front;
-                solution[4][2,1] = edges[7].sideAppearings[a] == Side.front;
+                solution[4][0,1] = edges[3].sideAppearings[a] == Side.Front;
+                solution[4][1,0] = edges[8].sideAppearings[a] == Side.Front;
+                solution[4][1,2] = edges[9].sideAppearings[a] == Side.Front;
+                solution[4][2,1] = edges[7].sideAppearings[a] == Side.Front;
                 // top
-                solution[5][0,1] = edges[4].sideAppearings[a] == Side.top;
-                solution[5][1,0] = edges[6].sideAppearings[a] == Side.top;
-                solution[5][1,2] = edges[5].sideAppearings[a] == Side.top;
-                solution[5][2,1] = edges[7].sideAppearings[a] == Side.top;
+                solution[5][0,1] = edges[4].sideAppearings[a] == Side.Top;
+                solution[5][1,0] = edges[6].sideAppearings[a] == Side.Top;
+                solution[5][1,2] = edges[5].sideAppearings[a] == Side.Top;
+                solution[5][2,1] = edges[7].sideAppearings[a] == Side.Top;
                 break;
 
         }
@@ -188,28 +188,28 @@ public static class SolutionGenerationAlgorithm
     private static void FillCorners() {
         Corner[] corners = new Corner[8];
         for (int i = 0; i < 8; i++) corners[i] = new Corner();
-        corners[0].sidesSharing = new Side[] {Side.bottom, Side.back, Side.left};
+        corners[0].sidesSharing = new Side[] {Side.Bottom, Side.Back, Side.Left};
         corners[0].sideAppearance = new Enums.Corner[] { Enums.Corner.Ul, Enums.Corner.Dl, Enums.Corner.Ur};
 
-        corners[1].sidesSharing = new Side[] {Side.bottom, Side.back, Side.right};
+        corners[1].sidesSharing = new Side[] {Side.Bottom, Side.Back, Side.Right};
         corners[1].sideAppearance = new Enums.Corner[] { Enums.Corner.Ur, Enums.Corner.Dr, Enums.Corner.Ul};
 
-        corners[2].sidesSharing = new Side[] {Side.bottom, Side.front, Side.right};
+        corners[2].sidesSharing = new Side[] {Side.Bottom, Side.Front, Side.Right};
         corners[2].sideAppearance = new Enums.Corner[] { Enums.Corner.Dr, Enums.Corner.Ur, Enums.Corner.Dl};
 
-        corners[3].sidesSharing = new Side[] {Side.bottom, Side.front, Side.left};
+        corners[3].sidesSharing = new Side[] {Side.Bottom, Side.Front, Side.Left};
         corners[3].sideAppearance = new Enums.Corner[] { Enums.Corner.Dl, Enums.Corner.Ul, Enums.Corner.Dr};
 
-        corners[4].sidesSharing = new Side[] {Side.top, Side.back, Side.right};
+        corners[4].sidesSharing = new Side[] {Side.Top, Side.Back, Side.Right};
         corners[4].sideAppearance = new Enums.Corner[] { Enums.Corner.Ul, Enums.Corner.Ur, Enums.Corner.Ur};
 
-        corners[5].sidesSharing = new Side[] {Side.top, Side.back, Side.left};
+        corners[5].sidesSharing = new Side[] {Side.Top, Side.Back, Side.Left};
         corners[5].sideAppearance = new Enums.Corner[] { Enums.Corner.Ur, Enums.Corner.Ul, Enums.Corner.Ul};
 
-        corners[6].sidesSharing = new Side[] {Side.top, Side.front, Side.left};
+        corners[6].sidesSharing = new Side[] {Side.Top, Side.Front, Side.Left};
         corners[6].sideAppearance = new Enums.Corner[] { Enums.Corner.Dr, Enums.Corner.Dl, Enums.Corner.Dl};
 
-        corners[7].sidesSharing = new Side[] {Side.top, Side.front, Side.right};
+        corners[7].sidesSharing = new Side[] {Side.Top, Side.Front, Side.Right};
         corners[7].sideAppearance = new Enums.Corner[] { Enums.Corner.Dl, Enums.Corner.Dr, Enums.Corner.Dr};
 
         int l = variantInt - 1;

@@ -9,7 +9,5 @@ namespace GameInfo.GameInfoInternals.InterfaceInfoInternals.PiecesButtonsInfoInt
     public class PiecesButtonsPhysicalData
     {
         public GameObject Container;
-        [HideInInspector]
-        public GameObject[] Buttons;
     }
 }
