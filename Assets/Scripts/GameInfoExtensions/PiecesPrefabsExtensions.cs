@@ -15,12 +15,15 @@ namespace GameExtensions.Pieces
     {
         public static GameObject GetByVariant(this PiecesPrefabsInfo info, Variant variant)
         {
-            return variant switch
+            switch (variant)
             {
-                Variant.x3 => info.Piece3_3,
-                Variant.x4 => info.Piece4_4,
-                _ => throw new NotImplementedException(),
-            };
+                case Variant.x3:
+                    return info.Piece3_3;
+                case Variant.x4:
+                    return info.Piece4_4;
+                default:
+                    throw new NotImplementedException();
+            }
         }
     }
 }

@@ -9,7 +9,6 @@ namespace GameInfo.GameInfoInternals.InterfaceInfoInternals
     public class ClockInfo
     {
         public ClockPhysicalInfo ClockPhysicalInfo { get; set; }
-        public TimeInfo TimeInfo { get; set; }
 
         public Color RecordShineColor;
         public float RecordShineFontThickness;

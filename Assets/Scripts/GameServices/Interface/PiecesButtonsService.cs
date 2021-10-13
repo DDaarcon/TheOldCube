@@ -30,17 +30,17 @@ namespace GameServices.Interface
             {
                 int i2 = i;
                 info.Buttons[i].PhysicalObject.onClick.RemoveAllListeners();
-                info.Buttons[i].PhysicalObject.onClick.AddListener(() => PlacePiece(editorInfo.GeneratedSolution.GetBySide(info.Buttons[i2].SideFromGeneratedSolution.Value), i2));
+                //info.Buttons[i].PhysicalObject.onClick.AddListener(() => PlacePiece(editorInfo.GeneratedSolution.GetBySide(info.Buttons[i2].SideFromGeneratedSolution.Value), i2));
                 info.Buttons[i].ChangePieceSetting(editorInfo.GeneratedSolution.GetBySide(info.Buttons[i2].SideFromGeneratedSolution.Value));
                 info.Buttons[i].SetEnableState(true);
             }
         }
         public void RecalculateButtonsCams(int delayBy = 1)
         {
-            foreach (Button button in buttons)
-            {
-                button.GetComponent<ApplySettingToBtn>().RecalculateUI(delayBy);
-            }
+            //foreach (Button button in buttons)
+            //{
+            //    button.GetComponent<ApplySettingToBtn>().RecalculateUI(delayBy);
+            //}
         }
 
         private void SetRandomSideFromGeneratedSolutionForButtons()
@@ -48,12 +48,12 @@ namespace GameServices.Interface
             Side[] order = Enum.GetValues(typeof(Side)) as Side[];
 
             Random random = new Random();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < order.Length / 2; i++)
             {
-                int index1 = random.Next(6), index2;
+                int index1 = random.Next(order.Length), index2;
                 do
                 {
-                    index2 = random.Next(6);
+                    index2 = random.Next(order.Length);
                 } while (index1 == index2);
                 Side backup = order[index1];
                 order[index1] = order[index2];
@@ -64,6 +64,12 @@ namespace GameServices.Interface
             {
                 info.Buttons[i].SideFromGeneratedSolution = order[i];
             }
+        }
+
+        public void SetEnableStateForAll(bool enable)
+        {
+            for (int i = 0; i < info.Buttons.Length; i++)
+                SetEnableState(i, enable);
         }
 
         public void SetEnableState(int index, bool enable)

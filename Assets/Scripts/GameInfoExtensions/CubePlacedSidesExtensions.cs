@@ -23,15 +23,22 @@ namespace GameExtensions.Cube.PlacedSides
 
         public static bool GetBySide(this PlacedSidesInfo placedSides, Side side)
         {
-            return side switch
+            switch (side)
             {
-                Side.Bottom => placedSides.BottomSideIsPlaced,
-                Side.Back => placedSides.BackSideIsPlaced,
-                Side.Left => placedSides.LeftSideIsPlaced,
-                Side.Right => placedSides.RightSideIsPlaced,
-                Side.Front => placedSides.FrontSideIsPlaced,
-                Side.Top => placedSides.TopSideIsPlaced,
-                _ => throw new NotImplementedException(),
+                case Side.Bottom:
+                    return placedSides.BottomSideIsPlaced;
+                case Side.Back:
+                    return placedSides.BackSideIsPlaced;
+                case Side.Left:
+                    return placedSides.LeftSideIsPlaced;
+                case Side.Right:
+                    return placedSides.RightSideIsPlaced;
+                case Side.Front:
+                    return placedSides.FrontSideIsPlaced;
+                case Side.Top:
+                    return placedSides.TopSideIsPlaced;
+                default:
+                    throw new NotImplementedException();
             }
         }
     }

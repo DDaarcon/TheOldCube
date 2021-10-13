@@ -72,4 +72,9 @@ public static class Enums
     {
         get => Enum.GetValues(typeof(Side)).Cast<Side>();
     }
+
+    public class InvalidSideException : Exception
+    {
+        public override string Message => "Passed incorrect side";
+    }
 }

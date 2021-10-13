@@ -39,8 +39,8 @@ namespace GameServices.Interface
             if (!gameplayInfo.Level.IndexOfCurrentlyOpened.HasValue)
                 throw new LevelIsRandomException();
 
-            LevelSettings lS = levelMenu.GetLevelSettings(gameplayInfo.Level.IndexOfCurrentlyOpened.Value + 1, editorInfo.Variant);
-            gameplayService.StartNewGame(gameplayInfo.Level.IndexOfCurrentlyOpened.Value + 1, lS.seed, lS.placedSides, lS.finished);
+            //LevelSettings lS = levelMenu.GetLevelSettings(gameplayInfo.Level.IndexOfCurrentlyOpened.Value + 1, editorInfo.Variant);
+            //gameplayService.StartNewGame(gameplayInfo.Level.IndexOfCurrentlyOpened.Value + 1, lS.seed, lS.placedSides, lS.finished);
         }
 
         public class LevelIsRandomException : Exception

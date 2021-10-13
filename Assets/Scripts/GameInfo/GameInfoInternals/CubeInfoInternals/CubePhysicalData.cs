@@ -12,6 +12,22 @@ namespace GameInfo.GameInfoInternals.CubeInfoInternals
     public class CubePhysicalData
     {
         [HideInInspector]
-        public GameObject[] Pieces;
+        public GameObject BottomPiece;
+        [HideInInspector]
+        public GameObject BackPiece;
+        [HideInInspector]
+        public GameObject LeftPiece;
+        [HideInInspector]
+        public GameObject RightPiece;
+        [HideInInspector]
+        public GameObject FrontPiece;
+        [HideInInspector]
+        public GameObject TopPiece;
+
+        public GameObject[] Pieces => new GameObject[]
+        {
+            BottomPiece, BackPiece, LeftPiece,
+            RightPiece, FrontPiece, TopPiece
+        };
     }
 }

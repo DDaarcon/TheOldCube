@@ -9,6 +9,7 @@ using static Enums;
 using GameInfo.GameInfoInternals;
 using GameInfo.GameInfoInternals.EditorEnvironmentInfoInternals;
 using GameExtensions.RelativePlacingPiecesPositions;
+using GameExtensions.Interface;
 
 namespace GameServices.Gameplay
 {
@@ -55,16 +56,16 @@ namespace GameServices.Gameplay
             editorInfo.Workspace.RelativePiecesPlacingPositions.Calculate(sideLengthMultipler);
             
             for (int i = 0; i < 6; i++)
-                interfaceInfo.PiecesButtons.PhysicalData.Buttons[i].GetComponent<ApplySettingToBtn>().ChangeVariant(editorInfo.Variant);
+                interfaceInfo.PiecesButtons.Buttons[i].ChangeVariant(editorInfo.Variant);
 
-            infoPanel.UpdateInfo();
+            //infoPanel.UpdateInfo();
 
-            if (TutorialScript.firstApplicationLaunch || !levelMenu.IsLevelPassed(0, Variant.x4))
-            {
-                LevelSettings lS = levelMenu.GetLevelSettings(0, Variant.x4);
-                gameplayService.StartNewGame(0, lS.seed, lS.placedSides, lS.finished);
-                return;
-            }
+            //if (TutorialScript.firstApplicationLaunch || !levelMenu.IsLevelPassed(0, Variant.x4))
+            //{
+            //    LevelSettings lS = levelMenu.GetLevelSettings(0, Variant.x4);
+            //    gameplayService.StartNewGame(0, lS.seed, lS.placedSides, lS.finished);
+            //    return;
+            //}
             if (autoStartRandomGame) gameplayService.StartNewRandomGame(false);
         }
 

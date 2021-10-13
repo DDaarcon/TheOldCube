@@ -13,6 +13,7 @@ namespace GameInfo.GameInfoInternals
     public class GameplayInfo
     {
         public LevelInfo Level { get; set; }
+        public TimeInfo Time { get; set; }
 
         public bool IsLevelRandom;
         [HideInInspector]
@@ -21,6 +22,5 @@ namespace GameInfo.GameInfoInternals
         public bool IsFinished;
         [HideInInspector]
         public bool IsRestartedAfterFinish;
-
     }
 }

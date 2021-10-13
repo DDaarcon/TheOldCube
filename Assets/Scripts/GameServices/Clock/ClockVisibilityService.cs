@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using GameInfo;
 using GameInfo.GameInfoInternals.InterfaceInfoInternals;
 using GameInfo.GameInfoInternals.InterfaceInfoInternals.ClockInfoInternals;
+using GameInfo.GameInfoInternals.GameplayInfoInternals;
 
 namespace GameServices.Clock
 {
@@ -14,13 +15,13 @@ namespace GameServices.Clock
     {
         public const float HIDE_CLOCK_TIME = 1f;
         public const float SHOW_CLOCK_TIME = 1f;
-        private ClockInfo info => interfaceInfo.ClockInfo;
-        private TimeInfo timeInfo => info.TimeInfo;
+        private ClockInfo info => interfaceInfo.Clock;
+        private TimeInfo timeInfo => gameplayInfo.Time;
         private ClockPhysicalInfo physicalInfo => info.ClockPhysicalInfo;
 
         public void SetTimeOnClockDisplay(float? time = null)
         {
-            time ??= timeInfo.Passed;
+            time = time == null ? timeInfo.Passed : time;
             physicalInfo.ClockText.text = "<mspace=0.7em>" + (time / 60 >= 10 ? "" : "0") + (int)(time / 60) + ":" + (time % 60 >= 10 ? "" : "0") + (int)(time % 60);
         }
 

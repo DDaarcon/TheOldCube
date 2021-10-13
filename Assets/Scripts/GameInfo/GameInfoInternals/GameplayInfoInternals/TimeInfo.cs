@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using GameInfo.GameInfoInternals.CubeInfoInternals;
+using UnityEngine;
 
 namespace GameInfo.GameInfoInternals.GameplayInfoInternals
 {
     [Serializable]
-    public class LevelInfo
+    public class TimeInfo
     {
-        public PlacedSidesInfo PiecesPlacedOnStart { get; set; }
-
-        public int? IndexOfCurrentlyOpened;
-        
+        [HideInInspector]
+        public float StartedAt;
+        [HideInInspector]
+        public float Passed;
+        [HideInInspector]
+        public bool IsPaused;
     }
 }

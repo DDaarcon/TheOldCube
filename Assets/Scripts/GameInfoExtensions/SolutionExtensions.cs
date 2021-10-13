@@ -11,7 +11,7 @@ using static Enums;
 
 namespace GameExtensions.Solution
 {
-    public static class SolutionExtension
+    public static class SolutionExtensions
     {
         public static void Set<TData>(this SolutionInfo<TData> solution,
             SideData<TData> bottom,
@@ -69,16 +69,23 @@ namespace GameExtensions.Solution
 
         public static SideData<TData> GetBySide<TData>(this SolutionInfo<TData> solution, Side side)
         {
-            return side switch
+            switch (side)
             {
-                Side.Bottom => solution.BottomSide,
-                Side.Back => solution.BackSide,
-                Side.Left => solution.LeftSide,
-                Side.Right => solution.RightSide,
-                Side.Front => solution.FrontSide,
-                Side.Top => solution.TopSide,
-                _ => throw new NotImplementedException(),
-            };
+                case Side.Bottom:
+                    return solution.BottomSide;
+                case Side.Back:
+                    return solution.BackSide;
+                case Side.Left:
+                    return solution.LeftSide;
+                case Side.Right:
+                    return solution.RightSide;
+                case Side.Front:
+                    return solution.FrontSide;
+                case Side.Top:
+                    return solution.TopSide;
+                default:
+                    throw new NotImplementedException();
+            }
         }
 
         public class InvalidSolutionDataException : Exception

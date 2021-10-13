@@ -20,6 +20,7 @@ namespace GameInfo
         public EditorEnvironmentInfo EditorEnvironment { get; set; } = new EditorEnvironmentInfo();
         public InterfaceInfo Interface { get; set; } = new InterfaceInfo();
         public ThemeInfo Theme { get; set; } = new ThemeInfo();
+        public HintInfo Hint { get; set; } = new HintInfo();
         public DebugInfo Debug { get; set; } = new DebugInfo();
     }
 }
