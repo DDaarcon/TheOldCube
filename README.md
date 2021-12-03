@@ -1,4 +1,5 @@
 # TheOldCube
+Refactor is being done on 'data-organization' branch.
 Game I've published (currently in verification procees) on Google Play. Based on Unity/C#.
 
 ![Icon](https://github.com/DDaarcon/TheOldCube/blob/main/TheOldCube_ReleaseData/miniaturka_official_cropped_512.png)
